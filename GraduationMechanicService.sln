@@ -9,19 +9,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{DC438917-1B16-48AC-A12A-972231C62459}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicService.Domain", "Core\MechanicService.Domain\MechanicService.Domain.csproj", "{36AA41CD-84FB-468C-AC85-5CB28EE5421E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanicService.Domain", "Core\MechanicService.Domain\MechanicService.Domain.csproj", "{36AA41CD-84FB-468C-AC85-5CB28EE5421E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicService.Application", "Core\MechanicService.Application\MechanicService.Application.csproj", "{54C2B1C9-5849-4577-99A0-66FB2189AF15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanicService.Application", "Core\MechanicService.Application\MechanicService.Application.csproj", "{54C2B1C9-5849-4577-99A0-66FB2189AF15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicService.Persistence", "Infrastructure\MechanicService.Persistence\MechanicService.Persistence.csproj", "{1C5786BB-E565-4765-8846-BF43B6CE4EE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanicService.Persistence", "Infrastructure\MechanicService.Persistence\MechanicService.Persistence.csproj", "{1C5786BB-E565-4765-8846-BF43B6CE4EE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicService.Dto", "Presentation\MechanicService.Dto\MechanicService.Dto.csproj", "{AC221CDD-3D5E-4F8C-832F-57AF12D742F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanicService.Dto", "Presentation\MechanicService.Dto\MechanicService.Dto.csproj", "{AC221CDD-3D5E-4F8C-832F-57AF12D742F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicService.WebAPI", "Presentation\MechanicService.WebAPI\MechanicService.WebAPI.csproj", "{003D3406-E3C7-4746-ABCC-ACEC1C3FB6F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanicService.WebAPI", "Presentation\MechanicService.WebAPI\MechanicService.WebAPI.csproj", "{003D3406-E3C7-4746-ABCC-ACEC1C3FB6F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicService.WebUI", "Presentation\MechanicService.WebUI\MechanicService.WebUI.csproj", "{8AA6520F-985A-4F75-A429-AA0FA06617DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanicService.WebUI", "Presentation\MechanicService.WebUI\MechanicService.WebUI.csproj", "{8AA6520F-985A-4F75-A429-AA0FA06617DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicService.Infrastructure", "Infrastructure\MechanicService.Infrastructure\MechanicService.Infrastructure.csproj", "{9518A94A-5231-4AF9-8F7E-A12ECEE60210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanicService.Infrastructure", "Infrastructure\MechanicService.Infrastructure\MechanicService.Infrastructure.csproj", "{9518A94A-5231-4AF9-8F7E-A12ECEE60210}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A8592E2-9620-4362-B47D-C3983DF50ACB}"
+	ProjectSection(SolutionItems) = preProject
+		MyNotes.md = MyNotes.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
