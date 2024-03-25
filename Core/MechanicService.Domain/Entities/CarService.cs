@@ -2,5 +2,6 @@
 {
     public class CarService : BaseEntity
     {
+        // Empty For Now!
     }
 }
