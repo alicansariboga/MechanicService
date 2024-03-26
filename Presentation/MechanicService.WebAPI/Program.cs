@@ -1,6 +1,20 @@
+using MechanicService.Application.Interfaces;
+using MechanicService.Application.Services;
+using MechanicService.Persistence.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpClient();
+
 // Add services to the container.
+
+#region Registrations
+builder.Services.AddScoped<MechanicServiceContext>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(IRepository<>));
+#endregion
+
+// ServiceRegistration
+builder.Services.AddApplicationService(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

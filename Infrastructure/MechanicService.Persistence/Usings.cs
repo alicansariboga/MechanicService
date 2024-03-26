@@ -8,3 +8,5 @@ global using MechanicService.Domain.Entities;
 global using MechanicService.Application.Interfaces;
 global using MechanicService.Persistence.Context;
 global using System.Linq.Expressions;
+global using Microsoft.EntityFrameworkCore.Migrations;
+global using Microsoft.EntityFrameworkCore.Infrastructure;

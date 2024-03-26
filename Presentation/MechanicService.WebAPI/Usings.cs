@@ -1,0 +1,5 @@
+﻿global using MechanicService.Application.Features.Mediator.Commands.AboutCommands;
+global using MechanicService.Application.Features.Mediator.Queries.AboutQueries;
+global using Microsoft.AspNetCore.Http;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
