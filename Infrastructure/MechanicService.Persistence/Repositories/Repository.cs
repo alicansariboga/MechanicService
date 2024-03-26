@@ -11,7 +11,6 @@
 
         public async Task CreateAsync(T entity)
         {
-            // await _context.Set<T>().AddAsync(entity);
             _context.Set<T>().Add(entity);
             await _context.SaveChangesAsync();
         }

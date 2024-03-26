@@ -1,7 +1,3 @@
-using MechanicService.Application.Interfaces;
-using MechanicService.Application.Services;
-using MechanicService.Persistence.Context;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient();
@@ -10,7 +6,7 @@ builder.Services.AddHttpClient();
 
 #region Registrations
 builder.Services.AddScoped<MechanicServiceContext>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(IRepository<>));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 #endregion
 
 // ServiceRegistration
