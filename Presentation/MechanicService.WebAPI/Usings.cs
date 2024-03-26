@@ -10,6 +10,9 @@ global using MechanicService.Persistence.Repositories;
 global using MechanicService.Application.Features.Mediator.Commands.AboutCommands;
 global using MechanicService.Application.Features.Mediator.Queries.AboutQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.AddressCommands;
+global using MechanicService.Application.Features.Mediator.Queries.AddressQueries;
+
 global using MechanicService.Application.Features.Mediator.Commands.FeatureCommands;
 global using MechanicService.Application.Features.Mediator.Queries.FeatureQueries;
 
