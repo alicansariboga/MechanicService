@@ -13,6 +13,9 @@ global using MechanicService.Application.Features.Mediator.Queries.AboutQueries;
 global using MechanicService.Application.Features.Mediator.Commands.AddressCommands;
 global using MechanicService.Application.Features.Mediator.Queries.AddressQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.BannerCommands;
+global using MechanicService.Application.Features.Mediator.Queries.BannerQueries;
+
 global using MechanicService.Application.Features.Mediator.Commands.FeatureCommands;
 global using MechanicService.Application.Features.Mediator.Queries.FeatureQueries;
 

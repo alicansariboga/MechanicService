@@ -14,6 +14,10 @@ global using MechanicService.Application.Features.Mediator.Results.AddressResult
 global using MechanicService.Application.Features.Mediator.Queries.AddressQueries;
 global using MechanicService.Application.Features.Mediator.Commands.AddressCommands;
 
+global using MechanicService.Application.Features.Mediator.Results.BannerResults;
+global using MechanicService.Application.Features.Mediator.Queries.BannerQueries;
+global using MechanicService.Application.Features.Mediator.Commands.BannerCommands;
+
 global using MechanicService.Application.Features.Mediator.Results.FeatureResults;
 global using MechanicService.Application.Features.Mediator.Queries.FeatureQueries;
 global using MechanicService.Application.Features.Mediator.Commands.FeatureCommands;
