@@ -30,3 +30,7 @@ global using MechanicService.Application.Features.Mediator.Commands.ServiceComma
 global using MechanicService.Application.Features.Mediator.Results.CarBrandResults;
 global using MechanicService.Application.Features.Mediator.Queries.CarBrandQueries;
 global using MechanicService.Application.Features.Mediator.Commands.CarBrandCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.CarModelResults;
+global using MechanicService.Application.Features.Mediator.Queries.CarModelQueries;
+global using MechanicService.Application.Features.Mediator.Commands.CarModelCommands;
