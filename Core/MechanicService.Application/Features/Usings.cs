@@ -3,6 +3,7 @@ global using System.Collections.Generic;
 global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
+
 global using MediatR;
 
 global using MechanicService.Application.Interfaces;
@@ -25,3 +26,7 @@ global using MechanicService.Application.Features.Mediator.Commands.FeatureComma
 global using MechanicService.Application.Features.Mediator.Results.ServiceResults;
 global using MechanicService.Application.Features.Mediator.Queries.ServiceQueries;
 global using MechanicService.Application.Features.Mediator.Commands.ServiceCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.CarBrandResults;
+global using MechanicService.Application.Features.Mediator.Queries.CarBrandQueries;
+global using MechanicService.Application.Features.Mediator.Commands.CarBrandCommands;
