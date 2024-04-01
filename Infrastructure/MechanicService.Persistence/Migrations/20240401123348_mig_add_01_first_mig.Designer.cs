@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MechanicService.Persistence.Migrations
 {
     [DbContext(typeof(MechanicServiceContext))]
-    [Migration("20240325140125_mig_add_first_mig")]
-    partial class mig_add_first_mig
+    [Migration("20240401123348_mig_add_01_first_mig")]
+    partial class mig_add_01_first_mig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -214,9 +214,6 @@ namespace MechanicService.Persistence.Migrations
                     b.Property<string>("IconUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MyProperty")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -1,9 +1,12 @@
-﻿#nullable disable
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
 
 namespace MechanicService.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_add_first_mig : Migration
+    public partial class mig_add_01_first_mig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -88,7 +91,6 @@ namespace MechanicService.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MyProperty = table.Column<int>(type: "int", nullable: false),
                     IconUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

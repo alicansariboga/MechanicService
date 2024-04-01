@@ -4,7 +4,6 @@ namespace MechanicService.Domain.Entities
 {
     public class ReservationCar : BaseEntity
     {
-        [ForeignKey("ModelID")]
         public int ModelID { get; set; }
         public CarModel CarModel { get; set; }
         public int Year { get; set; }

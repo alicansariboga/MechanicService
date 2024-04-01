@@ -6,7 +6,6 @@
         public string CoverImageUrl { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        [ForeignKey("CategoryID")]
         public int CategoryID { get; set; }
         public Category Category { get; set; }
         public string Description { get; set; }
