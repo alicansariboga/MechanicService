@@ -34,11 +34,5 @@
             await _mediator.Send(new RemoveTestimonialCommand(id));
             return Ok("Referans bilgisi basarili bir sekilde silindi.");
         }
-        [HttpPut]
-        public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialCommand command)
-        {
-            await _mediator.Send(command);
-            return Ok("Referans bilgisi basarili bir sekilde guncellendi.");
-        }
     }
 }
