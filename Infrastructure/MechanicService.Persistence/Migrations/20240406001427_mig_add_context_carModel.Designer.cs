@@ -4,6 +4,7 @@ using MechanicService.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MechanicService.Persistence.Migrations
 {
     [DbContext(typeof(MechanicServiceContext))]
-    partial class MechanicServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20240406001427_mig_add_context_carModel")]
+    partial class mig_add_context_carModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -430,6 +433,15 @@ namespace MechanicService.Persistence.Migrations
                     b.Property<bool>("IsCanceled")
                         .HasColumnType("bit");
 
+                    b.Property<int>("ReservationCarId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReservationPersonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReservationServiceId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RezCarID")
                         .HasColumnType("int");
 
@@ -441,11 +453,11 @@ namespace MechanicService.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RezCarID");
+                    b.HasIndex("ReservationCarId");
 
-                    b.HasIndex("RezPersonID");
+                    b.HasIndex("ReservationPersonId");
 
-                    b.HasIndex("RezServiceID");
+                    b.HasIndex("ReservationServiceId");
 
                     b.ToTable("Reservations");
                 });
@@ -457,6 +469,9 @@ namespace MechanicService.Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CarModelId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Km")
                         .HasColumnType("int");
@@ -473,7 +488,7 @@ namespace MechanicService.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ModelID");
+                    b.HasIndex("CarModelId");
 
                     b.ToTable("ReservationCars");
                 });
@@ -722,19 +737,19 @@ namespace MechanicService.Persistence.Migrations
                 {
                     b.HasOne("MechanicService.Domain.Entities.ReservationCar", "ReservationCar")
                         .WithMany()
-                        .HasForeignKey("RezCarID")
+                        .HasForeignKey("ReservationCarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MechanicService.Domain.Entities.ReservationPerson", "ReservationPerson")
                         .WithMany()
-                        .HasForeignKey("RezPersonID")
+                        .HasForeignKey("ReservationPersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MechanicService.Domain.Entities.ReservationService", "ReservationService")
                         .WithMany()
-                        .HasForeignKey("RezServiceID")
+                        .HasForeignKey("ReservationServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -749,7 +764,7 @@ namespace MechanicService.Persistence.Migrations
                 {
                     b.HasOne("MechanicService.Domain.Entities.CarModel", "CarModel")
                         .WithMany()
-                        .HasForeignKey("ModelID")
+                        .HasForeignKey("CarModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

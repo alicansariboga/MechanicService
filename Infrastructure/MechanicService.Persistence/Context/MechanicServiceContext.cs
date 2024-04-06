@@ -29,5 +29,37 @@
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Araba Model
+            modelBuilder.Entity<CarModel>()
+                .HasOne(p => p.CarBrand)
+                .WithMany(b => b.CarModels)
+                .HasForeignKey(p => p.BrandID);
+
+            // Rezervasyonlar
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.ReservationCar)
+                .WithMany()
+                .HasForeignKey(r => r.RezCarID);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.ReservationPerson)
+                .WithMany()
+                .HasForeignKey(r => r.RezPersonID);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.ReservationService)
+                .WithMany()
+                .HasForeignKey(r => r.RezServiceID);
+
+            
+            modelBuilder.Entity<ReservationCar>()
+                .HasOne(rc => rc.CarModel)
+                .WithMany()
+                .HasForeignKey(rc => rc.ModelID);
+        }
+
     }
 }

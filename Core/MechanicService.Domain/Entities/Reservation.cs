@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MechanicService.Domain.Entities
+﻿namespace MechanicService.Domain.Entities
 {
     public class Reservation : BaseEntity
     {
