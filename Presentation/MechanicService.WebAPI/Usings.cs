@@ -28,5 +28,8 @@ global using MechanicService.Application.Features.Mediator.Queries.CarBrandQueri
 global using MechanicService.Application.Features.Mediator.Commands.CarModelCommands;
 global using MechanicService.Application.Features.Mediator.Queries.CarModelQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.FaqCommands;
+global using MechanicService.Application.Features.Mediator.Queries.FaqQueries;
+
 
 
