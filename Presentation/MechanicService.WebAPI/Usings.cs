@@ -31,5 +31,8 @@ global using MechanicService.Application.Features.Mediator.Queries.CarModelQueri
 global using MechanicService.Application.Features.Mediator.Commands.FaqCommands;
 global using MechanicService.Application.Features.Mediator.Queries.FaqQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.TestimonialCommands;
+global using MechanicService.Application.Features.Mediator.Queries.TestimonialQueries;
+
 
 

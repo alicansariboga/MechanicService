@@ -13,7 +13,7 @@ global using MechanicService.Application.Features.Mediator.Commands.AboutCommand
 
 global using MechanicService.Application.Features.Mediator.Results.AddressResults;
 global using MechanicService.Application.Features.Mediator.Queries.AddressQueries;
-global using MechanicService.Application.Features.Mediator.Commands.AddressCommands;
+global using  MechanicService.Application.Features.Mediator.Commands.AddressCommands;
 
 global using MechanicService.Application.Features.Mediator.Results.BannerResults;
 global using MechanicService.Application.Features.Mediator.Queries.BannerQueries;
@@ -38,3 +38,7 @@ global using MechanicService.Application.Features.Mediator.Commands.CarModelComm
 global using MechanicService.Application.Features.Mediator.Results.FaqResults;
 global using MechanicService.Application.Features.Mediator.Queries.FaqQueries;
 global using MechanicService.Application.Features.Mediator.Commands.FaqCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.TestimonialResults;
+global using MechanicService.Application.Features.Mediator.Queries.TestimonialQueries;
+global using MechanicService.Application.Features.Mediator.Commands.TestimonialCommands;

@@ -1,7 +1,8 @@
-﻿namespace MechanicService.Domain.Entities
+﻿namespace MechanicService.Application.Features.Mediator.Commands.TestimonialCommands
 {
-    public class Testimonial : BaseEntity
+    public class UpdateTestimonialCommand : IRequest
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Comment { get; set; }

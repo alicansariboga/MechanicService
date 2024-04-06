@@ -1,6 +1,6 @@
-﻿namespace MechanicService.Domain.Entities
+﻿namespace MechanicService.Application.Features.Mediator.Commands.TestimonialCommands
 {
-    public class Testimonial : BaseEntity
+    public class CreateTestimonialCommand : IRequest
     {
         public string Name { get; set; }
         public string Title { get; set; }
