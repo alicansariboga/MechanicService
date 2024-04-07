@@ -34,5 +34,8 @@ global using MechanicService.Application.Features.Mediator.Queries.FaqQueries;
 global using MechanicService.Application.Features.Mediator.Commands.TestimonialCommands;
 global using MechanicService.Application.Features.Mediator.Queries.TestimonialQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.LocationCommands;
+global using MechanicService.Application.Features.Mediator.Queries.LocationQueries;
+
 
 
