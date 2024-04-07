@@ -37,5 +37,12 @@ global using MechanicService.Application.Features.Mediator.Queries.TestimonialQu
 global using MechanicService.Application.Features.Mediator.Commands.LocationCommands;
 global using MechanicService.Application.Features.Mediator.Queries.LocationQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.PricingCommands;
+global using MechanicService.Application.Features.Mediator.Queries.PricingQueries;
+
+global using MechanicService.Application.Features.Mediator.Commands.SocialMediaCommands;
+global using MechanicService.Application.Features.Mediator.Queries.SocialMediaQueries;
+
+
 
 
