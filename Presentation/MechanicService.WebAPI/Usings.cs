@@ -43,6 +43,9 @@ global using MechanicService.Application.Features.Mediator.Queries.PricingQuerie
 global using MechanicService.Application.Features.Mediator.Commands.SocialMediaCommands;
 global using MechanicService.Application.Features.Mediator.Queries.SocialMediaQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.TeamCommands;
+global using MechanicService.Application.Features.Mediator.Queries.TeamQueries;
+
 
 
 

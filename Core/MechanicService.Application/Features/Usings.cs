@@ -54,3 +54,7 @@ global using MechanicService.Application.Features.Mediator.Commands.PricingComma
 global using MechanicService.Application.Features.Mediator.Results.SocialMediaResults;
 global using MechanicService.Application.Features.Mediator.Queries.SocialMediaQueries;
 global using MechanicService.Application.Features.Mediator.Commands.SocialMediaCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.TeamResults;
+global using MechanicService.Application.Features.Mediator.Queries.TeamQueries;
+global using MechanicService.Application.Features.Mediator.Commands.TeamCommands;
