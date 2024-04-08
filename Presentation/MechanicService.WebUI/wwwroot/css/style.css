@@ -1479,7 +1479,7 @@ button:focus {
 /*-- End Pricing --*/
 /*-- Blog --*/
 .blog-area {
-  padding-bottom: 200px;
+  padding-bottom: 100px;
 }
 
 .blog-item {
@@ -1614,7 +1614,7 @@ button:focus {
   -webkit-box-shadow: 0px 0px 20px 0px #dddddd7a;
           box-shadow: 0px 0px 20px 0px #dddddd7a;
   position: relative;
-  top: -100px;
+  margin-top: 100px;
 }
 
 .subscribe-area .subscribe-shape img {
@@ -2430,10 +2430,6 @@ footer .footer-img {
 }
 
 /*-- End Quality --*/
-/*-- Footer --*/
-.footer-area-two .footer-img {
-  top: 60px;
-}
 
 /*-- End Footer --*/
 /*----- End About CSS ------*/

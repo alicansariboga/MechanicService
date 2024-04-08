@@ -1,6 +1,6 @@
 ﻿namespace MechanicService.WebUI.Controllers
 {
-    public class DefaultController : Controller
+    public class BlogController : Controller
     {
         public IActionResult Index()
         {

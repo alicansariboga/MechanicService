@@ -59,13 +59,13 @@
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">Ana Sayfa</a>
+                                    <a href="/" class="nav-link active">Ana Sayfa</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="about.html" class="nav-link">Servis Noktaları</a>
+                                    <a href="/Location/Index/" class="nav-link">Servis Noktaları</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link dropdown-toggle">Hizmetler</a>
+                                    <a href="/Service/Index/" class="nav-link dropdown-toggle">Hizmetler</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">Hizmet 1</a>
@@ -85,29 +85,29 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pricing.html" class="nav-link">Fiyatlandırmalar</a>
+                                    <a href="/Pricing/Index/" class="nav-link">Fiyatlandırmalar</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pricing.html" class="nav-link">Faydalı Bilgiler</a>
+                                    <a href="/Blog/Index/" class="nav-link">Faydalı Bilgiler</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link dropdown-toggle">Bize Ulaşın</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="sign-up.html" class="nav-link">İletişim</a>
+                                            <a href="/Contact/Index/" class="nav-link">İletişim</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="sign-in.html" class="nav-link">Kurumsal</a>
+                                            <a href="#" class="nav-link">Kurumsal</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="shop.html" class="nav-link">Sıkça Sorulan Sorular</a>
+                                            <a href="#" class="nav-link">Sıkça Sorulan Sorular</a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                         <div class="cmn-btn">
-                            <a class="banner-btn-left" href="sign-in.html">
+                            <a class="banner-btn-left" href="/Reservation/Index/">
                                 <i class='bx bxs-user-plus'></i>
                                 Randevu Al
                             </a>
@@ -221,7 +221,7 @@
         </div>
 
         <!-- Banner Call -->
-        @* <div class="banner-call">
+        <div class="banner-call">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
@@ -238,10 +238,10 @@
                     </div>
                 </div>
             </div>
-        </div> *@
+        </div>
 
         <!-- Banner Address -->
-        <div class="address-area">
+        @* <div class="address-area">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">
@@ -269,11 +269,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
 
         
         @RenderBody()
 
+        @await Component.InvokeAsync("_UtilitiesSubscribeComponentPartial")
 
         <!-- Footer Address -->
         <footer>
@@ -281,20 +282,6 @@
                 <img src="~/img/home-one/footer-car.png" alt="Footer">
             </div>
             <div class="container">
-                <div class="subscribe-area">
-                    <div class="subscribe-shape">
-                        <img src="~/img/home-one/blog-shape.png" alt="Blog">
-                    </div>
-                    <h2>Subscribe Newsletter</h2>
-                    <form class="newsletter-form" data-toggle="validator">
-                        <input type="email" class="form-control" placeholder="Enter your email" name="EMAIL" required autocomplete="off">
-
-                        <button class="btn subscribe-btn" type="submit">
-                            Subscribe
-                        </button>
-                        <div id="validator-newsletter" class="form-result"></div>
-                    </form>
-                </div>
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="footer-item">
@@ -483,5 +470,6 @@
         <script src="~/js/contact-form-script.js"></script>
         <script src="~/js/wow.min.js"></script>
         <script src="~/js/custom.js"></script>
+        
     </body>
 </html>

@@ -15,4 +15,11 @@
     <ProjectReference Include="..\MechanicService.Dto\MechanicService.Dto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewComponents\LocationViewComponents\" />
+    <Folder Include="ViewComponents\LayoutViewComponents\" />
+    <Folder Include="ViewComponents\ReservationViewComponents\" />
+    <Folder Include="ViewComponents\PricingViewComponents\" />
+  </ItemGroup>
+
 </Project>
