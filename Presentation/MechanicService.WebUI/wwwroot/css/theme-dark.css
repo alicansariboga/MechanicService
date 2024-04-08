@@ -231,6 +231,11 @@
   color: #ffffff;
 }
 
+.theme-dark .contact-area .contact-right .form-select {
+    background-color: #0e0e0e;
+    color: #ffffff;
+}
+
 .theme-dark .service-details-area .service-details-item .service-details-left h3::before, .theme-dark .service-details-area .service-details-item .service-details-contact h3::before {
   background-color: #fdb819;
 }

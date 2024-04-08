@@ -1614,7 +1614,6 @@ button:focus {
   -webkit-box-shadow: 0px 0px 20px 0px #dddddd7a;
           box-shadow: 0px 0px 20px 0px #dddddd7a;
   position: relative;
-  margin-top: 100px;
 }
 
 .subscribe-area .subscribe-shape img {
@@ -1696,6 +1695,7 @@ button:focus {
 }
 
 footer {
+  padding-top:50px;
   background-color: #000000;
   position: relative;
 }
@@ -1704,7 +1704,6 @@ footer .footer-img {
   position: absolute;
   left: 0;
   right: 0;
-  top: 190px;
   opacity: .20;
   max-width: 680px;
   margin-left: auto;
@@ -3843,6 +3842,19 @@ footer .footer-img {
   color: #dc3545;
   margin-top: 10px;
   font-size: 14px;
+}
+.contact-area .contact-right .form-group .form-select {
+    border: 1px solid #fdb819;
+    border-radius: 0;
+    height: 50px;
+    padding-left: 25px;
+    font-size: 14px;
+}
+
+.contact-area .contact-right .form-group .form-select:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #333333;
 }
 
 .contact-area .contact-right .contact-btn {
