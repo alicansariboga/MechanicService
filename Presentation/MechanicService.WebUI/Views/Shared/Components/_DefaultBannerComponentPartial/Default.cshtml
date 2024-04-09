@@ -2,105 +2,42 @@
 
 <!-- Banner -->
 <div class="banner-slider owl-theme owl-carousel">
-    <div class="banner-area-three" style="background-image: url('/img/home-three/banner-slider.jpg'); background-size: cover; background-position: center;">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="banner-text">
-                                <h1>Get Your Best Auto Services</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                                <div class="cmn-btn">
-                                    <a class="banner-btn-left" href="service-details.html">
-                                        <i class='bx bx-meteor'></i>
-                                        Explore Service
-                                    </a>
-                                    <a class="banner-btn-right" href="tel:+123456789">
-                                        <i class='bx bx-phone-call'></i>
-                                        +123456789
-                                    </a>
+    @foreach(var item in Model)
+    {
+        <div class="banner-area-three" style="background-image: url('@item.CoverImg'); background-size: cover; background-position: center;">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="banner-text">
+                                    <h1>@item.Title</h1>
+                                    <p>@item.Description</p>
+                                    <div class="cmn-btn">
+                                        <a class="banner-btn-left" href="/Service/Index/">
+                                            <i class='bx bx-meteor'></i>
+                                            Servisleri Keşfet
+                                        </a>
+                                        <a class="banner-btn-right" href="tel:03123120000">
+                                            <i class='bx bx-phone-call'></i>
+                                            0312 312 00 00
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="video-wrap">
-                                <a href="https://www.youtube.com/watch?v=aqz-KE-bpKQ" class="popup-youtube">
-                                    <i class='bx bx-play'></i>
-                                </a>
+                            <div class="col-lg-4">
+                                <div class="video-wrap">
+                                    <a href="@item.MediaUrl" class="popup-youtube">
+                                        <i class='bx bx-play'></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="banner-area-three">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="banner-text">
-                                <h1>Get Your Best Auto Services</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                                <div class="cmn-btn">
-                                    <a class="banner-btn-left" href="service-details.html">
-                                        <i class='bx bx-meteor'></i>
-                                        Explore Service
-                                    </a>
-                                    <a class="banner-btn-right" href="tel:+123456789">
-                                        <i class='bx bx-phone-call'></i>
-                                        +123456789
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="video-wrap">
-                                <a href="https://www.youtube.com/watch?v=aqz-KE-bpKQ" class="popup-youtube">
-                                    <i class='bx bx-play'></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="banner-area-three">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="banner-text">
-                                <h1>Get Your Best Auto Services</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                                <div class="cmn-btn">
-                                    <a class="banner-btn-left" href="service-details.html">
-                                        <i class='bx bx-meteor'></i>
-                                        Explore Service
-                                    </a>
-                                    <a class="banner-btn-right" href="tel:+123456789">
-                                        <i class='bx bx-phone-call'></i>
-                                        +123456789
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="video-wrap">
-                                <a href="https://www.youtube.com/watch?v=aqz-KE-bpKQ" class="popup-youtube">
-                                    <i class='bx bx-play'></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    }
 </div>
 
 <!-- Banner Call -->
@@ -114,8 +51,8 @@
             </div>
             <div class="col-lg-5">
                 <div class="cmn-btn">
-                    <a class="banner-btn-left" href="tel:123456789">
-                        Call Now
+                    <a class="banner-btn-left" href="tel:03123120000">
+                        Şimdi Ara
                     </a>
                 </div>
             </div>
