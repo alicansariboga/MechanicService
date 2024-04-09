@@ -1,0 +1,41 @@
+﻿@model List<ResultTestimonialDto>
+
+<!-- Review -->
+<div class="review-area">
+    <div class="review-shape">
+        <img src="https://as2.ftcdn.net/v2/jpg/04/25/59/61/1000_F_425596174_rsYHLOqfqSrmjBncJTcMVCOCnhEGiG2Q.jpg" alt="Review">
+    </div>
+    <div class="video-wrap">
+        <a href="https://www.youtube.com/watch?v=tEupCSie04I" class="popup-youtube">
+            <i class='bx bx-play'></i>
+        </a>
+    </div>
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div class="col-lg-6 ptb-100">
+                <div class="review-slider owl-theme owl-carousel">
+                    @foreach(var item in Model)
+                    {
+                        @if (item.IsAppear == true) // IsApper = 1
+                        {
+                            <div class="review-item">
+                                <i class='bx bxs-quote-right'></i>
+                                <p>@item.Comment</p>
+                                <div class="review-inner">
+                                    <img src="@item.ImageUrl" alt="Review">
+                                    <h3>@item.Name</h3>
+                                    <span>@item.Title</span>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="review-bg">
+                    @* <img src="~/img/reviewImg.jpg" alt="Review"> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

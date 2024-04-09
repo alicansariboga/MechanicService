@@ -1,4 +1,6 @@
-﻿<div class="feature-area">
+﻿@model List<ResultFeatureDto>
+
+<div class="feature-area">
     <div class="feature-shape">
         <img src="assets/img/home-one/feature-shape.png" alt="Feature">
     </div>
@@ -11,23 +13,16 @@
             </div>
             <div class="col-lg-6 p-0">
                 <div class="feature-content">
-                    <h2>Our Features</h2>
+                    <h2>Özelliklerimiz</h2>
                     <ul>
-                        <li>
-                            <i class='bx bx-box'></i>
-                            <h3>Trusted & Quality Work</h3>
-                            <p>Lorem ipsum the dolor sit amet, consectetur adising elit, sed do.the dolor sit amet, consectetur </p>
-                        </li>
-                        <li>
-                            <i class='bx bxs-truck'></i>
-                            <h3>Fast Service Delivery</h3>
-                            <p>Lorem ipsum the dolor sit amet, consectetur adising elit, sed do.the dolor sit amet, consectetur </p>
-                        </li>
-                        <li>
-                            <i class='bx bx-money'></i>
-                            <h3>Money Back Garanty</h3>
-                            <p>Lorem ipsum the dolor sit amet, consectetur adising elit, sed do.the dolor sit amet, consectetur </p>
-                        </li>
+                        @foreach(var item in Model)
+                        {
+                            <li>
+                                <i class=@item.IconUrl></i>
+                                <h3>@item.Title</h3>
+                                <p>@item.Description</p>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

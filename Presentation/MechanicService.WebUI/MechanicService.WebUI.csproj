@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewComponents\AboutViewComponents\" />
     <Folder Include="ViewComponents\LocationViewComponents\" />
     <Folder Include="ViewComponents\ReservationViewComponents\" />
     <Folder Include="ViewComponents\PricingViewComponents\" />
