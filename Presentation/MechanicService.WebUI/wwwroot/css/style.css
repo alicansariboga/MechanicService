@@ -588,6 +588,13 @@ button:focus {
 .service-item {
   margin-bottom: 30px;
 }
+.service-item img {
+    height: 330px;
+    width: 400px;
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+}
 
 .service-item:hover .service-content {
   max-width: 100%;
@@ -893,7 +900,6 @@ button:focus {
 
 .feature-area .feature-img {
   position: relative;
-  background-image: url("../img/home-one/feature-bg.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -911,10 +917,6 @@ button:focus {
   background-color: #000000;
   -webkit-transform: rotate(-19deg);
           transform: rotate(-19deg);
-}
-
-.feature-area .feature-img img {
-  display: none;
 }
 
 .feature-area .feature-shape img {
@@ -1072,6 +1074,13 @@ button:focus {
 .engineer-item {
   text-align: center;
   margin-bottom: 30px;
+}
+.engineer-item img {
+    height: 220px;
+    width: 300px;
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
 }
 
 .engineer-item:hover .engineer-bottom {

@@ -2,13 +2,13 @@
 
 <div class="feature-area">
     <div class="feature-shape">
-        <img src="assets/img/home-one/feature-shape.png" alt="Feature">
+        <img src="~/img/home-one/feature-shape.png" alt="Feature">
     </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="feature-img">
-                    <img src="assets/img/home-one/feature-bg.jpg" alt="Feature">
+                    <img src="https://ameauto.com.au/wp-content/uploads/2021/10/Best-Car-Maintenance-Routine-to-Keep-Your-Car-Up-and-Running-1080x675.jpg" alt="Feature">
                 </div>
             </div>
             <div class="col-lg-6 p-0">
@@ -18,7 +18,7 @@
                         @foreach(var item in Model)
                         {
                             <li>
-                                <i class=@item.IconUrl></i>
+                                <i class="@item.IconUrl"></i>
                                 <h3>@item.Title</h3>
                                 <p>@item.Description</p>
                             </li>

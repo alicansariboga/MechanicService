@@ -1,4 +1,4 @@
-﻿using MechanicService.Dto.FeatureDto;
+﻿using MechanicService.Dto.FeatureDtos;
 using Newtonsoft.Json;
 
 namespace MechanicService.WebUI.ViewComponents.DefaultViewComponents

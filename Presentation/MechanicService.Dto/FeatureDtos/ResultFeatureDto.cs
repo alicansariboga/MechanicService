@@ -1,4 +1,4 @@
-﻿namespace MechanicService.Dto.FeatureDto
+﻿namespace MechanicService.Dto.FeatureDtos
 {
     public class ResultFeatureDto
     {
