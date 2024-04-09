@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace MechanicService.WebUI.Controllers
+﻿namespace MechanicService.WebUI.Controllers
 {
     public class ContactController : Controller
     {

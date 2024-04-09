@@ -1,0 +1,23 @@
+﻿@model List<ResultTeamDto>
+
+<!-- Engineer -->
+<section class="engineer-area ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <span class="sub-title">Ekibimiz</span>
+            <h2>Alanda En Uzman Ekibimiz</h2>
+        </div>
+        <div class="engineer-slider owl-theme owl-carousel">
+            @foreach(var item in Model)
+            {
+                <div class="engineer-item">
+                    <img src="@item.ImageUrl" alt="Engineer">
+                    <div class="engineer-bottom">
+                        <h3>@item.Name @item.Surname</h3>
+                        <span>@item.Title</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

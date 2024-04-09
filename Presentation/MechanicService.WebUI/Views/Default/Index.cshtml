@@ -4,6 +4,7 @@
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
+@await Component.InvokeAsync("_DefaultBannerComponentPartial")
 
 @await Component.InvokeAsync("_DefaultProcessComponentPartial")
 
@@ -194,101 +195,7 @@
     </div>
 </section>
 
-<!-- Engineer -->
-<section class="engineer-area ptb-100">
-    <div class="container">
-        <div class="section-title">
-            <span class="sub-title">engineer</span>
-            <h2>Meet Our Expert Engineer</h2>
-        </div>
-        <div class="engineer-slider owl-theme owl-carousel">
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/1.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Jerry Hudson</h3>
-                    <span>Machanical Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/2.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Tom Henry</h3>
-                    <span>System Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/3.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Jac Jacson</h3>
-                    <span>Head Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/4.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Micheal Shon</h3>
-                    <span>Automobile Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/1.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Jerry Hudson</h3>
-                    <span>Machanical Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/2.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Tom Henry</h3>
-                    <span>System Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/3.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Jac Jacson</h3>
-                    <span>Head Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/4.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Micheal Shon</h3>
-                    <span>Automobile Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/1.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Jerry Hudson</h3>
-                    <span>Machanical Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/2.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Tom Henry</h3>
-                    <span>System Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/3.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Jac Jacson</h3>
-                    <span>Head Engineer</span>
-                </div>
-            </div>
-            <div class="engineer-item">
-                <img src="assets/img/home-one/engineer/4.jpg" alt="Engineer">
-                <div class="engineer-bottom">
-                    <h3>Micheal Shon</h3>
-                    <span>Automobile Engineer</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@await Component.InvokeAsync("_DefaultTeamComponentPartial")
 
 <!-- Review -->
 <div class="review-area">

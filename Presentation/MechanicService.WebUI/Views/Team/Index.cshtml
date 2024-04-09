@@ -1,0 +1,46 @@
+﻿@model List<ResultTeamDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <img src="assets/img/home-one/footer-car.png" alt="Title">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Ekibimiz</h2>
+            <ul>
+                <li>
+                    <a href="index.html">Ana Sayfa</a>
+                </li>
+                <li>
+                    <i class='bx bx-chevron-right'></i>
+                </li>
+                <li>Takım</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Engineer -->
+<section class="engineer-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            @foreach(var item in Model)
+            {
+                <div class="col-sm-6 col-lg-4">
+                    <div class="engineer-item">
+                        <img src="@item.ImageUrl" alt="Engineer">
+                        <div class="engineer-bottom">
+                            <h3>@item.Name @item.Surname</h3>
+                            <span>@item.Title</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
