@@ -18,6 +18,7 @@
                 Title = x.Title,
                 Description = x.Description,
                 MediaUrl = x.MediaUrl,
+                CoverImg = x.CoverImg,
             }).ToList();
         }
     }

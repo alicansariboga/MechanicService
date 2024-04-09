@@ -16,6 +16,7 @@
                 Title = request.Title,
                 Description = request.Description,
                 MediaUrl = request.MediaUrl,
+                CoverImg = request.CoverImg,
             });
         }
     }
