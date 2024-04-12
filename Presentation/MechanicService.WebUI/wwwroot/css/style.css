@@ -1499,6 +1499,14 @@ button:focus {
   transition: 0.5s all ease;
 }
 
+.blog-item .blog-top img {
+    height: 300px;
+    width: 450px;
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+}
+
 .blog-item:hover {
   -webkit-transform: translate(0, -10px);
           transform: translate(0, -10px);
