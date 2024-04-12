@@ -46,6 +46,12 @@ global using MechanicService.Application.Features.Mediator.Queries.SocialMediaQu
 global using MechanicService.Application.Features.Mediator.Commands.TeamCommands;
 global using MechanicService.Application.Features.Mediator.Queries.TeamQueries;
 
+global using MechanicService.Application.Features.Mediator.Commands.BlogCommands;
+global using MechanicService.Application.Features.Mediator.Queries.BlogQueries;
+
+global using MechanicService.Application.Features.Mediator.Commands.CategoryCommands;
+global using MechanicService.Application.Features.Mediator.Queries.CategoryQueries;
+
 
 
 

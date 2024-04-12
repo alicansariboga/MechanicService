@@ -58,3 +58,11 @@ global using MechanicService.Application.Features.Mediator.Commands.SocialMediaC
 global using MechanicService.Application.Features.Mediator.Results.TeamResults;
 global using MechanicService.Application.Features.Mediator.Queries.TeamQueries;
 global using MechanicService.Application.Features.Mediator.Commands.TeamCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.BlogResults;
+global using MechanicService.Application.Features.Mediator.Queries.BlogQueries;
+global using MechanicService.Application.Features.Mediator.Commands.BlogCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.CategoryResults;
+global using MechanicService.Application.Features.Mediator.Queries.CategoryQueries;
+global using MechanicService.Application.Features.Mediator.Commands.CategoryCommands;
