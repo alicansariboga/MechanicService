@@ -1763,6 +1763,21 @@ footer .footer-img {
   color: #fdb819;
 }
 
+.footer-item .footer-logo ul li .icon-name {
+  display: none;
+  position: absolute;
+  top: 180px;
+  padding-left: 30px;
+  transform: translateX(-50%);
+  font-size: 0.6em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.footer-item .footer-logo ul li:hover a .icon-name{
+  display: block;
+  opacity: 1;
+}
+
 .footer-item .footer-service h3 {
   font-weight: 600;
   font-size: 20px;

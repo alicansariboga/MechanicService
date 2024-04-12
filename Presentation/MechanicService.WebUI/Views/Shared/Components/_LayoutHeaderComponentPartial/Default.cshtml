@@ -1,4 +1,5 @@
-﻿<!-- Navbar Area -->
+﻿@model List<ResultServiceDto>
+<!-- Navbar Area -->
 <div class="navbar-area fixed-top">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
@@ -26,21 +27,12 @@
                         <li class="nav-item">
                             <a href="/Service/Index/" class="nav-link dropdown-toggle">Hizmetler</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Hizmet 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Hizmet 2</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Hizmet 3</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Hizmet 4</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Hizmet 5</a>
-                                </li>
+                                @foreach(var item in Model)
+                                {
+                                    <li class="nav-item">
+                                        <a href="/Service/Index/" class="nav-link">@item.Title</a>
+                                    </li>
+                                }
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -56,10 +48,16 @@
                                     <a href="/Contact/Index/" class="nav-link">İletişim</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Kurumsal</a>
+                                    <a href="/About/Index/" class="nav-link">Kurumsal</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Sıkça Sorulan Sorular</a>
+                                    <a href="/Faq/Index/" class="nav-link">Sıkça Sorulan Sorular</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Privacy/Index/" class="nav-link">Gizlilik Politikamız</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/TermCondition/Index/" class="nav-link">Koşullar &amp; Şartlar</a>
                                 </li>
                             </ul>
                         </li>
