@@ -1,8 +1,4 @@
-﻿using MechanicService.Dto.AddressDtos;
-using MechanicService.Dto.ServiceDtos;
-using MechanicService.Dto.SocialMediaDtos;
-
-namespace MechanicService.WebUI.Models
+﻿namespace MechanicService.WebUI.Models
 {
     public class FooterViewModel
     {

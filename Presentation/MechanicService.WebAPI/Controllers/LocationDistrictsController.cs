@@ -40,5 +40,11 @@
             await _mediator.Send(command);
             return Ok("Lokasyon İlçe bilgisi basarili bir sekilde guncellendi.");
         }
+        [HttpGet("GetLocationDistrictsByCityId")]
+        public async Task<IActionResult> GetLocationDistrictsByCityId(int id)
+        {
+            var values = await _mediator.Send(new GetLocationDistrictsByCityIdQuery(id));
+            return Ok(values);
+        }
     }
 }
