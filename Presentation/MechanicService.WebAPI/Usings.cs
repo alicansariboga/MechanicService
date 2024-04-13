@@ -57,6 +57,7 @@ global using MechanicService.Application.Features.Mediator.Queries.LocationCityQ
 global using MechanicService.Application.Features.Mediator.Commands.LocationDistrictCommands;
 global using MechanicService.Application.Features.Mediator.Queries.LocationDistrictQueries;
 
-
+global using MechanicService.Application.Interfaces.LocationsInterfaces;
+global using MechanicService.Persistence.Repositories.LocationsRepositories;
 
 

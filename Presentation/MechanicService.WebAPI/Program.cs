@@ -7,6 +7,7 @@ builder.Services.AddHttpClient();
 #region Registrations
 builder.Services.AddScoped<MechanicServiceContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(ILocationsRepository), typeof(LocationsRepository));
 #endregion
 
 // ServiceRegistration
