@@ -52,6 +52,11 @@ global using MechanicService.Application.Features.Mediator.Queries.BlogQueries;
 global using MechanicService.Application.Features.Mediator.Commands.CategoryCommands;
 global using MechanicService.Application.Features.Mediator.Queries.CategoryQueries;
 
+global using MechanicService.Application.Features.Mediator.Queries.LocationCityQueries;
+
+global using MechanicService.Application.Features.Mediator.Commands.LocationDistrictCommands;
+global using MechanicService.Application.Features.Mediator.Queries.LocationDistrictQueries;
+
 
 
 
