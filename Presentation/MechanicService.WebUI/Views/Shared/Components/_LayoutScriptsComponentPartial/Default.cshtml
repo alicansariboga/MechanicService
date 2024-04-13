@@ -10,3 +10,29 @@
 <script src="~/js/wow.min.js"></script>
 <script src="~/js/custom.js"></script>
 <script src="~/js/svg-turkiye-haritasi.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#CityData_Id').change(function () {
+            var cityId = $(this).val();
+            $.ajax({
+                url: 'https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityId?id=' + cityId,
+                type: 'GET',
+                data: { cityId: cityId }, // Şehir id'sini gönder
+                success: function (data) {
+                    $('#DistrictData_Id').empty(); // İlçe dropdown'ını temizle
+                    $.each(data, function (index, district) {
+                        $('#DistrictData_Id').append($('<option>', {
+                            value: district.Id,
+                            text: district.Name
+                        }));
+                    });
+                    console.log(data)
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
