@@ -73,3 +73,17 @@ global using MechanicService.Application.Features.Mediator.Queries.LocationCityQ
 global using MechanicService.Application.Features.Mediator.Results.LocationDistrictResults;
 global using MechanicService.Application.Features.Mediator.Queries.LocationDistrictQueries;
 global using MechanicService.Application.Features.Mediator.Commands.LocationDistrictCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.ReservationResults;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationQueries;
+
+global using MechanicService.Application.Features.Mediator.Results.ReservationCarResults;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationCarQueries;
+
+global using MechanicService.Application.Features.Mediator.Results.ReservationPersonResults;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationPersonQueries;
+
+global using MechanicService.Application.Features.Mediator.Results.ReservationServiceResults;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationServiceQueries;
+
+global using MechanicService.Application.Features.Mediator.Commands.ReservationCommands;

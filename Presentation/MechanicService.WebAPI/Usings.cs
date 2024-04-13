@@ -60,4 +60,10 @@ global using MechanicService.Application.Features.Mediator.Queries.LocationDistr
 global using MechanicService.Application.Interfaces.LocationsInterfaces;
 global using MechanicService.Persistence.Repositories.LocationsRepositories;
 
+global using MechanicService.Application.Features.Mediator.Commands.ReservationCommands;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationQueries;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationCarQueries;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationPersonQueries;
+global using MechanicService.Application.Features.Mediator.Queries.ReservationServiceQueries;
+
 
