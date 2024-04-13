@@ -29,6 +29,8 @@
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<LocationCity> LocationCities { get; set; }
+        public DbSet<LocationDistrict> LocationDistricts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -59,7 +61,12 @@
                 .HasOne(rc => rc.CarModel)
                 .WithMany()
                 .HasForeignKey(rc => rc.ModelID);
-        }
 
+            // Sehir Ilce
+            modelBuilder.Entity<LocationDistrict>()
+                .HasOne(p => p.LocationCity)
+                .WithMany(b => b.LocationDistricts)
+                .HasForeignKey(p => p.CityID);
+        }
     }
 }
