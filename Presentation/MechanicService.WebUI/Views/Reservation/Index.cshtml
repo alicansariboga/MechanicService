@@ -6,7 +6,7 @@
 
 <!-- Page Title -->
 <div class="page-title-area">
-    <img src="assets/img/home-one/footer-car.png" alt="Title">
+    <img src="/img/home-one/footer-car.png" alt="Title">
     <div class="container">
         <div class="page-title-content">
             <h2>Hemen Rezervasyon Yap</h2>
@@ -29,60 +29,49 @@
             <div class="col-2"></div>
             <div class="col-sm-8 col-lg-8">
                 <div class="contact-item contact-right">
-                    <form id="contactForm">
-                        <h3>Hizmet Talebi</h3>
-                        <div class="row">
-                            <div class="col-sm-12 col-lg-12">
-                                <div class="form-group">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Hizmeti Seçiniz</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                    <form class="contactForm" method="post" action="@Url.Action("Index", "Reservation")">
+                        @* @await Component.InvokeAsync("_ReservationServicesComponentPartial") *@
                         <h3>Müşteri Bilgileri</h3>
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="İsminiz">
+                                    <input type="text" name="ReservationPerson.Name" id="name" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="İsminiz" value="@Model.ReservationPerson.Name">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="surname" id="surname" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Soyisminiz">
+                                    <input type="text" name="ReservationPerson.Surname" id="surname" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Soy isminiz" value="@Model.ReservationPerson.Surname">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="identity_number" id="identity_number" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Kimlik Numaranız">
+                                    <input type="text" name="ReservationPerson.IdentityNumber" id="identity_number" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Kimlik Numaranız" value="@Model.ReservationPerson.IdentityNumber">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <input type="email" name="ReservationPerson.Email" id="email" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Mail Adresiniz" value="@Model.ReservationPerson.Email">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Mail Adresiniz">
+                                    <input type="text" name="ReservationPerson.Phone" id="phone_number" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Telefon Numaranız" value="@Model.ReservationPerson.Phone">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="phone_number" id="phone_number" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Telefon Numaranız">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" name="phone_number_2" id="phone_number_2" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="İkincil Telefon Numaranız">
+                                    <input type="text" name="ReservationPerson.PhoneOpt" id="phone_number_2" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="İkincil Telefon Numaranız" value="@Model.ReservationPerson.PhoneOpt">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -92,7 +81,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" name="ReservationCar.ModelID">
                                         <option selected>Marka Seçiniz</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
@@ -103,7 +92,7 @@
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" name="ReservationCar.ModelID">
                                         <option selected>Model Seçiniz</option>
                                         <option value="1">One 1</option>
                                         <option value="2">Two 2</option>
@@ -114,7 +103,7 @@
 
                             <div class="col-sm-4 col-lg-4">
                                 <div class="form-group">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" name="ReservationCar.Year">
                                         <option selected>Yıl Seçiniz</option>
                                         <option value="1">2024</option>
                                         <option value="1">2023</option>
@@ -132,14 +121,14 @@
 
                             <div class="col-sm-4 col-lg-4">
                                 <div class="form-group">
-                                    <input type="number" name="car_km" id="car_km" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Km">
+                                    <input type="number" name="ReservationCar.Km" id="car_km" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Km" value="@Model.ReservationCar.Km">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-4 col-lg-4">
                                 <div class="form-group">
-                                    <input type="text" name="car_plate" id="car_plate" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Plaka">
+                                    <input type="text" name="ReservationCar.LicensePlate" id="car_plate" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Plaka" value="@Model.ReservationCar.LicensePlate">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -149,7 +138,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" name="ReservationService.City">
                                         <option selected>İl Seçiniz</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
@@ -159,7 +148,7 @@
                             </div>
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" name="ReservationService.Distinct">
                                         <option selected>İlçe Seçiniz</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
@@ -170,21 +159,21 @@
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Randevu Tarihi</label>
-                                    <input type="text" class="form-control" name="rez_date" id="rez_date" placeholder="Date">
+                                    <input type="text" class="form-control" name="ReservationService.Date" id="rez_date" placeholder="Tarih" value="@Model.ReservationService.Date">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Randevu Saati</label>
-                                    <input type="text" class="form-control" name="rez_time" id="rez_time" placeholder="Time">
+                                    <input type="text" class="form-control" name="ReservationService.Hour" id="rez_time" placeholder="Saat" value="@Model.ReservationService.Hour">
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="message" class="form-control" id="message" cols="30" rows="8" placeholder="Açıklama"></textarea>
+                                    <textarea name="ReservationService.Description" class="form-control" id="message" cols="30" rows="8" placeholder="Açıklama" value="@Model.ReservationService.Description"></textarea>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12">
+                            @* <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
                                     <div class="form-check agree-label">
                                         <input name="gridCheck"
@@ -199,14 +188,14 @@
                                         <div class="help-block with-errors gridCheck-error"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> *@
 
                             <div class="col-md-12 col-lg-12">
                                 <button type="submit" class="contact-btn btn">
                                     Gönder
                                 </button>
-                                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                <div class="clearfix"></div>
+                                @* <div class="h3 text-center hidden"></div>
+                                <div class="clearfix"></div> *@
                             </div>
                         </div>
                     </form>

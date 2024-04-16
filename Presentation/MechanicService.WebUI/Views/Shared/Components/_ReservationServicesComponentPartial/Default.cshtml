@@ -1,0 +1,16 @@
+﻿@model List<ResultServiceDto>
+
+<h3>Hizmet Talebi</h3>
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Hizmeti Seçiniz</option>
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Id">@item.Title</option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
