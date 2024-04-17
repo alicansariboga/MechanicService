@@ -10,3 +10,6 @@ global using MechanicService.Persistence.Context;
 global using System.Linq.Expressions;
 global using Microsoft.EntityFrameworkCore.Migrations;
 global using Microsoft.EntityFrameworkCore.Infrastructure;
+
+global using MechanicService.Application.Interfaces.ReservationInterfaces;
+global using MechanicService.Application.Interfaces.LocationsInterfaces;

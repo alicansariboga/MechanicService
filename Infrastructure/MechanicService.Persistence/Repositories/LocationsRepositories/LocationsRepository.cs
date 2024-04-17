@@ -1,11 +1,4 @@
-﻿using MechanicService.Application.Interfaces.LocationsInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MechanicService.Persistence.Repositories.LocationsRepositories
+﻿namespace MechanicService.Persistence.Repositories.LocationsRepositories
 {
     public class LocationsRepository : ILocationsRepository
     {
