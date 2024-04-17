@@ -10,8 +10,8 @@ namespace MechanicService.Domain.Entities
         [Column(TypeName = "Date")]
         public DateTime Date { get; set; }
 
-        [DataType(DataType.Time)]
-        public DateTime Hour { get; set; }
+        [Column(TypeName = "Time")]
+        public TimeSpan Hour { get; set; }
         public string? Description { get; set; }
     }
 }
