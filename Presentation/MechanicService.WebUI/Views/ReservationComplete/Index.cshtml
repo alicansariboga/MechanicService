@@ -1,4 +1,5 @@
-﻿
+﻿@model ReservationViewModel
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/Index.cshtml";
@@ -9,6 +10,42 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-sm-8 col-lg-8">
+                <div class="reservation-results">
+                    <table>
+                        <tr>
+                            <th>/</th>
+                            <th>İşlem</th>
+                        </tr>
+                        <tr>
+                            <td>Müşteri Adı</td>
+                            <td>@Model.personData.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Müşteri Soyadı</td>
+                            <td>@Model.personData.Surname</td>
+                        </tr>
+                        <tr>
+                            <td>Ernst Handel</td>
+                            <td>Roland Mendel</td>
+                            <td>Austria</td>
+                        </tr>
+                        <tr>
+                            <td>Island Trading</td>
+                            <td>Helen Bennett</td>
+                            <td>UK</td>
+                        </tr>
+                        <tr>
+                            <td>Laughing Bacchus Winecellars</td>
+                            <td>Yoshi Tannamuri</td>
+                            <td>Canada</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                            <td>Italy</td>
+                        </tr>
+                    </table>
+                </div>
                 <div class="contact-item contact-right">
                     <form id="contactForm" method="post">
                         <div class="col-md-12 col-lg-12">

@@ -4047,3 +4047,22 @@ footer .footer-img {
   background-color: #94be5d;
 }
 /*# sourceMappingURL=style.css.map */
+
+
+/*-----Reservation Complete-----*/
+
+.reservation-results table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.reservation-results td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.reservation-results tr:nth-child(even) {
+    background-color: #dddddd;
+}
