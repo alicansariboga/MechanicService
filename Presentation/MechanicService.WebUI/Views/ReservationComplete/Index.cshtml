@@ -11,10 +11,11 @@
             <div class="col-2"></div>
             <div class="col-sm-8 col-lg-8">
                 <div class="reservation-results">
+                    <h2>Müşteri Bilgileri</h2>
                     <table>
                         <tr>
-                            <th>/</th>
-                            <th>İşlem</th>
+                            <th>İsim</th>
+                            <th>İçerik</th>
                         </tr>
                         <tr>
                             <td>Müşteri Adı</td>
@@ -25,35 +26,84 @@
                             <td>@Model.personData.Surname</td>
                         </tr>
                         <tr>
-                            <td>Ernst Handel</td>
-                            <td>Roland Mendel</td>
-                            <td>Austria</td>
+                            <td>Kimlik Numarası</td>
+                            <td>@Model.personData.IdentityNumber</td>
                         </tr>
                         <tr>
-                            <td>Island Trading</td>
-                            <td>Helen Bennett</td>
-                            <td>UK</td>
+                            <td>Telefon Numarası</td>
+                            <td>@Model.personData.Phone</td>
                         </tr>
                         <tr>
-                            <td>Laughing Bacchus Winecellars</td>
-                            <td>Yoshi Tannamuri</td>
-                            <td>Canada</td>
+                            <td>İkincil Telefon Numarası</td>
+                            <td>@Model.personData.PhoneOpt</td>
                         </tr>
                         <tr>
-                            <td>Magazzini Alimentari Riuniti</td>
-                            <td>Giovanni Rovelli</td>
-                            <td>Italy</td>
+                            <td>E-mail Adresi</td>
+                            <td>@Model.personData.Email</td>
+                        </tr>
+                    </table>
+
+                    <h2>Araç Bilgileri</h2>
+                    <table>
+                        <tr>
+                            <td>Üretim Yılı</td>
+                            <td>@Model.carData.Year</td>
+                        </tr>
+                        <tr>
+                            <td>Km Bilgisi</td>
+                            <td>@Model.carData.Km</td>
+                        </tr>
+                        <tr>
+                            <td>Plaka Bilgisi</td>
+                            <td>@Model.carData.LicensePlate</td>
+                        </tr>
+                    </table>
+                    <h2>Rezervasyon Bilgileri</h2>
+                    <table>
+                        <tr>
+                            <td>Şehir Tercihi</td>
+                            <td>@Model.serviceData.City</td>
+                        </tr>
+                        <tr>
+                            <td>İlçe Tercihi</td>
+                            <td>@Model.serviceData.Distinct</td>
+                        </tr>
+                        <tr>
+                            <td>Randevu Tarihi</td>
+                            <td>@Model.serviceData.Date</td>
+                        </tr>
+                        <tr>
+                            <td>Randevu Saati</td>
+                            <td>@Model.serviceData.Hour</td>
+                        </tr>
+                        <tr>
+                            <td>Açıklama</td>
+                            <td>@Model.serviceData.Description</td>
                         </tr>
                     </table>
                 </div>
                 <div class="contact-item contact-right">
-                    <form id="contactForm" method="post">
+                    <form class="contactForm" method="post" action="@Url.Action("Index", "ReservationComplete")">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <div class="form-check agree-label">
+                                    <input name="gridCheck"
+                                           value="I agree to the terms and privacy policy."
+                                           class="form-check-input"
+                                           type="checkbox"
+                                           id="gridCheck"
+                                           required>
+                                    <label class="form-check-label" for="gridCheck">
+                                        <a href="terms-condition.html">Koşullar & Şartlar</a> ve <a href="privacy-policy.html">Gizlilik Politikasını</a> kabul ediyorum.
+                                    </label>
+                                    <div class="help-block with-errors gridCheck-error"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-12 col-lg-12">
                             <button type="submit" class="contact-btn btn">
                                 Randevuyu Tamamla
                             </button>
-                            <div id="msgSubmit" class="h3 text-center hidden"></div>
-                            <div class="clearfix"></div>
                         </div>
                     </form>
                 </div>

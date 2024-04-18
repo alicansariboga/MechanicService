@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System.Runtime.Intrinsics.Arm;
-using System.Text;
+﻿using System.Text;
 
 namespace MechanicService.WebUI.Controllers
 {
@@ -13,6 +11,10 @@ namespace MechanicService.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+        private int lastPersonId = 0;
+        private int lastCarId = 0;
+        private int lastServiceId = 0;
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -20,36 +22,39 @@ namespace MechanicService.WebUI.Controllers
             var reservationViewModel = new ReservationViewModel();
 
             #region Reservation-getPersonId
-            var responseMessage4 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationPerson");
+            var responseMessage4 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationPersonId");
             if (responseMessage4.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage4.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
-                ViewBag.lastPersonId = values.ReservationPersonId;
+                var value = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
+                lastPersonId = value.ReservationPersonId;
+                TempData["PersonId"] = value.ReservationPersonId;
             }
             #endregion
 
             #region Reservation-getCarId
-            var responseMessage5 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationCar");
+            var responseMessage5 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationCarId");
             if (responseMessage5.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage5.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
-                ViewBag.lastCarId = values.ReservationCarId;
+                var value = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
+                lastCarId = value.ReservationCarId;
+                TempData["CarId"] = value.ReservationCarId;
             }
             #endregion
 
             #region Reservation-getServiceId
-            var responseMessage6 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationService");
+            var responseMessage6 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationServiceId");
             if (responseMessage6.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage6.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
-                ViewBag.lastServiceId = values.ReservationServiceId;
+                var value = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
+                lastServiceId = value.ReservationServiceId;
+                TempData["ServiceId"] = value.ReservationServiceId;
             }
             #endregion
 
-            var responseMessage1 = await client.GetAsync($"https://localhost:7215/api/ReservationPersons/{ViewBag.lastPersonId}");
+            var responseMessage1 = await client.GetAsync($"https://localhost:7215/api/ReservationPersons/{lastPersonId}");
             if (responseMessage1.IsSuccessStatusCode)
             {
                 var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
@@ -57,41 +62,44 @@ namespace MechanicService.WebUI.Controllers
             }
 
 
-            var responseMessage2 = await client.GetAsync("https://localhost:7215/api/ReservationCar/{ViewBag.lastCarId}");
+            var responseMessage2 = await client.GetAsync($"https://localhost:7215/api/ReservationCars/{lastCarId}");
             if (responseMessage2.IsSuccessStatusCode)
             {
-                var jsonData2 = await responseMessage1.Content.ReadAsStringAsync();
+                var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
                 reservationViewModel.carData = JsonConvert.DeserializeObject<ResultReservationCarDto>(jsonData2);
             }
 
-            var responseMessage3 = await client.GetAsync("https://localhost:7215/api/ReservationService/{ViewBag.lastServiceId}");
+            var responseMessage3 = await client.GetAsync($"https://localhost:7215/api/ReservationServices/{lastServiceId}");
             if (responseMessage3.IsSuccessStatusCode)
             {
-                var jsonData3 = await responseMessage1.Content.ReadAsStringAsync();
+                var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
                 reservationViewModel.serviceData = JsonConvert.DeserializeObject<ResultReservationServiceDto>(jsonData3);
-            }
-            else
-            {
-                return RedirectToAction("Error");
             }
 
             return View(reservationViewModel);
         }
+
         [HttpPost]
         public async Task<IActionResult> Index(CreateReservationDto createReservationDto)
         {
             var client = _httpClientFactory.CreateClient();
+
             createReservationDto.CreateDate = DateTime.Now;
+            createReservationDto.RezPersonID = Convert.ToInt32(TempData["PersonId"]);
+            createReservationDto.RezCarID = Convert.ToInt32(TempData["CarId"]);
+            createReservationDto.RezServiceID = Convert.ToInt32(TempData["ServiceId"]);
+            createReservationDto.IsApproved = true;
+            createReservationDto.IsCanceled = true;
 
             var jsonData = JsonConvert.SerializeObject(createReservationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7215/api/Reservation", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7215/api/Reservations", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Reservation");
+                return RedirectToAction("Index", "ReservationDone");
             }
 
-            return View();
+            return RedirectToAction("Error", "Home");
         }
     }
 }

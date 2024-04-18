@@ -4055,6 +4055,8 @@ footer .footer-img {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .reservation-results td, th {
@@ -4065,4 +4067,8 @@ footer .footer-img {
 
 .reservation-results tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+.form-group .agree-label {
+    margin-bottom: 25px;
 }

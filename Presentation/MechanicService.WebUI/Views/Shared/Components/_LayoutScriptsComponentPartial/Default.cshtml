@@ -18,9 +18,9 @@
             $.ajax({
                 url: 'https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityId?id=' + cityId,
                 type: 'GET',
-                data: { cityId: cityId }, // Şehir id'sini gönder
+                data: { cityId: cityId },
                 success: function (data) {
-                    $('#DistrictData_Id').empty(); // İlçe dropdown'ını temizle
+                    $('#DistrictData_Id').empty();
                     $.each(data, function (index, district) {
                         $('#DistrictData_Id').append($('<option>', {
                             value: district.Id,

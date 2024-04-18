@@ -12,6 +12,8 @@ namespace MechanicService.WebUI.ViewComponents.LocationViewComponents
             _httpClientFactory = httpClientFactory;
         }
 
+        private int cityId = 0;
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             int id = 0;
@@ -34,7 +36,7 @@ namespace MechanicService.WebUI.ViewComponents.LocationViewComponents
                 }
             }
 
-            ViewBag.cityId = id;
+            cityId = id;
 
             var responseMessage2 = await client.GetAsync($"https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityId?id=" + id);
             if (responseMessage2.IsSuccessStatusCode)
