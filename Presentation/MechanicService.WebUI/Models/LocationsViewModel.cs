@@ -2,7 +2,7 @@
 {
     public class LocationsViewModel
     {
-        public ResultLocationCityDto CityData { get; set; }
-        public ResultLocationDistrictDto DistrictData { get; set; }
+        public List<ResultLocationCityDto> CityDatas { get; set; }
+        public List<ResultLocationDistrictDto> DistrictDatas { get; set; }
     }
 }

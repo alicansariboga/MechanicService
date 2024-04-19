@@ -5,23 +5,24 @@
     <div class="row">
         <div class="col-sm-6 col-lg-6">
             <div class="form-group">
-                @Html.DropDownListFor(x => x.CityData.Id, (List<SelectListItem>)ViewBag.v1, "Şehir Seçiniz", new { @class = "form-control", @id = "CityData_Id" })
-                @* <select class="form-select" aria-label="Default select example">
+                <select id="citySelect" class="form-select" aria-label="Default select example" onchange="handleCityChange()">
                     <option selected>İl Seçiniz</option>
-                    @foreach(var item in Model)
+                    @foreach (var item in Model.CityDatas)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
-                </select> *@
+                </select>
             </div>
         </div>
         <div class="col-sm-6 col-lg-6">
             <div class="form-group">
-                @Html.DropDownListFor(x => x.DistrictData.Id, (List<SelectListItem>)ViewBag.v2, "İlçe Seçiniz", new { @class = "form-control", @id = "DistrictData_Id" })
-                @* <select class="form-select" aria-label="Default select example">
-                <option selected>İlçe Seçiniz</option>
-                </select> *@
+                
+                <select id="districtSelect" class="form-select" aria-label="Default select example">
+                }
+                    <option selected>İlçe Seçiniz</option>
+                </select>
             </div>
         </div>
+        <div id="svgContainer"></div>
     </div>
 </div>
