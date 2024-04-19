@@ -1,4 +1,4 @@
-﻿@model LocationsViewModel
+﻿@model List<ResultLocationCityDto>
 
 <div class="contact-item contact-right">
     <h3>Konum Seçiniz</h3>
@@ -7,7 +7,7 @@
             <div class="form-group">
                 <select id="citySelect" class="form-select" aria-label="Default select example" onchange="handleCityChange()">
                     <option selected>İl Seçiniz</option>
-                    @foreach (var item in Model.CityDatas)
+                    @foreach (var item in Model)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
