@@ -13,15 +13,41 @@ namespace MechanicService.WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var viewModel = new ReservationCreateViewModel
+            var client = _httpClientFactory.CreateClient();
+            var viewRezervationModel = new ReservationCreateViewModel
             {
                 ReservationCar = new CreateReservationCarDto(),
                 ReservationPerson = new CreateReservationPersonDto(),
                 ReservationService = new CreateReservationServiceDto()
             };
-            return View(viewModel);
+            var viewCarBrand = new CarBrandViewModel();
+            var viewLocations = new LocationsViewModel();
+            var combinedModel = new CombinedCarViewModel
+            {
+                CarBrandViewModel = viewCarBrand,
+                ReservationCreateViewModel = viewRezervationModel,
+                LocationsViewModel = viewLocations
+            };
+
+            var responseMessage1 = await client.GetAsync("https://localhost:7215/api/CarBrands");
+            if (responseMessage1.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage1.Content.ReadAsStringAsync();
+                combinedModel.CarBrandViewModel.BrandDatas = JsonConvert.DeserializeObject<List<ResultCarBrandDto>>(jsonData);
+                //return View(combinedModel.CarBrandViewModel.BrandDatas); 
+            }
+
+            var responseMessage2 = await client.GetAsync("https://localhost:7215/api/LocationCities");
+            if (responseMessage2.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage2.Content.ReadAsStringAsync();
+                combinedModel.LocationsViewModel.CityDatas = JsonConvert.DeserializeObject<List<ResultLocationCityDto>>(jsonData);
+                //return View(combinedModel.LocationsViewModel.CityDatas);
+            }
+
+            return View(combinedModel);
         }
         [HttpPost]
         public async Task<IActionResult> Index(ReservationCreateViewModel reservationModel)
