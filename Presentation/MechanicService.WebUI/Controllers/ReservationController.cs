@@ -34,16 +34,16 @@ namespace MechanicService.WebUI.Controllers
             var responseMessage1 = await client.GetAsync("https://localhost:7215/api/CarBrands");
             if (responseMessage1.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage1.Content.ReadAsStringAsync();
-                combinedModel.CarBrandViewModel.BrandDatas = JsonConvert.DeserializeObject<List<ResultCarBrandDto>>(jsonData);
+                var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
+                combinedModel.CarBrandViewModel.BrandDatas = JsonConvert.DeserializeObject<List<ResultCarBrandDto>>(jsonData1);
                 //return View(combinedModel.CarBrandViewModel.BrandDatas); 
             }
 
             var responseMessage2 = await client.GetAsync("https://localhost:7215/api/LocationCities");
             if (responseMessage2.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage2.Content.ReadAsStringAsync();
-                combinedModel.LocationsViewModel.CityDatas = JsonConvert.DeserializeObject<List<ResultLocationCityDto>>(jsonData);
+                var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+                combinedModel.LocationsViewModel.CityDatas = JsonConvert.DeserializeObject<List<ResultLocationCityDto>>(jsonData2);
                 //return View(combinedModel.LocationsViewModel.CityDatas);
             }
 

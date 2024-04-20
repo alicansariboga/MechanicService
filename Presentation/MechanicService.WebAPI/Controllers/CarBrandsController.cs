@@ -40,5 +40,11 @@
             await _mediator.Send(command);
             return Ok("Marka bilgisi basarili bir sekilde guncellendi.");
         }
+        [HttpGet("GetCarModelsByCarBrandId")]
+        public async Task<IActionResult> GetCarModelsByCarBrandId(int id)
+        {
+            var values = await _mediator.Send(new GetCarModelsByCarBrandIdQuery(id));
+            return Ok(values);
+        }
     }
 }

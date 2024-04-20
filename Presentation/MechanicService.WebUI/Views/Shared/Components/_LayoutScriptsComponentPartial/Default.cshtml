@@ -42,3 +42,35 @@
         });
     }
 </script>
+
+<script>
+    var brandData = {};
+
+    function handleBrandChange() {
+        var selectElement = document.getElementById("brandSelect");
+        var brandId = selectElement.value;
+
+        var modelSelect = document.getElementById("modelSelect");
+        modelSelect.innerHTML = '<option selected>Yükleniyor...</option>';
+
+        fetch("https://localhost:7215/api/CarBrands/GetCarModelsByCarBrandId?id=" + brandId)
+            .then(response => response.json())
+            .then(data => {
+                populateModels(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function populateModels(models) {
+        var modelSelect = document.getElementById("modelSelect");
+        modelSelect.innerHTML = '<option selected>Model Seçiniz</option>';
+        models.forEach(function (model) {
+            var option = document.createElement("option");
+            option.value = model.id;
+            option.text = model.name;
+            modelSelect.appendChild(option);
+        });
+    }
+</script>

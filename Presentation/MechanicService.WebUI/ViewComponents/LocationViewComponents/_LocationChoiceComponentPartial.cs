@@ -27,6 +27,7 @@
         public async Task<IViewComponentResult> GetDistrictsByCityId(int cityId)
         {
             var client = _httpClientFactory.CreateClient();
+
             var responseMessage = await client.GetAsync($"https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityId?id={cityId}");
 
             if (responseMessage.IsSuccessStatusCode)
