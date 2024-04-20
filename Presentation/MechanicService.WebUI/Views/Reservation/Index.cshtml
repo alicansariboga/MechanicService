@@ -1,4 +1,5 @@
-﻿@model CombinedCarViewModel
+﻿@model ReservationCreateViewModel
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/Index.cshtml";
@@ -29,29 +30,28 @@
             <div class="col-2"></div>
             <div class="col-sm-8 col-lg-8">
                 <div class="contact-item contact-right">
-                    <form class="contactForm" method="post" action="@Url.Action("Index", "Reservation")">
+                    <form class="contactForm" method="post">
                         @await Component.InvokeAsync("_ReservationServicesComponentPartial")
-                        @Html.AntiForgeryToken()
 
                         <h3>Müşteri Bilgileri</h3>
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="ReservationCreateViewModel.ReservationPerson.Name" id="name" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="İsminiz" value="@Model.ReservationCreateViewModel.ReservationPerson.Name">
+                                    <input type="text" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="İsminiz" asp-for="ReservationPerson.Name">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="ReservationCreateViewModel.ReservationPerson.Surname" id="surname" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Soy isminiz" value="@Model.ReservationCreateViewModel.ReservationPerson.Surname">
+                                    <input type="text" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Soy isminiz" asp-for="ReservationPerson.Surname">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="ReservationCreateViewModel.ReservationPerson.IdentityNumber" id="identity_number" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Kimlik Numaranız" value="@Model.ReservationCreateViewModel.ReservationPerson.IdentityNumber">
+                                    <input type="text" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Kimlik Numaranız" asp-for="ReservationPerson.IdentityNumber">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -59,21 +59,21 @@
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="email" name="ReservationCreateViewModel.ReservationPerson.Email" id="email" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Mail Adresiniz" value="@Model.ReservationCreateViewModel.ReservationPerson.Email">
+                                    <input type="email" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Mail Adresiniz" asp-for="ReservationPerson.Email">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="ReservationCreateViewModel.ReservationPerson.Phone" id="phone_number" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Telefon Numaranız" value="@Model.ReservationCreateViewModel.ReservationPerson.Phone">
+                                    <input type="text" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Telefon Numaranız" asp-for="ReservationPerson.Phone">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="ReservationCreateViewModel.ReservationPerson.PhoneOpt" id="phone_number_2" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="İkincil Telefon Numaranız" value="@Model.ReservationCreateViewModel.ReservationPerson.PhoneOpt">
+                                    <input type="text" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="İkincil Telefon Numaranız" asp-for="ReservationPerson.PhoneOpt">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -86,17 +86,14 @@
 
                                     <select id="brandSelect" class="form-select" aria-label="Default select example" onchange="handleBrandChange()">
                                         <option selected>Marka Seçiniz</option>
-                                        @foreach (var item in Model.CarBrandViewModel.BrandDatas)
-                                        {
-                                            <option value="@item.Id">@item.Name</option>
-                                        }
+                                        @await Component.InvokeAsync("_ReservationChoiceBrandComponentPartial")
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <select id="modelSelect" class="form-select" aria-label="Default select example" name="ReservationCreateViewModel.ReservationCar.ModelID">
+                                    <select id="modelSelect" class="form-select" aria-label="Default select example" asp-for="ReservationCar.ModelID">
                                         <option selected>Model Seçiniz</option>
                                     </select>
                                 </div>
@@ -104,7 +101,7 @@
                             
                             <div class="col-sm-4 col-lg-4">
                                 <div class="form-group">
-                                    <select class="form-select" aria-label="Default select example" name="ReservationCreateViewModel.ReservationCar.Year">
+                                    <select class="form-select" aria-label="Default select example" asp-for="ReservationCar.Year">
                                         <option selected>Yıl Seçiniz</option>
                                         <option value="2024">2024</option>
                                         <option value="2023">2023</option>
@@ -126,14 +123,14 @@
 
                             <div class="col-sm-4 col-lg-4">
                                 <div class="form-group">
-                                    <input type="number" name="ReservationCreateViewModel.ReservationCar.Km" id="car_km" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Km" value="@Model.ReservationCreateViewModel.ReservationCar.Km">
+                                    <input type="text" required data-error="Bu alan boş bırakılamaz." class="form-control" placeholder="Km" asp-for="ReservationCar.Km">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-4 col-lg-4">
                                 <div class="form-group">
-                                    <input type="text" name="ReservationCreateViewModel.ReservationCar.LicensePlate" id="car_plate" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Plaka" value="@Model.ReservationCreateViewModel.ReservationCar.LicensePlate">
+                                    <input type="text" class="form-control" required data-error="Bu alan boş bırakılamaz." placeholder="Plaka" asp-for="ReservationCar.LicensePlate">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -142,19 +139,16 @@
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                    <select id="citySelect" class="form-select" aria-label="Default select example" name="ReservationCreateViewModel.ReservationService.City" onchange="handleCityChange()">
+                                    <select id="citySelect" class="form-select" aria-label="Default select example" asp-for="ReservationService.City" onchange="handleCityChange()">
                                         <option selected>İl Seçiniz</option>
-                                        @foreach (var item in Model.LocationsViewModel.CityDatas)
-                                        {
-                                            <option value="@item.Id">@item.Name</option>
-                                        }
+                                        @await Component.InvokeAsync("_ReservationChoiceCityComponentPartial")
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
 
-                                    <select id="districtSelect" class="form-select" aria-label="Default select example" name="ReservationCreateViewModel.ReservationService.Distinct">
+                                    <select id="districtSelect" class="form-select" aria-label="Default select example" asp-for="ReservationService.Distinct">
                                         <option selected>İlçe Seçiniz</option>
                                     </select>
                                 </div>
@@ -164,18 +158,18 @@
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Randevu Tarihi</label>
-                                    <input type="text" class="form-control" name="ReservationCreateViewModel.ReservationService.Date" id="rez_date" placeholder="Tarih" value="@Model.ReservationCreateViewModel.ReservationService.Date.ToString("dd/MM/yyyy")">
+                                    <input type="text" class="form-control" placeholder="Tarih" asp-for="ReservationService.Date" value="@Model.ReservationService.Date.ToString("dd/MM/yyyy")">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Randevu Saati</label>
-                                    <input type="text" class="form-control" name="ReservationCreateViewModel.ReservationService.Hour" id="rez_time" placeholder="Saat" value="@Model.ReservationCreateViewModel.ReservationService.Date.ToLongTimeString()">
+                                    <input type="text" class="form-control" placeholder="Saat" asp-for="ReservationService.Hour" value="@Model.ReservationService.Hour.ToString("hh\\:mm")">
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="ReservationCreateViewModel.ReservationService.Description" class="form-control" id="message" cols="30" rows="8" placeholder="Açıklama" value="@Model.ReservationCreateViewModel.ReservationService.Description"></textarea>
+                                    <textarea class="form-control" cols="30" rows="8" placeholder="Açıklama" asp-for="ReservationService.Description"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12">

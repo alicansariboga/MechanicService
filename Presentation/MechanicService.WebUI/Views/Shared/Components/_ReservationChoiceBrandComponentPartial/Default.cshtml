@@ -1,0 +1,6 @@
+﻿@model List<ResultCarBrandDto>
+
+@foreach (var item in Model)
+{
+    <option value="@item.Id">@item.Name</option>
+}
