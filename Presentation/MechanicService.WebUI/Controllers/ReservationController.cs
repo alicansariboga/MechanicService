@@ -16,6 +16,7 @@ namespace MechanicService.WebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
+
             var viewRezervationModel = new ReservationCreateViewModel
             {
                 ReservationCar = new CreateReservationCarDto(),
@@ -24,7 +25,7 @@ namespace MechanicService.WebUI.Controllers
             };
             var viewCarBrand = new CarBrandViewModel();
             var viewLocations = new LocationsViewModel();
-            var combinedModel = new CombinedCarViewModel
+            var combinedViewModel = new CombinedCarViewModel
             {
                 CarBrandViewModel = viewCarBrand,
                 ReservationCreateViewModel = viewRezervationModel,
@@ -35,21 +36,22 @@ namespace MechanicService.WebUI.Controllers
             if (responseMessage1.IsSuccessStatusCode)
             {
                 var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
-                combinedModel.CarBrandViewModel.BrandDatas = JsonConvert.DeserializeObject<List<ResultCarBrandDto>>(jsonData1);
-                //return View(combinedModel.CarBrandViewModel.BrandDatas); 
+                combinedViewModel.CarBrandViewModel.BrandDatas = JsonConvert.DeserializeObject<List<ResultCarBrandDto>>(jsonData1);
+                //View(viewCarBrand.BrandDatas); 
             }
 
             var responseMessage2 = await client.GetAsync("https://localhost:7215/api/LocationCities");
             if (responseMessage2.IsSuccessStatusCode)
             {
                 var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
-                combinedModel.LocationsViewModel.CityDatas = JsonConvert.DeserializeObject<List<ResultLocationCityDto>>(jsonData2);
-                //return View(combinedModel.LocationsViewModel.CityDatas);
+                combinedViewModel.LocationsViewModel.CityDatas = JsonConvert.DeserializeObject<List<ResultLocationCityDto>>(jsonData2);
+                //return View(viewLocations.CityDatas);
             }
 
-            return View(combinedModel);
+            return View(combinedViewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(ReservationCreateViewModel reservationModel)
         {
             var client = _httpClientFactory.CreateClient();
