@@ -1,72 +1,59 @@
 ﻿<nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item nav-category">Main</li>
+        <li class="nav-item nav-category">Admin Paneli</li>
         <li class="nav-item">
             <a class="nav-link" href="/Admin/Dashboard/Index/">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Gösterge Paneli</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-                <span class="menu-title">UI Elements</span>
+                <span class="menu-title">Sayfa İşlemleri</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/ui-features/buttons.html">Buttons</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/ui-features/buttons.html">Ana Sayfa</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/admin/pages/ui-features/dropdowns.html">Dropdowns</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/admin/pages/ui-features/typography.html">Typography</a></li>
                 </ul>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
-                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                <span class="menu-title">Icons</span>
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+                <span class="menu-title">Kullanıcı İşlemleri</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/blank-page.html">Yaklaşan Rezervasyonlar </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/login.html"> Tamamlanan Rezervasyonlar </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Admin/Reservation/AllReservations/"> Tüm Rezervasyonlar </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/error-404.html"> Müşteri Kayıtları </a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Sayfaya Git</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                <span class="menu-title">Forms</span>
+                <span class="menu-title">Bizimle İletişime Geçin</span>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-                <span class="menu-title">Charts</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
-                <span class="menu-title">Tables</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">User Pages</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/blank-page.html"> Blank Page </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/login.html"> Login </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/register.html"> Register </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/error-404.html"> 404 </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/samples/error-500.html"> 500 </a></li>
-                </ul>
-            </div>
         </li>
         <li class="nav-item documentation-link">
             <a class="nav-link" href="http://www.bootstrapdash.com/demo/connect-plus-free/jquery/documentation/documentation.html" target="_blank">
                 <span class="icon-bg">
                     <i class="mdi mdi-file-document-box menu-icon"></i>
                 </span>
-                <span class="menu-title">Documentation</span>
+                <span class="menu-title">Dokümantasyon</span>
             </a>
         </li>
         <li class="nav-item sidebar-user-actions">
@@ -90,7 +77,7 @@
             <div class="sidebar-user-menu">
                 <a href="#" class="nav-link">
                     <i class="mdi mdi-settings menu-icon"></i>
-                    <span class="menu-title">Settings</span>
+                    <span class="menu-title">Ayarlar</span>
                 </a>
             </div>
         </li>
@@ -98,7 +85,7 @@
             <div class="sidebar-user-menu">
                 <a href="#" class="nav-link">
                     <i class="mdi mdi-speedometer menu-icon"></i>
-                    <span class="menu-title">Take Tour</span>
+                    <span class="menu-title">Hızlı Tur</span>
                 </a>
             </div>
         </li>
@@ -106,7 +93,7 @@
             <div class="sidebar-user-menu">
                 <a href="#" class="nav-link">
                     <i class="mdi mdi-logout menu-icon"></i>
-                    <span class="menu-title">Log Out</span>
+                    <span class="menu-title">Çıkış Yap</span>
                 </a>
             </div>
         </li>
