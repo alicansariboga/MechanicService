@@ -5,86 +5,67 @@
     public class ReservationController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private int lastPersonId = 0;
-        private int lastCarId = 0;
-        private int lastServiceId = 0;
 
         public ReservationController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
-
+        [HttpGet]
         [Route("AllReservations")]
         public async Task<IActionResult> AllReservations()
         {
             var client = _httpClientFactory.CreateClient();
-            var reservationAllViewModel = new ReservationAllViewModel();
+            var reservationAllViewModel = new ReservationAllViewModel
+            {
+                ReservationPerson = new ResultReservationPersonDto(),
+                ReservationCar = new ResultReservationCarDto(),
+                ReservationService = new ResultReservationServiceDto(),
+                Reservations = new List<ResultReservationDto>(),
+            };
 
             var responseMessage = await client.GetAsync("https://localhost:7215/api/Reservations/");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                reservationAllViewModel.Reservations = JsonConvert.DeserializeObject<List<ResultReservationDto>>(jsonData);
-                ViewBag.ValueControl = reservationAllViewModel.Reservations.Count;
+                var reservations = JsonConvert.DeserializeObject<List<ResultReservationDto>>(jsonData);
+
+                foreach (var reservation in reservations)
+                {
+                    var singleRezPersonId = reservation.RezPersonID;
+                    var singleRezCarId = reservation.RezCarID;
+                    var singleRezServiceId = reservation.RezServiceID;
+
+                    var responsePerson = await client.GetAsync($"https://localhost:7215/api/ReservationPersons/{singleRezPersonId}");
+                    if (responsePerson.IsSuccessStatusCode)
+                    {
+                        var personData = await responsePerson.Content.ReadAsStringAsync();
+                        var person = JsonConvert.DeserializeObject<ResultReservationPersonDto>(personData);
+                        reservationAllViewModel.ReservationPerson.Name = person.Name;
+                    }
+
+                    var responseCar = await client.GetAsync($"https://localhost:7215/api/ReservationCars/{singleRezCarId}");
+                    if (responseCar.IsSuccessStatusCode)
+                    {
+                        var carData = await responseCar.Content.ReadAsStringAsync();
+                        var car = JsonConvert.DeserializeObject<ResultReservationCarDto>(carData);
+                        reservationAllViewModel.ReservationCar.ModelID = car.ModelID;
+                    }
+
+                    var responseService = await client.GetAsync($"https://localhost:7215/api/ReservationServices/{singleRezServiceId}");
+                    if (responseService.IsSuccessStatusCode)
+                    {
+                        var serviceData = await responseService.Content.ReadAsStringAsync();
+                        var service = JsonConvert.DeserializeObject<ResultReservationServiceDto>(serviceData);
+                        reservationAllViewModel.ReservationService.Date = service.Date;
+                    }
+
+                    reservationAllViewModel.Reservations.Add(reservation);
+                }
+
+                ViewBag.ValueControl = reservations.Count;
             }
+
             return View(reservationAllViewModel);
         }
     }
 }
-
-//#region Reservation-getPersonId
-//var responseMessage4 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationPersonId");
-//if (responseMessage4.IsSuccessStatusCode)
-//{
-//    var jsonData = await responseMessage4.Content.ReadAsStringAsync();
-//    var value = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
-//    lastPersonId = value.ReservationPersonId;
-//    TempData["PersonId"] = value.ReservationPersonId;
-//}
-//#endregion
-
-//#region Reservation-getCarId
-//var responseMessage5 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationCarId");
-//if (responseMessage5.IsSuccessStatusCode)
-//{
-//    var jsonData = await responseMessage5.Content.ReadAsStringAsync();
-//    var value = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
-//    lastCarId = value.ReservationCarId;
-//    TempData["CarId"] = value.ReservationCarId;
-//}
-//#endregion
-
-//#region Reservation-getServiceId
-//var responseMessage6 = await client.GetAsync("https://localhost:7215/api/Reservations/GetReservationServiceId");
-//if (responseMessage6.IsSuccessStatusCode)
-//{
-//    var jsonData = await responseMessage6.Content.ReadAsStringAsync();
-//    var value = JsonConvert.DeserializeObject<ResultReservationsIdDto>(jsonData);
-//    lastServiceId = value.ReservationServiceId;
-//    TempData["ServiceId"] = value.ReservationServiceId;
-//}
-//#endregion
-
-//var responseMessage1 = await client.GetAsync($"https://localhost:7215/api/ReservationPersons/{lastPersonId}");
-//if (responseMessage1.IsSuccessStatusCode)
-//{
-//    var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
-//    reservationViewModel.personData = JsonConvert.DeserializeObject<ResultReservationPersonDto>(jsonData1);
-//}
-
-
-//var responseMessage2 = await client.GetAsync($"https://localhost:7215/api/ReservationCars/{lastCarId}");
-//if (responseMessage2.IsSuccessStatusCode)
-//{
-//    var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
-//    reservationViewModel.carData = JsonConvert.DeserializeObject<ResultReservationCarDto>(jsonData2);
-//}
-
-//var responseMessage3 = await client.GetAsync($"https://localhost:7215/api/ReservationServices/{lastServiceId}");
-//if (responseMessage3.IsSuccessStatusCode)
-//{
-//    var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
-//    reservationViewModel.serviceData = JsonConvert.DeserializeObject<ResultReservationServiceDto>(jsonData3);
-//
-
-//return View(reservationViewModel);

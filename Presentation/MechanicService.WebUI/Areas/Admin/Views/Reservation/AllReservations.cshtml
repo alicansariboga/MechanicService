@@ -40,9 +40,13 @@
                         count++;
                         <tr>
                             <td>@count</td>
-                            <td>Ali Can SARIBOĞA</td>
-                            <td>Volvo - XC90</td>
-                            <td>05.06.2024 - 11:00</td>
+                            <td>
+                                @Model.ReservationPerson.Name
+                            </td>
+                            <td>
+                                @Model.ReservationCar.ModelID
+                            </td>
+                            <td>@item.CreateDate</td>
                             <td><label class="badge badge-danger">Onay Bekliyor</label></td>
                             <td><a href="#" class="btn btn-warning">Onayla</a></td>
                             <td style="border-left: 1px solid #DEE2E6;"><a href="#" class="btn btn-primary">Müşteri Bilgileri</a></td>
