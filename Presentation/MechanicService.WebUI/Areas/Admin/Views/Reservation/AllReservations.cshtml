@@ -35,19 +35,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Reservations)
+                    @foreach (var item in Model.ReservationCombined)
                     {
                         count++;
                         <tr>
                             <td>@count</td>
                             <td>
-                                @Model.ReservationPerson.Name
+                                @item.PersonName @item.PersonSurname
                             </td>
                             <td>
-                                @Model.ReservationCar.ModelID
+                                @item.LicensePlate
                             </td>
-                            <td>@item.CreateDate</td>
-                            <td><label class="badge badge-danger">Onay Bekliyor</label></td>
+                            <td>@item.ReservationDate.ToShortDateString() - @item.ReservationHour.ToString(@"hh\:mm")</td>
+                            @if(item.IsCanceled == false)
+                            {
+                                @if (item.IsApproved == true)
+                                {
+                                    <td><label class="badge badge-success">Onaylandı</label></td>
+                                }
+                                else
+                                {
+                                    <td><label class="badge badge-primary">Onay Bekliyor</label></td>
+                                }
+                            }
+                            else
+                            {
+                                <td><label class="badge badge-danger">İptal Edildi</label></td>
+                            }
+
                             <td><a href="#" class="btn btn-warning">Onayla</a></td>
                             <td style="border-left: 1px solid #DEE2E6;"><a href="#" class="btn btn-primary">Müşteri Bilgileri</a></td>
                             <td><a href="#" class="btn btn-success">Rezervasyon Bilgileri</a></td>

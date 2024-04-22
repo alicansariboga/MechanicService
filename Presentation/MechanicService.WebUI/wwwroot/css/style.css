@@ -4072,3 +4072,9 @@ footer .footer-img {
 .form-group .agree-label {
     margin-bottom: 25px;
 }
+
+/* Admin Reservation Table */
+
+.table-hover thead tr th{
+    font-weight: 900;
+}
