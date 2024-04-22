@@ -89,3 +89,8 @@ global using MechanicService.Application.Features.Mediator.Queries.ReservationSe
 global using MechanicService.Application.Features.Mediator.Commands.ReservationCommands;
 
 global using MechanicService.Application.Interfaces.ReservationInterfaces;
+
+// Statistics
+global using MechanicService.Application.Features.Mediator.Results.StatisticsResults;
+global using MechanicService.Application.Features.Mediator.Queries.StatisticsQueries;
+global using MechanicService.Application.Interfaces.StatisticsInterfaces;

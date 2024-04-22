@@ -2,46 +2,79 @@
 {
     public class StatisticsRepository : IStatisticsRepository
     {
+        private readonly MechanicServiceContext _context;
+
+        public StatisticsRepository(MechanicServiceContext context)
+        {
+            _context = context;
+        }
+
         public int GetActiveLocationsCount()
         {
-            throw new NotImplementedException();
+            // SELECT * FROM LocationCities
+            // LEFT JOIN LocationDistricts
+            // On LocationCities.Id = LocationDistricts.CityID WHERE LocationDistricts.IsActive = 1
+            
+            var list = new List<int>();
+            var list2 = new List<int>();
+            list = _context.LocationDistricts.Where(x => x.IsActive == true).Select(y => y.CityID).ToList();
+            foreach(var cityId in list)
+            {
+                int value = _context.LocationCities.Where(x => x.Id == cityId).Select(y => y.Id).FirstOrDefault();
+                list2.Add(value);
+            }
+            var results = list2.Distinct().Count();
+            return results;
+
+            
         }
 
         public int GetAllCustomersCount()
         {
-            throw new NotImplementedException();
+            // SELECT COUNT(DISTINCT(ReservationPersons.IdentityNumber)) FROM ReservationPersons
+
+            var values = _context.ReservationPersons.Select(x => x.IdentityNumber).Distinct().Count();
+            return values;
         }
 
         public int GetAllReservationsCount()
         {
-            throw new NotImplementedException();
+            var values = _context.Reservations.Count();
+            return values;
         }
 
         public int GetBlogCount()
         {
-            throw new NotImplementedException();
+            var values = _context.Blogs.Count();
+            return values;
         }
 
         public int GetBrandCount()
         {
-            throw new NotImplementedException();
+            var values = _context.CarBrands.Count();
+            return values;
         }
 
         public int GetCompletedReservationsCount()
         {
-            throw new NotImplementedException();
+            var values = _context.Reservations.Where(x => x.IsApproved == true && x.IsCanceled == false).Count();
+            return values;
         }
 
         public int GetPendingReservationsCount()
         {
-            throw new NotImplementedException();
+            var values = _context.Reservations.Where(x => x.IsApproved == false && x.IsCanceled == false).Count();
+            return values;
         }
 
         public int GetReservationsTodayCount()
         {
-            throw new NotImplementedException();
+            // SELECT COUNT(*) FROM ReservationServices WHERE ReservationServices.Date = '2024-04-22'
+            var values = _context.ReservationServices.Where(x => x.Date == DateTime.Now.Date).Count();
+            return values;
         }
 
+        // _blank
         public int GetUnreadMessagesCount()
         {
             throw new NotImplementedException();
