@@ -66,4 +66,11 @@ global using MechanicService.Application.Features.Mediator.Queries.ReservationCa
 global using MechanicService.Application.Features.Mediator.Queries.ReservationPersonQueries;
 global using MechanicService.Application.Features.Mediator.Queries.ReservationServiceQueries;
 
+// Program.cs
+global using MechanicService.Application.Interfaces.CarModelnterfaces;
+global using MechanicService.Application.Interfaces.ReservationInterfaces;
+global using MechanicService.Application.Interfaces.StatisticsInterfaces;
+global using MechanicService.Persistence.Repositories.CarModelRepositories;
+global using MechanicService.Persistence.Repositories.ReservationRepositories;
+global using MechanicService.Persistence.Repositories.StatisticsRepositories;
 

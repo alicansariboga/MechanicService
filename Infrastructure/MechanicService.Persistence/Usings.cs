@@ -14,3 +14,4 @@ global using Microsoft.EntityFrameworkCore.Infrastructure;
 global using MechanicService.Application.Interfaces.ReservationInterfaces;
 global using MechanicService.Application.Interfaces.LocationsInterfaces;
 global using MechanicService.Application.Interfaces.CarModelnterfaces;
+global using MechanicService.Application.Interfaces.StatisticsInterfaces;
