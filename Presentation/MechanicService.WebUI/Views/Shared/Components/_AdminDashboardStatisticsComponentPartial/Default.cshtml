@@ -52,28 +52,35 @@
                 <h5 class="mb-2 text-dark font-weight-normal">Reservasyonlar</h5>
                 <h2 class="mb-4 text-dark font-weight-bold">@ViewBag.allReservations</h2>
                 <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i></div>
-                <p class="mt-4 mb-0">Tamamlanan</p>
-                <h3 class="mb-0 font-weight-bold mt-2 text-dark">@ViewBag.completedReservations</h3>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3  col-lg-6 col-sm-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="mb-2 text-dark font-weight-normal">Bekleyen Rezervasyonlar</h5>
-                <h2 class="mb-4 text-dark font-weight-bold">@ViewBag.pendingReservations</h2>
-                <div class="dashboard-progress dashboard-progress-2 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-eye icon-md absolute-center text-dark"></i></div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="mt-4 mb-0">Tamamlanan</p>
+                        <h3 class="mb-0 font-weight-bold mt-2 text-dark">@ViewBag.completedReservations</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mt-4 mb-0">Bekleyen</p>
+                        <h3 class="mb-0 font-weight-bold mt-2 text-dark">@ViewBag.pendingReservations</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body text-center">
-                <h5 class="mb-2 text-dark font-weight-normal">Şehir Sayısı</h5>
+                <h5 class="mb-2 text-dark font-weight-normal">Şube Sayısı</h5>
                 <h2 class="mb-4 text-dark font-weight-bold">@ViewBag.activeLocations</h2>
                 <div class="dashboard-progress dashboard-progress-3 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-cube icon-md absolute-center text-dark"></i></div>
-                <p class="mt-4 mb-0">Şube Sayısı</p>
-                <h3 class="mb-0 font-weight-bold mt-2 text-dark">@ViewBag.activeLocations</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="mt-4 mb-0">Şehir Sayısı</p>
+                        <h3 class="mb-0 font-weight-bold mt-2 text-dark">@ViewBag.activeLocations</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mt-4 mb-0">İlçe Sayısı</p>
+                        <h3 class="mb-0 font-weight-bold mt-2 text-dark">X</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -86,26 +93,13 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
     <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body text-center">
                 <h5 class="mb-2 text-dark font-weight-normal">Markalar</h5>
                 <h2 class="mb-4 text-dark font-weight-bold">@ViewBag.brands</h2>
-                <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i></div>
-                <p class="mt-4 mb-0">Modeller</p>
-                <h3 class="mb-0 font-weight-bold mt-2 text-dark">X</h3>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="mb-2 text-dark font-weight-normal">Bloglar</h5>
-                <h2 class="mb-4 text-dark font-weight-bold">@ViewBag.blogs</h2>
                 <div class="dashboard-progress dashboard-progress-2 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-eye icon-md absolute-center text-dark"></i></div>
-                <p class="mt-4 mb-0">Yorumlar</p>
+                <p class="mt-4 mb-0">Modeller</p>
                 <h3 class="mb-0 font-weight-bold mt-2 text-dark">X</h3>
             </div>
         </div>
