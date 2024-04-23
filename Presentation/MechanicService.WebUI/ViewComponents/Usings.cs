@@ -10,6 +10,7 @@ global using MechanicService.Dto.ReservationPersonDtos;
 global using MechanicService.Dto.ReservationServiceDtos;
 global using MechanicService.Dto.CarBrandDtos;
 global using MechanicService.Dto.CarModelDtos;
+global using MechanicService.Dto.StatisticsDtos;
 
 global using MechanicService.WebUI.Models;
 global using Newtonsoft.Json;

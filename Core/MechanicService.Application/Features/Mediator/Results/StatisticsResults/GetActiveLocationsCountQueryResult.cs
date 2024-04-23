@@ -2,6 +2,6 @@
 {
     public class GetActiveLocationsCountQueryResult
     {
-        public int GetActiveLocations { get; set; }
+        public int GetActiveLocationsCount { get; set; }
     }
 }

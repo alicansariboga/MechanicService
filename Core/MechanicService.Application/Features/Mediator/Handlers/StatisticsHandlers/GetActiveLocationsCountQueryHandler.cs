@@ -14,7 +14,7 @@
             var values = _repository.GetActiveLocationsCount();
             return new GetActiveLocationsCountQueryResult
             {
-                GetActiveLocations = values,
+                GetActiveLocationsCount = values,
             };
         }
     }
