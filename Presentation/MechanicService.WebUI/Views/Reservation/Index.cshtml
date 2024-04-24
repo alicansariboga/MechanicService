@@ -98,7 +98,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-4 col-lg-4">
                                 <div class="form-group">
                                     <select class="form-select" aria-label="Default select example" asp-for="ReservationCar.Year">
@@ -161,10 +161,11 @@
                                     <input type="text" class="form-control" placeholder="Tarih" asp-for="ReservationService.Date" value="@Model.ReservationService.Date.ToString("dd/MM/yyyy")">
                                 </div>
                             </div>
+
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Randevu Saati</label>
-                                    <input type="text" class="form-control" placeholder="Saat" asp-for="ReservationService.Hour" value="@Model.ReservationService.Hour.ToString("hh\\:mm")">
+                                    <input type="text" class="form-control" data-error="Belirtilen saat doludur." placeholder="Saat" asp-for="ReservationService.Hour" value="@Model.ReservationService.Hour.ToString("hh\\:mm")">
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12">

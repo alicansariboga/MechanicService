@@ -5,5 +5,6 @@
         public CreateReservationPersonDto ReservationPerson { get; set; }
         public CreateReservationCarDto ReservationCar { get; set; }
         public CreateReservationServiceDto ReservationService { get; set; }
+        public List<ResultReservationServiceDto> ResultReservationServiceDtos { get; set; }
     }
 }

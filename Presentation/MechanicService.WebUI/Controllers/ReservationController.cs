@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace MechanicService.WebUI.Controllers
+﻿namespace MechanicService.WebUI.Controllers
 {
     public class ReservationController : Controller
     {
@@ -12,17 +10,24 @@ namespace MechanicService.WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewRezervationModel = new ReservationCreateViewModel
             {
                 ReservationCar = new CreateReservationCarDto(),
                 ReservationPerson = new CreateReservationPersonDto(),
-                ReservationService = new CreateReservationServiceDto()
+                ReservationService = new CreateReservationServiceDto(),
             };
 
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7215/api/Banners");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                viewRezervationModel.ResultReservationServiceDtos = JsonConvert.DeserializeObject<List<ResultReservationServiceDto>>(jsonData);
+            }
+
             return View(viewRezervationModel);
-            //return View();
         }
         [HttpPost]
         public async Task<IActionResult> Index(ReservationCreateViewModel reservationCreateViewModel)
@@ -38,6 +43,8 @@ namespace MechanicService.WebUI.Controllers
             var responseMessage2 = await client.PostAsync("https://localhost:7215/api/ReservationCars", stringContent2);
 
             var jsonData3 = JsonConvert.SerializeObject(reservationCreateViewModel.ReservationService);
+            var reservationServiceControl = JsonConvert.DeserializeObject<ResultReservationServiceDto>(jsonData3);
+
             StringContent stringContent3 = new StringContent(jsonData3, Encoding.UTF8, "application/json");
             var responseMessage3 = await client.PostAsync("https://localhost:7215/api/ReservationServices", stringContent3);
 

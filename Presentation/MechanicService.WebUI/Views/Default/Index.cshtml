@@ -10,30 +10,50 @@
 
 @await Component.InvokeAsync("_ServiceAllServicesComponentPartial")
 
-@await Component.InvokeAsync("_DefaultQualityComponentPartial")
+@await Component.InvokeAsync("_DefaultFeatureComponentPartial")
 
 <!-- Work -->
 <section class="work-area pt-100 pb-70">
     <div class="container">
         <div class="section-title">
-            <span class="sub-title">works</span>
-            <h2>Latest Works For Clients</h2>
+            <span class="sub-title">galeri</span>
+            <h2>Fotoğraf Galerisi</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
         <div class="sorting-menu">
             <ul>
-                <li class="filter active" data-filter="all">all</li>
-                <li class="filter" data-filter=".tyre">wheels</li>
-                <li class="filter" data-filter=".web">steering</li>
-                <li class="filter" data-filter=".ui">brakes</li>
-                <li class="filter" data-filter=".ux">suspention</li>
-                <li class="filter" data-filter=".branding">tyre</li>
+                <li class="filter active" data-filter="all">hepsi</li>
+                <li class="filter" data-filter=".tyre">sedan</li>
+                <li class="filter" data-filter=".web">geniş araç</li>
+                <li class="filter" data-filter=".branding">suv</li>
             </ul>
         </div>
         <div id="Container" class="row">
-            <div class="col-sm-6 col-lg-3 mix web ui">
+            <div class="col-sm-6 col-lg-3 mix tyre ui">
                 <div class="work-item">
-                    <img src="/img/home-one/work/1.jpg" alt="Work">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/e17bd811-f696-4288-b5bc-c936cecd7ba1_912x513.jpg" alt="Work">
+                    <div class="cmn-btn">
+                        <a class="banner-btn-left" href="#">
+                            Read More
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 mix branding ux">
+                <div class="work-item">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/29e3f483-7c66-4ee6-a96d-1202329c600b_912x513.jpg" alt="Work">
+                    <div class="cmn-btn">
+                        <a class="banner-btn-left" href="#">
+                            Read More
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 mix branding ui">
+                <div class="work-item">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/3533c6fd-0bc3-44d7-a209-d17e2242bd81_912x513.jpg" alt="Work">
                     <div class="cmn-btn">
                         <a class="banner-btn-left" href="#">
                             Read More
@@ -44,7 +64,7 @@
             </div>
             <div class="col-sm-6 col-lg-3 mix tyre ux">
                 <div class="work-item">
-                    <img src="/img/home-one/work/2.jpg" alt="Work">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/2c428002-7dce-42f2-854b-dc36ffea5f61_912x513.jpg" alt="Work">
                     <div class="cmn-btn">
                         <a class="banner-btn-left" href="#">
                             Read More
@@ -53,9 +73,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-6 mix ui branding">
+            <div class="col-sm-6 col-lg-3 mix tyre ui">
                 <div class="work-item">
-                    <img src="/img/home-one/work/3.jpg" alt="Work">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/4a7f25d0-daab-4fc4-86ab-5ed00adbfde9_912x513.jpg" alt="Work">
                     <div class="cmn-btn">
                         <a class="banner-btn-left" href="#">
                             Read More
@@ -64,9 +84,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3 mix ux tyre">
+            <div class="col-sm-6 col-lg-3 mix branding ux">
                 <div class="work-item">
-                    <img src="/img/home-one/work/4.jpg" alt="Work">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/83984442-81b0-4157-bcaa-80008354b6c3_912x513.jpg" alt="Work">
                     <div class="cmn-btn">
                         <a class="banner-btn-left" href="#">
                             Read More
@@ -75,9 +95,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-6 mix branding ui">
+            <div class="col-sm-6 col-lg-3 mix branding ui">
                 <div class="work-item">
-                    <img src="/img/home-one/work/5.jpg" alt="Work">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/fd53de39-74e2-4d1a-ae02-5bfb9de5b752_912x513.jpg" alt="Work">
                     <div class="cmn-btn">
                         <a class="banner-btn-left" href="#">
                             Read More
@@ -86,9 +106,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3 mix tyre web">
+            <div class="col-sm-6 col-lg-3 mix tyre ux">
                 <div class="work-item">
-                    <img src="/img/home-one/work/6.jpg" alt="Work">
+                    <img src="https://arbstorage.mncdn.com/modelphotos/2bb54076-04ac-4540-a1d9-ebc2945947f5_912x513.jpg" alt="Work">
                     <div class="cmn-btn">
                         <a class="banner-btn-left" href="#">
                             Read More
@@ -101,14 +121,12 @@
     </div>
 </section>
 
-@await Component.InvokeAsync("_DefaultFeatureComponentPartial")
-
 @await Component.InvokeAsync("_DefaultShopComponentPartial")
+
+@await Component.InvokeAsync("_DefaultQualityComponentPartial")
 
 @await Component.InvokeAsync("_DefaultTeamComponentPartial")
 
 @await Component.InvokeAsync("_DefaultTestimonialComponentPartial")
-
-@await Component.InvokeAsync("_PricingDefaultComponentPartial")
 
 @await Component.InvokeAsync("_BlogDefaultComponentPartial")
