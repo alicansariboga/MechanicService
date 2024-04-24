@@ -4,6 +4,7 @@ using MechanicService.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MechanicService.Persistence.Migrations
 {
     [DbContext(typeof(MechanicServiceContext))]
-    partial class MechanicServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20240424073521_mig_add_10_contact_surmame_update")]
+    partial class mig_add_10_contact_surmame_update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -347,9 +350,8 @@ namespace MechanicService.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Surname")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

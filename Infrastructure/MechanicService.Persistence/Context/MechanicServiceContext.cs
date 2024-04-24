@@ -31,6 +31,7 @@
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<LocationCity> LocationCities { get; set; }
         public DbSet<LocationDistrict> LocationDistricts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

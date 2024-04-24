@@ -94,3 +94,7 @@ global using MechanicService.Application.Interfaces.ReservationInterfaces;
 global using MechanicService.Application.Features.Mediator.Results.StatisticsResults;
 global using MechanicService.Application.Features.Mediator.Queries.StatisticsQueries;
 global using MechanicService.Application.Interfaces.StatisticsInterfaces;
+
+global using MechanicService.Application.Features.Mediator.Results.ContactResults;
+global using MechanicService.Application.Features.Mediator.Queries.ContactQueries;
+global using MechanicService.Application.Features.Mediator.Commands.ContactCommands;

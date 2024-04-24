@@ -2,7 +2,7 @@
 {
     public class _ContactFormComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             return View();
         }
