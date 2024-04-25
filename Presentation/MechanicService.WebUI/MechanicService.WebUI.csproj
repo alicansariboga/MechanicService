@@ -28,4 +28,13 @@
     <Folder Include="Views\Shared\Components\_ReservationChoiceBrandComponentPartial\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\admin\assets\vendors\fontawesome-free\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\admin\assets\vendors\fontawesome-free\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\admin\assets\vendors\fontawesome-free\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\admin\assets\vendors\fontawesome-free\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\admin\assets\vendors\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\admin\assets\vendors\fontawesome-free\webfonts\fa-solid-900.woff2" />
+  </ItemGroup>
+
 </Project>

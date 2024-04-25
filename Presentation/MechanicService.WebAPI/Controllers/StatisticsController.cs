@@ -60,5 +60,11 @@
             var values = await _mediator.Send(new GetBlogCountQuery());
             return Ok(values);
         }
+        [HttpGet("GetUnreadMessagesCount")]
+        public async Task<IActionResult> GetUnreadMessagesCount()
+        {
+            var values = await _mediator.Send(new GetUnreadMessagesCountQuery());
+            return Ok(values);
+        }
     }
 }

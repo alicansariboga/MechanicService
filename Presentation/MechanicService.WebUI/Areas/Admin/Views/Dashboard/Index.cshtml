@@ -39,6 +39,16 @@
                 
                 @await Component.InvokeAsync("_AdminDashboardStatisticsComponentPartial")
 
+                <div class="card card-success">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Markalarımız</h4>
+                            <canvas id="barChart" style="min-height: 550px; height: 550px; max-height: 550px; max-width: 100%;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+
                 <div class="row">
                     <div class="col-12 grid-margin">
                         <div class="card">

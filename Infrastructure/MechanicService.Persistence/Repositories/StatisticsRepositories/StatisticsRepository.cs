@@ -77,7 +77,8 @@
         // _blank
         public int GetUnreadMessagesCount()
         {
-            throw new NotImplementedException();
+            var values = _context.Contacts.Where(x => x.Isread == false).Count();
+            return values;
         }
     }
 }

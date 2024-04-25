@@ -94,6 +94,16 @@
             }
             #endregion
 
+            #region Statistic-unreadMessages
+            var responseMessage9 = await client.GetAsync("https://localhost:7215/api/Statistics/GetUnreadMessagesCount/");
+            if (responseMessage9.IsSuccessStatusCode)
+            {
+                var jsonData1 = await responseMessage9.Content.ReadAsStringAsync();
+                var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
+                ViewBag.unreadMessages = values1.GetUnreadMessagesCount;
+            }
+            #endregion
+
             return View();
         }
     }
