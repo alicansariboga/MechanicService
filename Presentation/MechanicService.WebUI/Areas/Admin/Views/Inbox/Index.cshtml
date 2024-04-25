@@ -1,4 +1,5 @@
-﻿
+﻿@model List<ResultContactDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -46,111 +47,28 @@
                     <div class="table-responsive mailbox-messages">
                         <table class="table table-hover table-striped">
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check1">
-                                            <label for="check1"></label>
-                                        </div>
-                                    </td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-warning"></i></a></td>
-                                    <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">Ali Can SARIBOĞA</a></td>
-                                    <td class="mailbox-subject">
-                                        <b>Vivamus Massa Eros</b> - Lorem ipsum dolor sit amet, consectetur adipiscing...
-                                    </td>
-                                    <td class="mailbox-attachment"></td>
-                                    <td class="mailbox-date">5 dakika önce</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check2">
-                                            <label for="check2"></label>
-                                        </div>
-                                    </td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-warning"></i></a></td>
-                                    <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">Ali Can SARIBOĞA</a></td>
-                                    <td class="mailbox-subject">
-                                        <b>Vivamus Massa Eros</b> - Lorem ipsum dolor sit amet, consectetur adipiscing...
-                                    </td>
-                                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                                    <td class="mailbox-date">28 dakika önce</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check3">
-                                            <label for="check3"></label>
-                                        </div>
-                                    </td>
-                                    <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
-                                    <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">Ali Can SARIBOĞA</a></td>
-                                    <td class="mailbox-subject">
-                                        <b>Vivamus Massa Eros</b> - Lorem ipsum dolor sit amet, consectetur adipiscing...
-                                    </td>
-                                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                                    <td class="mailbox-date">11 saat önce</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check4">
-                                            <label for="check4"></label>
-                                        </div>
-                                    </td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-warning"></i></a></td>
-                                    <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">Ali Can SARIBOĞA</a></td>
-                                    <td class="mailbox-subject">
-                                        <b>Vivamus Massa Eros</b> - Lorem ipsum dolor sit amet, consectetur adipiscing...
-                                    </td>
-                                    <td class="mailbox-attachment"></td>
-                                    <td class="mailbox-date">15 saat önce</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check5">
-                                            <label for="check5"></label>
-                                        </div>
-                                    </td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-warning"></i></a></td>
-                                    <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">Ali Can SARIBOĞA</a></td>
-                                    <td class="mailbox-subject">
-                                        <b>Vivamus Massa Eros</b> - Lorem ipsum dolor sit amet, consectetur adipiscing...
-                                    </td>
-                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                                    <td class="mailbox-date">dün</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check6">
-                                            <label for="check6"></label>
-                                        </div>
-                                    </td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-warning"></i></a></td>
-                                    <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">Ali Can SARIBOĞA</a></td>
-                                    <td class="mailbox-subject">
-                                        <b>Vivamus Massa Eros</b> - Lorem ipsum dolor sit amet, consectetur adipiscing...
-                                    </td>
-                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                                    <td class="mailbox-date">2 gün önce</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check7">
-                                            <label for="check7"></label>
-                                        </div>
-                                    </td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-warning"></i></a></td>
-                                    <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">Ali Can SARIBOĞA</a></td>
-                                    <td class="mailbox-subject">
-                                        <b>Vivamus Massa Eros</b> - Lorem ipsum dolor sit amet, consectetur adipiscing...
-                                    </td>
-                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                                    <td class="mailbox-date">2 gün önce</td>
-                                </tr>
+                                @foreach(var item in Model)
+                                {
+                                    // Message Short
+                                    var theMessage = string.Join(" ", item.Message.Split(' ').Take(10));
+                                    var msgShort = theMessage + (item.Message.Split(' ').Length > 10 ? "..." : "");
+
+                                    <tr>
+                                        <td>
+                                            <div class="icheck-primary">
+                                                <input type="checkbox" value="" id="check2">
+                                                <label for="check2"></label>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/">@item.Name @item.Surname</a></td>
+                                        <td class="mailbox-subject">
+                                            <b>@item.Subject</b> - @msgShort
+                                        </td>
+                                        <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
+                                        <td class="mailbox-date">@item.SendDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
