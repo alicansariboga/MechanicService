@@ -60,9 +60,18 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
-        [Route("MailDetail")]
-        public IActionResult MailDetail()
+        [Route("MailDetail/{id}")]
+        public async Task<IActionResult> MailDetail(int id)
         {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7215/api/Contacts/" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<ResultContactDto>(jsonData);
+
+                return View(value);
+            }
             return View();
         }
     }
