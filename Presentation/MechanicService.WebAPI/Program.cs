@@ -1,3 +1,6 @@
+using MechanicService.Application.Interfaces.CustomerInterfaces;
+using MechanicService.Persistence.Repositories.CustomerRepositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient();
@@ -11,6 +14,7 @@ builder.Services.AddScoped(typeof(ILocationsRepository), typeof(LocationsReposit
 builder.Services.AddScoped(typeof(ICarModelRepository), typeof(CarModelRepository));
 builder.Services.AddScoped(typeof(IReservationRepository), typeof(ReservationRepository));
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
+builder.Services.AddScoped(typeof(ICustomerRepository), typeof(CustomerRepository));
 #endregion
 
 // ServiceRegistration

@@ -1,0 +1,277 @@
+﻿@model ResultBlogDto
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="page-title-area">
+    <img src="~/img/home-one/footer-car.png" alt="Title">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Blog Detayı</h2>
+            <ul>
+                <li>
+                    <a href="/">Ana Sayfa</a>
+                </li>
+                <li>
+                    <i class='bx bx-chevron-right'></i>
+                </li>
+                <li>Blog</li>
+                <li>
+                    <i class='bx bx-chevron-right'></i>
+                </li>
+                <li>Detay</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="blog-details-area pt-100 pb-70">
+    <div class="blog-details-shape">
+        <img src="~/img/blog-details-shape.png" alt="Blog Details">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog-details-item">
+                    <div class="blog-details-img">
+                        <img src="~/img/blog-details-one.jpg" alt="Blog Details">
+                        <div class="date">
+                            <p>@(((DateTime)Model.CreatedDate).ToString("dd"))</p>
+                            <span>@(((DateTime)Model.CreatedDate).ToString("MMM"))</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-user'></i>
+                                    Sarah Taylor
+                                </a>
+                            </li>
+                            <li>
+                                <i class='bx bx-time-five'></i>
+                                3 Min Read
+                            </li>
+                            <li>
+                                <i class='bx bx-badge'></i>
+                                Marketing
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-details-head">
+                        <h2>Next genaration auto will change the business world</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas.</p>
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6">
+                                <img src="~/img/blog-details-two.jpg" alt="Blog Details">
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <img src="~/img/blog-details-three.jpg" alt="Blog Details">
+                            </div>
+                        </div>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.</p>
+                    </div>
+                    <div class="blog-details-nav">
+                        <ul>
+                            <li>
+                                <a href="#">Previous</a>
+                            </li>
+                            <li>
+                                <a href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-details-form">
+                        <h3>Drop Your Comment</h3>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Full Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="your_comment" rows="8" class="form-control" placeholder="Description"></textarea>
+                            </div>
+                            <button type="submit" class="btn blog-details-form-btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-details-item">
+                    <div class="blog-details-search">
+                        <form>
+                            <input type="text" class="form-control" placeholder="Search">
+                            <button type="submit" class="btn search-btn">
+                                <i class='bx bx-search'></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="blog-details-recent">
+                        <h3>Recent Blogs</h3>
+                        <div class="blog-details-inner">
+                            <img src="~/img/blog-details-four.jpg" alt="Blog Details">
+                            <a href="#">Classic cars demand day by day increasing</a>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class='bx bxs-user'></i>
+                                        Admin
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class='bx bxs-calendar'></i>
+                                    Jan 03, 2020
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="blog-details-inner">
+                            <img src="~/img/blog-details-five.jpg" alt="Blog Details">
+                            <a href="#">New engine system will change car speed</a>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class='bx bxs-user'></i>
+                                        Admin
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class='bx bxs-calendar'></i>
+                                    Jan 04, 2020
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="blog-details-inner">
+                            <img src="~/img/blog-details-six.jpg" alt="Blog Details">
+                            <a href="#">Next genaration auto will change the world</a>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class='bx bxs-user'></i>
+                                        Admin
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class='bx bxs-calendar'></i>
+                                    Jan 05, 2020
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-details-category">
+                        <h3>Category</h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Engineering Strategy
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Modern  Autos
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Newest Parts
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    System Service
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Washing Service
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    New Motor Service
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-details-gallery">
+                        <h3>Photo Gallery</h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/1.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/2.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/3.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/4.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/5.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/6.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/7.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="~/img/gallery/8.jpg" alt="Blog Details">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-details-tag">
+                        <h3>Tags</h3>
+                        <ul>
+                            <li>
+                                <a href="#">UX/UI</a>
+                            </li>
+                            <li>
+                                <a href="#">Web</a>
+                            </li>
+                            <li>
+                                <a href="#">App</a>
+                            </li>
+                            <li>
+                                <a href="#">Design</a>
+                            </li>
+                            <li>
+                                <a href="#">Business</a>
+                            </li>
+                            <li>
+                                <a href="#">SEO</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

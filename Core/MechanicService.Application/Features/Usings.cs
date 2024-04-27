@@ -98,3 +98,6 @@ global using MechanicService.Application.Interfaces.StatisticsInterfaces;
 global using MechanicService.Application.Features.Mediator.Results.ContactResults;
 global using MechanicService.Application.Features.Mediator.Queries.ContactQueries;
 global using MechanicService.Application.Features.Mediator.Commands.ContactCommands;
+
+global using MechanicService.Application.Features.Mediator.Results.CustomerResults;
+global using MechanicService.Application.Features.Mediator.Queries.CustomerQueries;

@@ -37,13 +37,13 @@
                                 <p>@(((DateTime)item.CreatedDate).ToString("dd"))</p>
                                 <span>@(((DateTime)item.CreatedDate).ToString("MMM"))</span>
                             </div>
-                            <a href="blog-details.html">
+                            <a href="/Blog/Detail/@item.Id">
                                 <img src="@item.CoverImageUrl" alt="Blog">
                             </a>
                         </div>
                         <div class="blog-bottom">
                             <h3>
-                                <a href="blog-details.html">@item.Title</a>
+                                <a href="/Blog/Detail/@item.Id">@item.Title</a>
                             </h3>
                             <ul>
                                 <li>
@@ -51,7 +51,7 @@
                                     <a href="#">ADMIN</a>
                                 </li>
                                 <li>
-                                    <a href="blog-details.html">
+                                    <a href="/Blog/Detail/@item.Id">
                                         Oku
                                         <i class='bx bx-chevron-right'></i>
                                     </a>

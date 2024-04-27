@@ -80,3 +80,6 @@ global using MechanicService.Persistence.Repositories.StatisticsRepositories;
 global using MechanicService.Application.Features.Mediator.Commands.ContactCommands;
 global using MechanicService.Application.Features.Mediator.Queries.ContactQueries;
 
+global using MechanicService.Application.Features.Mediator.Queries.CustomerQueries;
+
+
