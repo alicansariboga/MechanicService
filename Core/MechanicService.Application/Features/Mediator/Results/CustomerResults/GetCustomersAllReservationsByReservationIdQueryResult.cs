@@ -1,6 +1,6 @@
 ﻿namespace MechanicService.Application.Features.Mediator.Results.CustomerResults
 {
-    public class GetCustomersByReservationPersonIdQueryResult
+    public class GetCustomersAllReservationsByReservationIdQueryResult
     {
         public int Id { get; set; }
         public int RezPersonID { get; set; }

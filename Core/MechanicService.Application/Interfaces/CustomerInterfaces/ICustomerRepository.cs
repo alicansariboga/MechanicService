@@ -2,6 +2,7 @@
 {
     public interface ICustomerRepository
     {
-        List<CustomerViewModel> GetCustomersByReservationPersonId();
+        List<CustomerViewModel> GetCustomersByReservationId();
+        List<CustomerViewModel> GetCustomersAllReservationsByReservationId();
     }
 }

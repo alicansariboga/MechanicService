@@ -1,11 +1,4 @@
-﻿using Humanizer;
-using MechanicService.Application.ViewModel;
-using MechanicService.Domain.Entities;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System.Collections.Concurrent;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-
-namespace MechanicService.Persistence.Repositories.CustomerRepositories
+﻿namespace MechanicService.Persistence.Repositories.CustomerRepositories
 {
     public class CustomerRepository : ICustomerRepository
     {
@@ -15,7 +8,37 @@ namespace MechanicService.Persistence.Repositories.CustomerRepositories
         {
             _context = context;
         }
-        public List<CustomerViewModel> GetCustomersByReservationPersonId()
+
+        public List<CustomerViewModel> GetCustomersAllReservationsByReservationId()
+        {
+            var results = _context.Reservations
+                        .GroupJoin(_context.ReservationPersons,
+                         reservation => reservation.RezPersonID,
+                         person => person.Id,
+                         (reservation, persons) => new { Reservation = reservation, Persons = persons })
+                         .SelectMany(
+                         x => x.Persons.DefaultIfEmpty(),
+                         (reservation, person) => new { Reservation = reservation.Reservation, Person = person }
+                         ).ToList();
+            var customerViewModels = results.Select(x => new CustomerViewModel
+            {
+                Id = x.Reservation.Id,
+                RezPersonID = x.Reservation.RezPersonID,
+                CreateDate = x.Reservation.CreateDate,
+                IsApproved = x.Reservation.IsApproved,
+                IsCanceled = x.Reservation.IsCanceled,
+                PersonId = x.Person.Id,
+                Name = x.Person.Name,
+                Surname = x.Person.Surname,
+                IdentityNumber = x.Person.IdentityNumber,
+                Phone = x.Person.Phone,
+                PhoneOpt = x.Person.PhoneOpt,
+                Email = x.Person.Email
+            }).ToList();
+            return customerViewModels;
+        }
+
+        public List<CustomerViewModel> GetCustomersByReservationId()
         {
             //ADO/NET DB Conn
             List<CustomerViewModel> values = new List<CustomerViewModel>();

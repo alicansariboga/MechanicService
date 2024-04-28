@@ -101,3 +101,4 @@ global using MechanicService.Application.Features.Mediator.Commands.ContactComma
 
 global using MechanicService.Application.Features.Mediator.Results.CustomerResults;
 global using MechanicService.Application.Features.Mediator.Queries.CustomerQueries;
+global using MechanicService.Application.Interfaces.CustomerInterfaces;

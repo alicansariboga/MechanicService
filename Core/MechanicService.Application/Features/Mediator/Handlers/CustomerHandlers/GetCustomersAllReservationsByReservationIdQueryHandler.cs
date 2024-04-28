@@ -1,18 +1,18 @@
 ﻿namespace MechanicService.Application.Features.Mediator.Handlers.CustomerHandlers
 {
-    public class GetCustomersByReservationPersonIdQueryHandler : IRequestHandler<GetCustomersByReservationIdQuery, List<GetCustomersByReservationIdQueryResult>>
+    public class GetCustomersAllReservationsByReservationIdQueryHandler : IRequestHandler<GetCustomersAllReservationsByReservationIdQuery, List<GetCustomersAllReservationsByReservationIdQueryResult>>
     {
         private readonly ICustomerRepository _repository;
 
-        public GetCustomersByReservationPersonIdQueryHandler(ICustomerRepository repository)
+        public GetCustomersAllReservationsByReservationIdQueryHandler(ICustomerRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<List<GetCustomersByReservationIdQueryResult>> Handle(GetCustomersByReservationIdQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetCustomersAllReservationsByReservationIdQueryResult>> Handle(GetCustomersAllReservationsByReservationIdQuery request, CancellationToken cancellationToken)
         {
-            var values = _repository.GetCustomersByReservationId();
-            return values.Select(x => new GetCustomersByReservationIdQueryResult
+            var values = _repository.GetCustomersAllReservationsByReservationId();
+            return values.Select(x => new GetCustomersAllReservationsByReservationIdQueryResult
             {
                 Id = x.Id,
                 RezPersonID = x.RezPersonID,

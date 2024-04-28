@@ -11,10 +11,16 @@
         {
             _mediator = mediator;
         }
-        [HttpGet]
+        [HttpGet("CustomerList")]
         public async Task<IActionResult> CustomerList()
         {
-            var values = await _mediator.Send(new GetCustomersByReservationPersonIdQuery());
+            var values = await _mediator.Send(new GetCustomersByReservationIdQuery());
+            return Ok(values);
+        }
+        [HttpGet("CustomersReservationsList")]
+        public async Task<IActionResult> CustomersReservationsList()
+        {
+            var values = await _mediator.Send(new GetCustomersAllReservationsByReservationIdQuery());
             return Ok(values);
         }
     }
