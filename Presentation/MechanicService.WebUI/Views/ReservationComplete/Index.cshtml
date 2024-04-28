@@ -97,6 +97,23 @@
                                         <a href="terms-condition.html">Koşullar &amp; Şartlar</a> ve <a href="privacy-policy.html">Gizlilik Politikasını</a> kabul ediyorum.
                                     </label>
                                     <div class="help-block with-errors gridCheck-error"></div>
+                                    <input type="hidden" class="form-control" asp-for="personData.Email" value="@Model.personData.Email" />
+                                    <input type="hidden" class="form-control" asp-for="Subject" value="Rezervasyon Tamamlandı." />
+                                    <input type="hidden" class="form-control" asp-for="Body" 
+                                           value="
+Merhaba @Model.personData.Name,
+
+Randevu talebiniz alınmıştır. @Model.serviceData.Date.ToShortDateString() tarihli rezervasyonunuz başarılı bir şekilde oluşturulmuştur. Detaylı bilgi aşağıda eklenmiştir.
+
+    Randevu Saati: @Model.serviceData.Hour
+    Randevu Açıklaması: @Model.serviceData.Description
+    Randevu Durumu: Beklemede
+
+Bizi tercih ettiğiniz için teşekkür ederiz. İyi günler dileriz.
+Saygılarımızla,
+                                           
+Mekanik Servis Ekibi
+                                    " />
                                 </div>
                             </div>
                         </div>

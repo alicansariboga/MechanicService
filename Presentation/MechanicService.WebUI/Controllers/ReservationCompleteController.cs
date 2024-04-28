@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace MechanicService.WebUI.Controllers
 {
@@ -80,7 +81,7 @@ namespace MechanicService.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(CreateReservationDto createReservationDto)
+        public async Task<IActionResult> Index(CreateReservationDto createReservationDto, ReservationViewModel mailRequest)
         {
             var client = _httpClientFactory.CreateClient();
 
@@ -93,13 +94,30 @@ namespace MechanicService.WebUI.Controllers
 
             var jsonData = JsonConvert.SerializeObject(createReservationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7215/api/Reservations", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "ReservationDone");
-            }
+            await client.PostAsync("https://localhost:7215/api/Reservations", stringContent);
+            
 
-            return RedirectToAction("Error", "Home");
+            MimeMessage mimeMessage = new MimeMessage();
+
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "mechanicserviceproject@gmail.com");
+            mimeMessage.From.Add(mailboxAddressFrom);
+
+            MailboxAddress mailboxAddressTo = new MailboxAddress(mailRequest.personData.Name, mailRequest.personData.Email);
+            mimeMessage.To.Add(mailboxAddressTo);
+
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.TextBody = mailRequest.Body;
+            mimeMessage.Body = bodyBuilder.ToMessageBody();
+
+            mimeMessage.Subject = mailRequest.Subject;
+
+            SmtpClient clientMail = new SmtpClient();
+            clientMail.Connect("smtp.gmail.com", 587, false);
+            clientMail.Authenticate("mechanicserviceproject@gmail.com", "sokamgqvrtuetsbo");
+            clientMail.Send(mimeMessage);
+            clientMail.Disconnect(true);
+
+            return RedirectToAction("Index", "ReservationDone");
         }
     }
 }

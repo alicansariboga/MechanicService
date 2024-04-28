@@ -25,15 +25,15 @@ namespace MechanicService.WebUI.Controllers
             return View();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7210/api/Blogs/" + id);
+            var responseMessage = await client.GetAsync($"https://localhost:7215/api/Blogs/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ResultBlogDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<ResultBlogDetailDto>(jsonData);
                 return View(values);
             }
             return View();
