@@ -1,4 +1,6 @@
-﻿namespace MechanicService.WebUI.Areas.Admin.Controllers
+﻿using MechanicService.Dto.CustomerDtos;
+
+namespace MechanicService.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/Customer")]
@@ -16,12 +18,54 @@
         {
             var client = _httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync("https://localhost:7215/api/ReservationPersons/");
+            var responseMessage = await client.GetAsync("https://localhost:7215/api/Customers/CustomersReservationsList");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var customers = JsonConvert.DeserializeObject<List<ResultReservationPersonDto>>(jsonData);
-                return View(customers);
+                var customers = JsonConvert.DeserializeObject<List<ResultAllCustomerDto>>(jsonData);
+
+                var customerList = new List<ResultCustomersDto>();
+
+                foreach (var item in customers)
+                {
+                    var customerDistinct = new ResultCustomersDto
+                    {
+                         Id = item.Id,
+                         RezPersonID = item.RezPersonID,
+                         CreateDate = item.CreateDate,
+                         IsApproved = item.IsApproved,
+                         IsCanceled = item.IsCanceled,
+                         PersonId = item.PersonId,
+                         Name = item.Name,
+                         Surname = item.Surname,
+                         IdentityNumber = item.IdentityNumber,
+                         Phone = item.Phone,
+                         PhoneOpt = item.PhoneOpt,
+                         Email = item.Email
+                    };
+                    if (customerList.Count == 0)
+                    {
+                        customerList.Add(customerDistinct);
+                    }
+                    else
+                    {
+                        bool isDuplicate = false;
+                        foreach (var customer in customerList)
+                        {
+                            if (customer.IdentityNumber == customerDistinct.IdentityNumber)
+                            {
+                                isDuplicate = true;
+                                break;
+                            }
+                        }
+
+                        if (!isDuplicate)
+                        {
+                            customerList.Add(customerDistinct);
+                        }
+                    }
+                }
+                return View(customerList);
             }
             return View();
         }

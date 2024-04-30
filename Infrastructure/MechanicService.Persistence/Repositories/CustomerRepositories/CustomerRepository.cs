@@ -9,7 +9,7 @@
             _context = context;
         }
 
-        public List<CustomerViewModel> GetCustomersAllReservationsByReservationId()
+        public List<CustomerViewModel> GetCustomersByReservationId()
         {
             var results = _context.Reservations
                         .GroupJoin(_context.ReservationPersons,
@@ -38,20 +38,20 @@
             return customerViewModels;
         }
 
-        public List<CustomerViewModel> GetCustomersByReservationId()
+        public List<CustomerViewModel> GetCustomersAllReservationsByReservationId()
         {
             //ADO/NET DB Conn
             List<CustomerViewModel> values = new List<CustomerViewModel>();
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "SELECT Reservations.*, ReservationPersons.PersonId, ReservationPersons.Name, ReservationPersons.Surname, ReservationPersons.IdentityNumber, ReservationPersons.Phone, ReservationPersons.PhoneOpt, ReservationPersons.Email FROM Reservations LEFT JOIN (SELECT Id AS PersonId, Name, Surname, IdentityNumber, Phone, PhoneOpt, Email, ROW_NUMBER() OVER(PARTITION BY IdentityNumber ORDER BY Id) AS RowNum FROM ReservationPersons) AS ReservationPersons ON ReservationPersons.PersonId = Reservations.RezPersonID WHERE ReservationPersons.RowNum = 1;;";
+                command.CommandText = "SELECT Reservations.*, ReservationPersons.PersonId, ReservationPersons.Name, ReservationPersons.Surname, ReservationPersons.IdentityNumber, ReservationPersons.Phone, ReservationPersons.PhoneOpt, ReservationPersons.Email FROM Reservations LEFT JOIN (SELECT Id AS PersonId, Name, Surname, IdentityNumber, Phone, PhoneOpt, Email, ROW_NUMBER() OVER(PARTITION BY IdentityNumber ORDER BY Id) AS RowNum FROM ReservationPersons) AS ReservationPersons ON ReservationPersons.PersonId = Reservations.RezPersonID WHERE ReservationPersons.RowNum = 1";
                 command.CommandType = System.Data.CommandType.Text;
                 _context.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        CustomerViewModel carPricingViewModel = new CustomerViewModel()
+                        CustomerViewModel customerViewModel = new CustomerViewModel()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             RezPersonID = Convert.ToInt32(reader["RezPersonID"]),
@@ -66,12 +66,52 @@
                             PhoneOpt = reader["PhoneOpt"].ToString(),
                             Email = reader["Email"].ToString(),
                         };
-                        values.Add(carPricingViewModel);
+                        values.Add(customerViewModel);
                     }
                 }
             }
             _context.Database.CloseConnection();
             return values;
         }
+
+        //public List<CustomerViewModel> GetCustomersByIdentity()
+        //{
+        //    List<CustomerViewModel> values = new List<CustomerViewModel>();
+        //    using (var command = _context.Database.GetDbConnection().CreateCommand())
+        //    {
+        //        command.CommandText = "SELECT DISTINCT " +
+        //                                "MAX(ReservationPersons.Name) AS Name, " +
+        //                                "MAX(ReservationPersons.Surname) AS Surname, " +
+        //                                "MAX(ReservationPersons.IdentityNumber) AS IdentityNumber, " +
+        //                                "MAX(ReservationPersons.Phone) AS Phone, " +
+        //                                "MAX(ReservationPersons.PhoneOpt) AS PhoneOpt, " +
+        //                                "MAX(ReservationPersons.Email) AS Email " +
+        //                            "FROM Reservations " +
+        //                            "LEFT JOIN ReservationPersons " +
+        //                            "ON Reservations.RezPersonID = ReservationPersons.Id " +
+        //                            "GROUP BY ReservationPersons.IdentityNumber";
+        //        command.CommandType = System.Data.CommandType.Text;
+        //        _context.Database.OpenConnection();
+        //        using (var reader = command.ExecuteReader())
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                CustomerViewModel customerViewModel = new CustomerViewModel()
+        //                {
+        //                    PersonId = Convert.ToInt32(reader["PersonId"]),
+        //                    Name = reader["Name"].ToString(),
+        //                    Surname = reader["Surname"].ToString(),
+        //                    IdentityNumber = reader["IdentityNumber"].ToString(),
+        //                    Phone = reader["Phone"].ToString(),
+        //                    PhoneOpt = reader["PhoneOpt"].ToString(),
+        //                    Email = reader["Email"].ToString(),
+        //                };
+        //                values.Add(customerViewModel);
+        //            }
+        //        }
+        //    }
+        //    _context.Database.CloseConnection();
+        //    return values;
+        //}
     }
 }

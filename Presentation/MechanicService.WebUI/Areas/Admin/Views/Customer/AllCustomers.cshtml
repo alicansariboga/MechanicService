@@ -1,4 +1,4 @@
-﻿@model List<ResultReservationPersonDto>
+﻿@model List<ResultCustomersDto>
 
 @{
     ViewData["Title"] = "AllCustomers";
@@ -41,8 +41,9 @@
                             <td>@item.Phone</td>
                             <td>@item.PhoneOpt</td>
                             <td>@item.Email</td>
-                            <td>10 Nisan, 2019</td>
+                            <td>@item.CreateDate.ToShortDateString()</td>
                             <td>04 Mart, 2024</td>
+                            <td>#####</td>
                         </tr>
                     }
                 </tbody>
