@@ -69,6 +69,22 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+        
+        [HttpGet]
+        [Route("CustomersRecords")]
+        public async Task<IActionResult> CustomersRecords()
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            var responseMessage = await client.GetAsync("https://localhost:7215/api/Customers/CustomersReservationsList");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var customers = JsonConvert.DeserializeObject<List<ResultAllCustomerDto>>(jsonData);
+                return View(customers);
+            }
+            return View();
+        }
         [HttpGet]
         [Route("Detail")]
         public async Task<IActionResult> Detail()
