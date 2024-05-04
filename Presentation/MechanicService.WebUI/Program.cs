@@ -23,7 +23,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
 {
     opt.LoginPath = "/Admin/Login/SignIn/";
     opt.LogoutPath = "/Admin/Login/LogOut/";
-    opt.AccessDeniedPath = "/Pages/AccessDenied/";
+    opt.AccessDeniedPath = "/Admin/Pages/Page403/";
     opt.Cookie.SameSite = SameSiteMode.Strict;
     opt.Cookie.HttpOnly = true;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
