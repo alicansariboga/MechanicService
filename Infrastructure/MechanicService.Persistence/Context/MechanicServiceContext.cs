@@ -33,6 +33,9 @@
         public DbSet<LocationDistrict> LocationDistricts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
 
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Araba Model

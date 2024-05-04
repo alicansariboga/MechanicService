@@ -1,7 +1,9 @@
 ﻿using MechanicService.Dto.TeamDtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/Employee")]
     public class EmployeeController : Controller

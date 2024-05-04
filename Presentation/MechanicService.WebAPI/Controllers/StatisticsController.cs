@@ -1,5 +1,10 @@
-﻿namespace MechanicService.WebAPI.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace MechanicService.WebAPI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    // 401 - access authorization error
+
     [Route("api/[controller]")]
     [ApiController]
     public class StatisticsController : ControllerBase

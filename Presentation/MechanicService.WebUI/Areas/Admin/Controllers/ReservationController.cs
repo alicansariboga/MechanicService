@@ -1,5 +1,8 @@
-﻿namespace MechanicService.WebUI.Areas.Admin.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace MechanicService.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/Reservation")]
     public class ReservationController : Controller
