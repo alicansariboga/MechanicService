@@ -81,5 +81,12 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+        [HttpGet]
+        [Route("SignOut")]
+        public async Task<IActionResult> SignOut()
+        {
+            await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
+            return RedirectToAction("SignIn", "Login");
+        }
     }
 }
