@@ -8,23 +8,23 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
     [Route("Admin/Pages")]
     public class PagesController : Controller
     {
-        [Route("Page404")]
-        public IActionResult Page404() // Page Not Found
+        [Route("Error404")]
+        public IActionResult Error404() // Page Not Found
         {
             return View();
         }
-        [Route("Page403")]
-        public IActionResult Page403() // Forbidden
+        [Route("Error403")]
+        public IActionResult Error403() // Forbidden
         {
             return View();
         }
-        [Route("Page401")]
-        public IActionResult Page401() // Unauthorized // Access Denied
+        [Route("Error401")]
+        public IActionResult Error401() // Unauthorized // Access Denied
         {
             return View();
         }
-        [Route("Page500")]
-        public IActionResult Page500() // Internal Server Error
+        [Route("Error500")]
+        public IActionResult Error500() // Internal Server Error
         {
             return View();
         }

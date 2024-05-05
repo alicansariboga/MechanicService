@@ -23,7 +23,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
 {
     opt.LoginPath = "/Admin/Login/SignIn/";
     opt.LogoutPath = "/Admin/Login/SignOut/";
-    opt.AccessDeniedPath = "/Admin/Pages/Page403/";
+    opt.AccessDeniedPath = "/Admin/Pages/Error403/";
     opt.Cookie.SameSite = SameSiteMode.Strict;
     opt.Cookie.HttpOnly = true;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
@@ -54,6 +54,9 @@ else
 
 // CORS
 app.UseCors("AllowSpecificOrigin");
+
+//404 error sayfasýna yönlendirme
+app.UseStatusCodePagesWithReExecute("/Admin/Pages/Error404", "?code={0}");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
