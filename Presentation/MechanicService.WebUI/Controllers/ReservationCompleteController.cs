@@ -99,7 +99,7 @@ namespace MechanicService.WebUI.Controllers
 
             MimeMessage mimeMessage = new MimeMessage();
 
-            MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "mechanicserviceproject@gmail.com");
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("Mekanik Servisi - Admin", "mechanicserviceproject@gmail.com");
             mimeMessage.From.Add(mailboxAddressFrom);
 
             MailboxAddress mailboxAddressTo = new MailboxAddress(mailRequest.personData.Name, mailRequest.personData.Email);

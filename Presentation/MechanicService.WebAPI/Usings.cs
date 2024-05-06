@@ -82,4 +82,7 @@ global using MechanicService.Application.Features.Mediator.Queries.ContactQuerie
 
 global using MechanicService.Application.Features.Mediator.Queries.CustomerQueries;
 
+global using MechanicService.Application.Features.Mediator.Queries.AppUserQueries;
+global using MechanicService.Application.Features.Mediator.Commands.AppUserCommands;
+
 

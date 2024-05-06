@@ -1,5 +1,7 @@
+using MechanicService.Application.Interfaces.AppUserInterfaces;
 using MechanicService.Application.Interfaces.CustomerInterfaces;
 using MechanicService.Application.Tools;
+using MechanicService.Persistence.Repositories.AppUserRepositories;
 using MechanicService.Persistence.Repositories.CustomerRepositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -58,6 +60,7 @@ builder.Services.AddScoped(typeof(ICarModelRepository), typeof(CarModelRepositor
 builder.Services.AddScoped(typeof(IReservationRepository), typeof(ReservationRepository));
 builder.Services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
 builder.Services.AddScoped(typeof(ICustomerRepository), typeof(CustomerRepository));
+builder.Services.AddScoped(typeof(IAppUserRepository), typeof(AppUserRepository));
 #endregion
 
 // ServiceRegistration
