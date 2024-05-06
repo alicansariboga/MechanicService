@@ -46,5 +46,11 @@
             var values = await _mediator.Send(new GetReservationServiceIdQuery());
             return Ok(values);
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateReservatón(UpdateReservationCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("Rezervasyon bilgisi basarili bir sekilde guncellendi.");
+        }
     }
 }

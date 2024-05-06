@@ -7,5 +7,6 @@
         public ResultReservationServiceDto ReservationService { get; set; }
         public List<ResultReservationDto> Reservations { get; set; }
         public List<ResultReservationAllDto> ReservationCombined { get; set; }
+        public UpdateReservationDto UpdateReservationDto { get; set; }
     }
 }

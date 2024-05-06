@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MechanicService.Dto.AppUserDtos;
+using MechanicService.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
 {
@@ -85,6 +87,39 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 }
             }
             return View(reservationAllViewModel);
+        }
+        [HttpPost]
+        [Route("AllReservations")]
+        public async Task<IActionResult> AllReservations(int Id)
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            var results = new ResultReservationDto();
+            var responseMessage = await client.GetAsync($"https://localhost:7215/api/Reservations/{Id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData2 = await responseMessage.Content.ReadAsStringAsync();
+                results = JsonConvert.DeserializeObject<ResultReservationDto>(jsonData2);
+            }
+
+            UpdateReservationDto updateReservationDto = new UpdateReservationDto
+            {
+                Id = Id,
+                RezPersonID = results.RezPersonID,
+                RezCarID = results.RezCarID,
+                RezServiceID = results.RezServiceID,
+                CreateDate = results.CreateDate,
+                IsApproved = true,
+                IsCanceled = results.IsCanceled,
+            };
+            var jsonData = JsonConvert.SerializeObject(updateReservationDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage2 = await client.PutAsync("https://localhost:7215/api/Reservations/", stringContent);
+            if (responseMessage2.IsSuccessStatusCode)
+            {
+                return RedirectToAction("AllReservations", "Reservation");
+            }
+            return View();
         }
         [HttpGet]
         [Route("CompletedReservations")]
