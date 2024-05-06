@@ -96,7 +96,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 Expires = DateTime.UtcNow.AddDays(-1), // reset cookie
                 Secure = true,
                 HttpOnly = true,
-                SameSite = SameSiteMode.None
+                SameSite = SameSiteMode.Strict
             });
             await Task.Delay(500);
             return RedirectToAction("SignIn", "Login");
