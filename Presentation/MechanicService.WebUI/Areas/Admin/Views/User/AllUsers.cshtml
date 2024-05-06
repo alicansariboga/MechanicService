@@ -1,0 +1,68 @@
+﻿@model AppUserViewModel
+@{
+    ViewData["Title"] = "AllUsers";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kullanıcılar Listesi</h4>
+            <p class="card-description">
+                Sisteme erişimi olan kullanıcıları görebilir ve yetkilerini aşağıdaki tablo üzerinden kolay bir şekilde güncelleyebilirsiniz.
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Kullanıcı Adı</th>
+                        <th> İsim Soyisim </th>
+                        <th> Email </th>
+                        <th> Aktif Yetki </th>
+                        <th> Yetki Değiştir </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ResultAppUsers)
+                    {
+                        count++;
+                        <tr>
+                            <td> @count </td>
+                            <td> @item.UserName </td>
+                            <td> @item.Name @item.Surname </td>
+                            <td> @item.Email </td>
+                            @if (item.AppRoleID == 1)
+                            {
+                                <td><label class="badge badge-danger"> @item.AppRoleName </label></td>
+                            }
+                            else if (item.AppRoleID == 2)
+                            {
+                                <td><label class="badge badge-warning"> @item.AppRoleName </label></td>
+                            }
+                            else if (item.AppRoleID == 3)
+                            {
+                                <td><label class="badge badge-success"> @item.AppRoleName </label></td>
+                            })
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" asp-for="UpdateAppUser.Email" name="AppUserID" value="@item.AppUserID" />
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <select class="form-select" aria-label="Default select example" asp-for="UpdateAppUser.AppRoleID" name="AppRoleID">
+                                            <option selected>Yetki Seçiniz</option>
+                                            <option value="1">Admin</option>
+                                            <option value="2">Manager</option>
+                                            <option value="3">Member</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary ml-3">Güncelle</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

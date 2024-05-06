@@ -13,3 +13,6 @@ REVISIONS
 
 - Entity and API operations were not performed for Contact. These will also be added.
 
+- Reservation inquiry screen for users.
+
+

@@ -10,6 +10,13 @@ namespace MechanicService.Persistence.Repositories.AppUserRepositories
         {
             _context = context;
         }
+
+        public List<AppUser> GetAppUserAll()
+        {
+            var values = _context.AppUsers.Include(x => x.AppRole).ToList();
+            return values;
+        }
+
         public AppUser GetAppUserByEmail(string mail)
         {
             // SELECT * FROM AppUsers WHERE AppUsers.Email='mail address'

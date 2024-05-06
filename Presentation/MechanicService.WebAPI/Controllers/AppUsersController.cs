@@ -10,6 +10,12 @@
         {
             _mediator = mediator;
         }
+        [HttpGet]
+        public async Task<IActionResult> AppUserList()
+        {
+            var values = await _mediator.Send(new GetAppUserQuery());
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAppUser(int id)
         {
