@@ -86,6 +86,19 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> SignOut()
         {
             await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
+            Response.Cookies.Delete(".AspNetCore.Antiforgery");
+            Response.Cookies.Delete(".AspNetCore.Antiforgery.jmjew95sMts");
+            Response.Cookies.Delete("1P_JAR");
+            Response.Cookies.Delete("MechanicServiceJwt", new CookieOptions
+            {
+                Domain = "localhost",
+                Path = "/Admin",
+                Expires = DateTime.UtcNow.AddDays(-1), // reset cookie
+                Secure = true,
+                HttpOnly = true,
+                SameSite = SameSiteMode.None
+            });
+            await Task.Delay(500);
             return RedirectToAction("SignIn", "Login");
         }
     }
