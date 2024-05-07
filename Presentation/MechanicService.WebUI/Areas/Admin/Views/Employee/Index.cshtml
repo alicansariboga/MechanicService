@@ -1,8 +1,58 @@
-﻿
+﻿@model List<ResultTeamDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
-<h1>Index</h1>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Striped Table</h4>
+            <p class="card-description">
+                Add class <code>.table-striped</code>
+            </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Kullanıcı </th>
+                        <th> İsim Soyisim </th>
+                        <th> Görevi </th>
+                        <th> Cinsiyeti </th>
+                        <th> Açıklama </th>
+                        <th> İşe Başlama Tarihi </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        var description = string.Join(" ", item.Description.Split(' ').Take(15));
+                        var descShort = description + (item.Description.Split(' ').Length > 15 ? "..." : "");
 
+                        <tr>
+                            <td class="py-1">
+                                <img src="@item.ImageUrl" alt="image" />
+                            </td>
+                            <td>
+                                <a href="/admin/Employee/UpdateEmployee/@item.Id"> @item.Name @item.Surname </a>
+                            </td>
+                            <td> @item.Title </td>
+                            @if(item.Gender == true)
+                            {
+                                <td> Erkek </td>
+                            }
+                            else
+                            {
+                                <td> Kadın </td>
+                            }
+                            <td>
+                                <a href="/admin/Employee/UpdateEmployee/@item.Id"> @descShort </a>
+                            </td>
+                            <td> @item.WorkStartDate </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

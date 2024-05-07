@@ -1,18 +1,18 @@
-﻿@model CreateTeamDto
+﻿@model UpdateTeamDto
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "UpdateEmployee";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Çalışan Ekle </h3>
+            <h3 class="page-title"> Çalışan Güncelle </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Çalışan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ekle</li>
+                    <li class="breadcrumb-item active" aria-current="page">Güncelle</li>
                 </ol>
             </nav>
         </div>
@@ -20,9 +20,10 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Çalışan Ekleme Formu</h4>
-                        <p class="card-description"> Çalışan Ekle </p>
+                        <h4 class="card-title">Çalışan Güncelleme Formu</h4>
+                        <p class="card-description"> Çalışan Güncelle </p>
                         <form class="forms-sample" method="post">
+                            <input type="hidden" asp-for="Id" />
                             <div class="form-group">
                                 <label name="Name">İsim</label>
                                 <input type="text" class="form-control" asp-for="Name" placeholder="İsim">
@@ -55,10 +56,9 @@
                             </div>
                             <div class="form-group">
                                 <label name="Title">Açıklama</label>
-                                <textarea rows="6" type="text" class="form-control" asp-for="Description" placeholder="Açıklama"></textarea>
+                                <textarea rows="8" type="text" class="form-control" asp-for="Description" placeholder="Açıklama"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
-                            <button class="btn btn-light">İptal</button>
+                            <button type="submit" class="btn btn-primary mr-2">Çalışan Bilgisini Güncelle</button>
                         </form>
                     </div>
                 </div>
@@ -66,5 +66,3 @@
         </div>
     </div>
 </div>
-
-
