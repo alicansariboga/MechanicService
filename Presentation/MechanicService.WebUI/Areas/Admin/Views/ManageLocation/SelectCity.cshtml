@@ -5,6 +5,7 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
+
 <div class="page-header">
     <h3 class="page-title"> TÜM LOKASYONLAR </h3>
     <nav aria-label="breadcrumb">
@@ -13,6 +14,17 @@
             <li class="breadcrumb-item active" aria-current="page">Hepsi</li>
         </ol>
     </nav>
+</div>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Şube Sayısı</h3>
+            <p class="card-description">
+                Sistemde aktif olarak görünen <code> @ViewBag.DistrictCount </code> adet şube vardır.
+            </p>
+        </div>
+    </div>
 </div>
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
@@ -25,7 +37,7 @@
                 @foreach (var item in Model.CityDatas)
                 {
                     <div class="col-sm-2 col-lg-1 mt-1 me-1">
-                        <a href="/Admin/ManageLocation/Branch/@item.Id" class="btn btn-primary">@item.Name</a>
+                        <a href="/Admin/ManageLocation/Branch/@item.Id" class="btn btn-primary">@item.Name (@item.ActiveDistrictCount)</a>
                     </div>
                 }
             </div>

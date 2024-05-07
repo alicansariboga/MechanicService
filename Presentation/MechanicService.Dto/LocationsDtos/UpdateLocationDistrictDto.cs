@@ -1,9 +1,10 @@
 ﻿namespace MechanicService.Dto.LocationsDtos
 {
-    public class ResultLocationCityDto
+    public class UpdateLocationDistrictDto
     {
         public int Id { get; set; }
+        public int CityID { get; set; }
         public string Name { get; set; }
-        public int ActiveDistrictCount { get; set; }
+        public bool IsActive { get; set; } = false;
     }
 }

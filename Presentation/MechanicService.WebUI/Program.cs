@@ -1,4 +1,7 @@
 // CORS Configuration
+using MechanicService.Application.Interfaces.LocationsInterfaces;
+using MechanicService.Persistence.Context;
+using MechanicService.Persistence.Repositories.LocationsRepositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +32,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     opt.Cookie.Name = "MechanicServiceJwt";
 });
+
+
+// Registrations For Repository
+// The API dependency has been exited. Architecture was crushed.
+builder.Services.AddScoped<MechanicServiceContext>();
+builder.Services.AddScoped(typeof(ILocationsRepository), typeof(LocationsRepository));
 
 var app = builder.Build();
 var env = app.Environment;

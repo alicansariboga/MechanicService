@@ -4,5 +4,6 @@
     {
         public List<ResultLocationCityDto> CityDatas { get; set; }
         public List<ResultLocationDistrictDto> DistrictDatas { get; set; }
+        public int ActiveDistrictCount { get; set; }
     }
 }
