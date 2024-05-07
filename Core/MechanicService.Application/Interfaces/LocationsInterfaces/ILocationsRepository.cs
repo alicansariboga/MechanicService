@@ -2,6 +2,7 @@
 {
     public interface ILocationsRepository
     {
-        List<LocationDistrict> GetLocationDistrictsByCityId(int id);
+        List<LocationDistrict> GetLocationDistrictsByCityIdActive(int id);
+        List<LocationDistrict> GetLocationDistrictsByCityIdAll(int id);
     }
 }

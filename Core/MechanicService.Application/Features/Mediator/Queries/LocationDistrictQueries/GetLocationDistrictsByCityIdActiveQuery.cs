@@ -1,8 +1,8 @@
 ﻿namespace MechanicService.Application.Features.Mediator.Queries.LocationDistrictQueries
 {
-    public class GetLocationDistrictsByCityIdQuery : IRequest<List<GetLocationDistrictsByCityIdQueryResult>>
+    public class GetLocationDistrictsByCityIdActiveQuery : IRequest<List<GetLocationDistrictsByCityIdActiveQueryResult>>
     {
-        public GetLocationDistrictsByCityIdQuery(int id)
+        public GetLocationDistrictsByCityIdActiveQuery(int id)
         {
             Id = id;
         }

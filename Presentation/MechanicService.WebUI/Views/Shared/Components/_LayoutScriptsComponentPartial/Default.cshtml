@@ -21,7 +21,7 @@
         var districtSelect = document.getElementById("districtSelect");
         districtSelect.innerHTML = '<option selected>Yükleniyor...</option>';
 
-        fetch("https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityId?id=" + cityId)
+        fetch("https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityIdActive?id=" + cityId)
             .then(response => response.json())
             .then(data => {
                 populateDistricts(data);

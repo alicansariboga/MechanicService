@@ -1,6 +1,6 @@
 ﻿namespace MechanicService.Application.Features.Mediator.Results.LocationDistrictResults
 {
-    public class GetLocationDistrictsByCityIdQueryResult
+    public class GetLocationDistrictsByCityIdAllQueryResult
     {
         public int Id { get; set; }
         public int CityID { get; set; }

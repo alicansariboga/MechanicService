@@ -28,7 +28,7 @@
         {
             var client = _httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync($"https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityId?id={cityId}");
+            var responseMessage = await client.GetAsync($"https://localhost:7215/api/LocationDistricts/GetLocationDistrictsByCityIdActive?id={cityId}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
