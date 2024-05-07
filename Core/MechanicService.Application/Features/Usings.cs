@@ -105,3 +105,7 @@ global using MechanicService.Application.Interfaces.CustomerInterfaces;
 
 global using MechanicService.Application.Features.Mediator.Results.AppUserResults;
 global using MechanicService.Application.Features.Mediator.Queries.AppUserQueries;
+
+global using MechanicService.Application.Features.Mediator.Results.BranchOfficeResults;
+global using MechanicService.Application.Features.Mediator.Queries.BranchOfficeQueries;
+global using MechanicService.Application.Features.Mediator.Commands.BranchOfficeCommands;

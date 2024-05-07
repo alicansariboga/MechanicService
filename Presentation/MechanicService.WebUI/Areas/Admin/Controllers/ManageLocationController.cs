@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MechanicService.Dto.TeamDtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
 {
@@ -52,6 +53,34 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 };
 
                 return View(viewModel);
+            }
+            return View();
+        }
+        [HttpGet]
+        [Route("UpdateBranch/{id}")]
+        public async Task<IActionResult> UpdateBranch(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7215/api/LocationDistricts/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateTeamDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+        [HttpPost]
+        [Route("UpdateBranch/{id}")]
+        public async Task<IActionResult> UpdateBranch(UpdateTeamDto updateTeamDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateTeamDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("https://localhost:7215/api/LocationDistricts/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Employee");
             }
             return View();
         }
