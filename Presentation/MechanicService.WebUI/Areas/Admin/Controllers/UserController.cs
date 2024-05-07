@@ -1,5 +1,4 @@
 ﻿using MechanicService.Dto.AppUserDtos;
-using MechanicService.WebUI.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers

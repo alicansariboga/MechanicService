@@ -46,7 +46,7 @@
             var values = await _mediator.Send(new GetLocationDistrictsByCityIdActiveQuery(id));
             return Ok(values);
         }
-        [HttpGet("GetLocationDistrictsByCityId")]
+        [HttpGet("GetLocationDistrictsByCityIdAll")]
         public async Task<IActionResult> GetLocationDistrictsByCityIdAll(int id)
         {
             var values = await _mediator.Send(new GetLocationDistrictsByCityIdAllQuery(id));
