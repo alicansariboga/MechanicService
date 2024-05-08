@@ -1,0 +1,27 @@
+﻿@model List<ResultLast3BlogsDto>
+
+<div class="blog-details-recent">
+    <h3>Son Yazılarımız</h3>
+    @foreach (var item in Model)
+    {
+        <div class="blog-details-inner mb-4">
+            <a href="/Blog/Detail/@item.Id"><img style="height: 60px; width: 80px;" src="@item.CoverImageUrl" alt="Blog Details"></a>
+            <a href="/Blog/Detail/@item.Id">
+                <i class='bx bxs-user'></i>
+                @item.Title
+            </a>
+            <ul>
+                <li>
+                    <a href="/Blog/Detail/@item.Id">
+                        <i class='bx bxs-user'></i>
+                        Admin
+                    </a>
+                </li>
+                <li>
+                    <i class='bx bxs-calendar'></i>
+                    @item.CreatedDate.ToString("dd MMMM , yyyy");
+                </li>
+            </ul>
+        </div>
+    }
+</div>

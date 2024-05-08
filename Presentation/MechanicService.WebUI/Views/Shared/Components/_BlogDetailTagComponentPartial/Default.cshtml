@@ -1,0 +1,13 @@
+﻿@model List<ResultTagDto>
+
+<div class="blog-details-tag">
+    <h3>Etiketler</h3>
+    <ul>
+        @foreach(var item in Model)
+        {
+            <li>
+                <a href="#">@item.Title</a>
+            </li>
+        }
+    </ul>
+</div>

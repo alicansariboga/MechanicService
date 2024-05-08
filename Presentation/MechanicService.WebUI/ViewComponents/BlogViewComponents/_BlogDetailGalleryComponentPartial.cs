@@ -1,6 +1,6 @@
 ﻿namespace MechanicService.WebUI.ViewComponents.BlogViewComponents
 {
-    public class _BlogDefaultComponentPartial : ViewComponent
+    public class _BlogDetailGalleryComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -1,0 +1,58 @@
+﻿@model ResultBlogDetailDto
+
+<div class="blog-details-img">
+    <img src="@Model.CoverImageUrl" alt="Blog Details">
+    <div class="date">
+        <p>@(((DateTime)Model.CreatedDate).ToString("dd"))</p>
+        <span>@(((DateTime)Model.CreatedDate).ToString("MMM"))</span>
+    </div>
+    <ul>
+        <li>
+            <a href="#">
+                <i class='bx bx-user'></i>
+                Admin
+            </a>
+        </li>
+        <li>
+            <i class='bx bx-time-five'></i>
+            @Model.BlogTime Dakika
+        </li>
+        <li>
+            <i class='bx bx-badge'></i>
+            @Model.CategoryID
+        </li>
+    </ul>
+</div>
+<div class="blog-details-head">
+    <h2>@Model.Title</h2>
+    <p>@Model.Description</p>
+    <div class="row">
+        <div class="col-sm-6 col-lg-6">
+            <img src="@Model.CoverImageUrl" alt="Blog Details">
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <img src="@Model.CoverImageUrl" alt="Blog Details">
+        </div>
+    </div>
+    <p>@Model.Description</p>
+</div>
+<div class="blog-details-nav">
+    <ul>
+        @{
+            int prevId = Model.Id - 1;
+            int nextId = Model.Id + 1;
+        }
+        <li>
+            @if(prevId > 0)
+            {
+                <a href="/Blog/Detail/@prevId">Önceki</a>
+            }
+        </li>
+        <li>
+            @if (nextId <= ViewBag.blogCount)
+            {
+                <a href="/Blog/Detail/@nextId">Sonraki</a>
+            }
+        </li>
+    </ul>
+</div>

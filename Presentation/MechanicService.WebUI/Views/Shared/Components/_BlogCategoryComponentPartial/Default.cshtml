@@ -1,0 +1,16 @@
+﻿@model List<ResultCategoryDto>
+
+<div class="blog-details-category">
+    <h3>Kategoriler</h3>
+    <ul>
+        @foreach(var item in Model)
+        {
+            <li>
+                <a href="#">
+                    <i class='bx bx-right-arrow-alt'></i>
+                    @item.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>

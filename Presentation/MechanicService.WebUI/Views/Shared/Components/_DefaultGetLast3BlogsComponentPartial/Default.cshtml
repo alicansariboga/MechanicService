@@ -1,0 +1,49 @@
+﻿@model List<ResultLast3BlogsDto>
+
+<section class="blog-area pt-100">
+    <div class="container">
+        <div class="section-title">
+            <span class="sub-title">Blog</span>
+            <h2>Son Yazılarımız</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-lg-4">
+                    <div class="blog-item">
+                        <div class="blog-top">
+                            <div class="blog-date">
+                                <p>@(((DateTime)item.CreatedDate).ToString("dd"))</p>
+                                <span>@(((DateTime)item.CreatedDate).ToString("MMM"))</span>
+                            </div>
+                            <a href="/Blog/Detail/@item.Id">
+                                <img src="@item.CoverImageUrl" alt="Blog" />
+                            </a>
+                        </div>
+                        <div class="blog-bottom">
+                            <h3>
+                                <a href="/Blog/Detail/@item.Id">@item.Title</a>
+                            </h3>
+                            <ul>
+                                <li>
+                                    <img src="/img/home-one/blog/1.png" alt="Blog">
+                                    <a href="#">Admin</a>
+                                </li>
+                                <li>
+                                    <a href="/Blog/Detail/@item.Id">
+                                        Daha Fazlası
+                                        <i class='bx bx-chevron-right'></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="parts-view">
+                <a href="/Blog/Index/">Hepsini Gör</a>
+            </div>
+        </div>
+    </div>
+</section>

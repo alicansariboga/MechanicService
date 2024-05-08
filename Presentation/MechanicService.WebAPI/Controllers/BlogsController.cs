@@ -40,5 +40,17 @@
             await _mediator.Send(command);
             return Ok("Blog bilgisi basarili bir sekilde guncellendi.");
         }
+        [HttpGet("GetLast3BlogsList")]
+        public async Task<IActionResult> GetLast3BlogsList()
+        {
+            var values = await _mediator.Send(new GetLast3BlogsQuery());
+            return Ok(values);
+        }
+        [HttpGet("GetBlogWithCategoryName")]
+        public async Task<IActionResult> GetBlogWithCategoryName(int id)
+        {
+            var values = await _mediator.Send(new GetBlogWithCategoryNameQuery(id));
+            return Ok(values);
+        }
     }
 }

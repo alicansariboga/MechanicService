@@ -1,6 +1,4 @@
-﻿using MechanicService.Dto.BlogDtos;
-
-namespace MechanicService.WebUI.Controllers
+﻿namespace MechanicService.WebUI.Controllers
 {
     public class BlogController : Controller
     {
@@ -28,14 +26,8 @@ namespace MechanicService.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7215/api/Blogs/" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ResultBlogDetailDto>(jsonData);
-                return View(values);
-            }
+            ViewBag.blogid = id;
+
             return View();
         }
     }

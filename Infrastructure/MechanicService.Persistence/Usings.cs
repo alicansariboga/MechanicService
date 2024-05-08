@@ -1,7 +1,6 @@
 ﻿global using System;
 global using System.Collections.Generic;
 global using System.Linq;
-global using System.Text;
 global using System.Threading.Tasks;
 global using Microsoft.EntityFrameworkCore;
 global using MechanicService.Domain.Entities;
@@ -16,4 +15,5 @@ global using MechanicService.Application.Interfaces.LocationsInterfaces;
 global using MechanicService.Application.Interfaces.CarModelnterfaces;
 global using MechanicService.Application.Interfaces.StatisticsInterfaces;
 global using MechanicService.Application.Interfaces.CustomerInterfaces;
+global using MechanicService.Application.Interfaces.BlogInterfaces;
 global using MechanicService.Application.ViewModel;

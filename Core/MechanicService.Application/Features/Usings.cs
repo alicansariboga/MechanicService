@@ -90,6 +90,8 @@ global using MechanicService.Application.Features.Mediator.Commands.ReservationC
 
 global using MechanicService.Application.Interfaces.ReservationInterfaces;
 
+global using MechanicService.Application.Interfaces.BlogInterfaces;
+
 // Statistics
 global using MechanicService.Application.Features.Mediator.Results.StatisticsResults;
 global using MechanicService.Application.Features.Mediator.Queries.StatisticsQueries;

@@ -2,6 +2,7 @@
 using MechanicService.Application.Interfaces.LocationsInterfaces;
 using MechanicService.Persistence.Context;
 using MechanicService.Persistence.Repositories.LocationsRepositories;
+using MechanicService.Persistence.Repositories.TagRepositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
 // The API dependency has been exited. Architecture was crushed.
 builder.Services.AddScoped<MechanicServiceContext>();
 builder.Services.AddScoped(typeof(ILocationsRepository), typeof(LocationsRepository));
+builder.Services.AddScoped(typeof(ITagRepository), typeof(TagRepository));
 
 var app = builder.Build();
 var env = app.Environment;

@@ -13,6 +13,10 @@ global using MechanicService.Dto.CarBrandDtos;
 global using MechanicService.Dto.CarModelDtos;
 global using MechanicService.Dto.StatisticsDtos;
 global using MechanicService.Dto.ContactDtos;
+global using MechanicService.Dto.CategoryDtos;
+global using MechanicService.Dto.BlogDtos;
+
+global using MechanicService.Application.Interfaces.TagInterfaces;
 
 global using MechanicService.WebUI.Models;
 global using Newtonsoft.Json;

@@ -1,6 +1,6 @@
 ﻿namespace MechanicService.Dto.BlogDtos
 {
-    public class ResultBlogDto
+    public class ResultLast3BlogsDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

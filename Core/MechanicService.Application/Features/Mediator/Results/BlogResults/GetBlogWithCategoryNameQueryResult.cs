@@ -1,6 +1,6 @@
-﻿namespace MechanicService.Dto.BlogDtos
+﻿namespace MechanicService.Application.Features.Mediator.Results.BlogResults
 {
-    public class ResultBlogDto
+    public class GetBlogWithCategoryNameQueryResult
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -9,5 +9,6 @@
         public int CategoryID { get; set; }
         public string Description { get; set; }
         public int BlogTime { get; set; }
+        public string CategoryName { get; set; }
     }
 }

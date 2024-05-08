@@ -1,6 +1,6 @@
-﻿namespace MechanicService.Dto.BlogDtos
+﻿namespace MechanicService.Application.Features.Mediator.Results.BlogResults
 {
-    public class ResultBlogDto
+    public class GetLast3BlogsQueryResult
     {
         public int Id { get; set; }
         public string Title { get; set; }
