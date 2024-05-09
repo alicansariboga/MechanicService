@@ -1,4 +1,5 @@
-﻿
+﻿@model ResultAboutDto
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/Index.cshtml";
@@ -28,11 +29,17 @@
     </div>
     <div class="container-fluid p-0 mb-5">
         <div class="row m-0 align-items-center">
+            <div class="col-12">
+                <div class="section-title">
+                    <span class="sub-title">Biz Kimiz?</span>
+                    <h2>Geçmişten Bugüne</h2>
+                </div>
+            </div>
             <div class="col-lg-6 p-0">
                 <div class="quality-img">
-                    <img src="https://www.arabacekme.com/wp-content/uploads/2021/08/araba-servisi-araba-cekme.jpg" alt="Quality">
+                    <img src="@Model.ImageUrl" alt="Quality">
                     <div class="video-wrap">
-                        <a href="https://www.youtube.com/watch?v=aqz-KE-bpKQ" class="popup-youtube">
+                        <a href="@Model.VideoUrl" class="popup-youtube">
                             <i class='bx bx-play'></i>
                         </a>
                     </div>
@@ -41,9 +48,9 @@
             <div class="col-lg-6 p-0">
                 <div class="quality-content">
                     <div class="section-title">
-                        <h2>Kalite İlk Önceliğimiz </h2>
+                        <h2> @Model.Title </h2>
                         <p>
-                            Proin placerat dolor quis lacus ullamcorper pellentesque. Aenean aliquet ante a tellus maximus, ut lacinia velit condimentum. Nunc orci tortor, malesuada ut urna quis, sodales interdum eros. Nam nisl ante, cursus eu diam vitae, commodo dictum libero. Vivamus sit amet fringilla elit. Proin in metus vel lectus fringilla consectetur nec in felis. Etiam lobortis neque vel erat maximus, a blandit felis auctor. Vivamus eu enim non massa ullamcorper commodo sit amet at tortor. Ut pellentesque, est vel rhoncus rutrum, ipsum dolor scelerisque dolor, ac posuere massa eros sollicitudin felis. Maecenas iaculis enim et est tristique rutrum. Phasellus vulputate sapien ut sem commodo, sit amet posuere mi vulputate. Phasellus eget sagittis purus, suscipit suscipit eros.
+                            @Model.Description
                         </p>
                     </div>
                 </div>
@@ -59,7 +66,6 @@
             <h2>Neler Yapıyoruz?</h2>
             <p>Ut sodales, nisi quis maximus venenatis, dolor eros fermentum ligula, at convallis nulla nibh non augue. Phasellus vehicula mi condimentum, elementum est vitae, dignissim lacus. Etiam velit risus, molestie id tellus hendrerit, ornare tristique turpis. Donec elit quam, ullamcorper nec pretium sed, consectetur non sem. Maecenas at rhoncus turpis. Donec scelerisque risus ut dolor tempus tincidunt. Vestibulum condimentum sit amet velit ut malesuada. Quisque velit urna, feugiat quis leo vel, commodo condimentum diam. Duis placerat, neque id euismod pulvinar, quam ante placerat nulla, at mollis purus est quis libero. Integer rhoncus risus sit amet ullamcorper posuere.</p>
         </div>
-
     </div>
 
     <div class="col-sm-6">
@@ -78,6 +84,3 @@
 @await Component.InvokeAsync("_ServiceAllServicesComponentPartial")
 
 @await Component.InvokeAsync("_DefaultTeamComponentPartial")
-
-
-
