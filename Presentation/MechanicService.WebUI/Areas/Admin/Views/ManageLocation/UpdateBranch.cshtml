@@ -1,0 +1,61 @@
+﻿@model UpdateBranchOfficeDto
+
+@{
+    ViewData["Title"] = "UpdateBranch";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Çalışan Güncelle </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Çalışan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Güncelle</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Şube Güncelleme Formu</h4>
+                        <p class="card-description"> Şube Güncelle </p>
+                        <form class="forms-sample" method="post">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="DistrictId" />
+                            <div class="form-group">
+                                <label name="Name">Şube Adı</label>
+                                <input type="text" class="form-control" asp-for="Name" placeholder="Şube Adı">
+                            </div>
+                            <div class="form-group">
+                                <label name="Title">Adres</label>
+                                <textarea rows="8" type="text" class="form-control" asp-for="Address" placeholder="Adres"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label name="Title">Telefon</label>
+                                <input type="text" class="form-control" asp-for="Phone" placeholder="Telefon">
+                            </div>
+                            <div class="form-group">
+                                <label name="ImageUrl">Email</label>
+                                <input type="email" class="form-control" asp-for="Email" placeholder="Resim Yolu(Link)">
+                            </div>
+                            <div class="form-group">
+                                <label name="Surname">Resim Yolu(Link)</label>
+                                <input type="url" class="form-control" asp-for="ImgUrl" placeholder="Resim Yolu(Link)">
+                            </div>
+                            <div class="form-group">
+                                <label name="WorkStartDate">Konum Yolu(Link)</label>
+                                <input type="text" class="form-control" asp-for="LocationUrl" placeholder="Konum Yolu(Link)">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mr-2">Şube Bilgisini Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

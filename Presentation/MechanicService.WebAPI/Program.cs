@@ -1,10 +1,12 @@
 using MechanicService.Application.Interfaces.AppUserInterfaces;
 using MechanicService.Application.Interfaces.BlogInterfaces;
+using MechanicService.Application.Interfaces.BranchOfficeInterfaces;
 using MechanicService.Application.Interfaces.CustomerInterfaces;
 using MechanicService.Application.Interfaces.TagInterfaces;
 using MechanicService.Application.Tools;
 using MechanicService.Persistence.Repositories.AppUserRepositories;
 using MechanicService.Persistence.Repositories.BlogRepositories;
+using MechanicService.Persistence.Repositories.BranchOfficeRepositories;
 using MechanicService.Persistence.Repositories.CustomerRepositories;
 using MechanicService.Persistence.Repositories.TagRepositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -67,6 +69,7 @@ builder.Services.AddScoped(typeof(ICustomerRepository), typeof(CustomerRepositor
 builder.Services.AddScoped(typeof(IAppUserRepository), typeof(AppUserRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ITagRepository), typeof(TagRepository));
+builder.Services.AddScoped(typeof(IBranchOfficeRepository), typeof(BranchOfficeRepository));
 #endregion
 
 // ServiceRegistration

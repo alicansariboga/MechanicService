@@ -1,6 +1,8 @@
 // CORS Configuration
+using MechanicService.Application.Interfaces.BranchOfficeInterfaces;
 using MechanicService.Application.Interfaces.LocationsInterfaces;
 using MechanicService.Persistence.Context;
+using MechanicService.Persistence.Repositories.BranchOfficeRepositories;
 using MechanicService.Persistence.Repositories.LocationsRepositories;
 using MechanicService.Persistence.Repositories.TagRepositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -40,6 +42,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
 builder.Services.AddScoped<MechanicServiceContext>();
 builder.Services.AddScoped(typeof(ILocationsRepository), typeof(LocationsRepository));
 builder.Services.AddScoped(typeof(ITagRepository), typeof(TagRepository));
+builder.Services.AddScoped(typeof(IBranchOfficeRepository), typeof(BranchOfficeRepository));
 
 var app = builder.Build();
 var env = app.Environment;

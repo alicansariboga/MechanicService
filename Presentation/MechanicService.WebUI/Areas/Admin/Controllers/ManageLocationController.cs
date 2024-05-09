@@ -1,4 +1,6 @@
-﻿using MechanicService.Application.Interfaces.LocationsInterfaces;
+﻿using MechanicService.Application.Interfaces.BranchOfficeInterfaces;
+using MechanicService.Application.Interfaces.LocationsInterfaces;
+using MechanicService.Dto.BranchOfficeDtos;
 using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
@@ -11,11 +13,13 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILocationsRepository _locationsRepository;
+        private readonly IBranchOfficeRepository _branchOfficeRepository;
 
-        public ManageLocationController(IHttpClientFactory httpClientFactory, ILocationsRepository locationsRepository)
+        public ManageLocationController(IHttpClientFactory httpClientFactory, ILocationsRepository locationsRepository, IBranchOfficeRepository branchOfficeRepository)
         {
             _httpClientFactory = httpClientFactory;
             _locationsRepository = locationsRepository;
+            _branchOfficeRepository = branchOfficeRepository;
         }
 
         [HttpGet]
@@ -48,6 +52,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
         [HttpGet]
         [Route("Branch/{id}")]
         public async Task<IActionResult> Branch(int id)
@@ -69,31 +74,59 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        [Route("GetBranchs/{id}")]
+        public async Task<IActionResult> GetBranchs(int id)
+        {
+            var branchOffice = new List<ResultBranchOfficeDto>();
+            var results = _branchOfficeRepository.GetBranchOfficeByDistrictId(id);
+            foreach (var item in results)
+            {
+                var branch = new ResultBranchOfficeDto
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Address = item.Address,
+                    Phone = item.Phone,
+                    Email = item.Email,
+                    DistrictId = item.DistrictId,
+                    ImgUrl = item.ImgUrl,
+                    LocationUrl = item.LocationUrl,
+                };
+                branchOffice.Add(branch);
+                return View(branchOffice);
+            }
+
+            return View();
+        }
+
         [HttpGet]
         [Route("UpdateBranch/{id}")]
         public async Task<IActionResult> UpdateBranch(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7215/api/LocationDistricts/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:7215/api/BranchOffices/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateLocationDistrictDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateBranchOfficeDto>(jsonData);
                 return View(values);
             }
             return View();
         }
+
         [HttpPost]
         [Route("UpdateBranch/{id}")]
-        public async Task<IActionResult> UpdateBranch(UpdateLocationDistrictDto updateLocationDistrict)
+        public async Task<IActionResult> UpdateBranch(UpdateBranchOfficeDto updateBranchOfficeDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateLocationDistrict);
+            var jsonData = JsonConvert.SerializeObject(updateBranchOfficeDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7215/api/LocationDistricts/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:7215/api/BranchOffices/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Employee");
+                return RedirectToAction("SelectCity", "ManageLocation");
             }
             return View();
         }

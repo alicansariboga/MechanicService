@@ -1,0 +1,55 @@
+﻿@model List<ResultBranchOfficeDto>
+
+@{
+    ViewData["Title"] = "GetBranchs";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Şube Bilgileri</h4>
+            <p class="card-description">
+                İlgili konumda bulunan şubelere aşağıdaki listeden görüntüleyebilir ve güncelleme işlemini yapabilirsiniz.
+            </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Görünüm </th>
+                        <th> Şube Adı </th>
+                        <th> Telefon </th>
+                        <th> Email </th>
+                        <th> Adres </th>
+                        <th> İşlemler </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var address = string.Join(" ", item.Address.Split(' ').Take(15));
+                        var addressShort = address + (item.Address.Split(' ').Length > 15 ? "..." : "");
+
+                        count++;
+                        <tr>
+                            <td> @count </td>
+                            <td class="py-1">
+                                <img src="@item.ImgUrl" alt="image" />
+                            </td>
+                            <td>
+                            </td>
+                            <td> @item.Name </td>
+                            <td> @item.Phone </td>
+                            <td> @item.Email </td>
+                            <td> @addressShort </td>
+                            <td>
+                                <a href="/admin/ManageLocation/UpdateBranch/@item.Id" class="btn btn-primary btn-sm">Güncelle</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
