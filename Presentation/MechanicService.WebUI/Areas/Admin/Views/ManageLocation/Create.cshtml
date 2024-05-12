@@ -1,7 +1,7 @@
-﻿@model UpdateBranchOfficeDto
+﻿@model CreateBranchOfficeDto
 
 @{
-    ViewData["Title"] = "UpdateBranch";
+    ViewData["Title"] = "Create";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
@@ -21,11 +21,10 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Şube Güncelleme Formu</h4>
-                        <p class="card-description"> Şube Güncelle </p>
+                        <h4 class="card-title">Şube Ekleme Formu</h4>
+                        <p class="card-description"> Şube Ekle </p>
                         <form class="forms-sample" method="post">
-                            <input type="hidden" asp-for="Id" />
-                            <input type="hidden" asp-for="DistrictId" />
+                            <input type="hidden" asp-for="DistrictId" value="@ViewBag.DistrictId" />
                             <div class="form-group">
                                 <label name="Name">Şube Adı</label>
                                 <input type="text" class="form-control" asp-for="Name" placeholder="Şube Adı">
@@ -50,8 +49,8 @@
                                 <label name="WorkStartDate">Konum Yolu(Link)</label>
                                 <input type="text" class="form-control" asp-for="LocationUrl" placeholder="Konum Yolu(Link)">
                             </div>
-                            
-                            <button type="submit" class="btn btn-primary mr-2">Şube Bilgisini Güncelle</button>
+
+                            <button type="submit" class="btn btn-primary mr-2">Şube Ekle</button>
                         </form>
                     </div>
                 </div>
@@ -59,4 +58,3 @@
         </div>
     </div>
 </div>
-

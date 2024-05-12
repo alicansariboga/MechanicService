@@ -1,6 +1,7 @@
 ﻿using MechanicService.Application.Interfaces.BranchOfficeInterfaces;
 using MechanicService.Application.Interfaces.LocationsInterfaces;
 using MechanicService.Dto.BranchOfficeDtos;
+using MechanicService.Dto.TeamDtos;
 using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
@@ -81,6 +82,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
         {
             var branchOffice = new List<ResultBranchOfficeDto>();
             var results = _branchOfficeRepository.GetBranchOfficeByDistrictId(id);
+            ViewBag.DistrictId = id;
             foreach (var item in results)
             {
                 var branch = new ResultBranchOfficeDto
@@ -98,6 +100,59 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 return View(branchOffice);
             }
 
+            return View();
+        }
+
+        [HttpGet]
+        [Route("Create/{id}")]
+        public IActionResult Create(int id)
+        {
+            ViewBag.DistrictId = id;
+            return View();
+        }
+        [HttpPost]
+        [Route("Create/{id}")]
+        public async Task<IActionResult> Create(CreateBranchOfficeDto branchOfficeDto, UpdateBranchOfficeDto updateBranchOfficeDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            var jsonData = JsonConvert.SerializeObject(branchOfficeDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7215/api/BranchOffices/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                int id = branchOfficeDto.DistrictId;
+
+                var responseMessage3 = await client.GetAsync($"https://localhost:7215/api/LocationDistricts/{id}");
+                if (responseMessage3.IsSuccessStatusCode)
+                {
+                    var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
+                    var value = JsonConvert.DeserializeObject<ResultLocationDistrictDto>(jsonData3);
+
+
+                    UpdateLocationDistrictDto updateLocationDistrictDto = new UpdateLocationDistrictDto
+                    {
+                        Id = value.Id,
+                        CityID = value.CityID,
+                        Name = value.Name,
+                        IsActive = true,
+                    };
+
+                    var jsonData4 = JsonConvert.SerializeObject(updateLocationDistrictDto);
+                    StringContent stringContent4 = new StringContent(jsonData4, Encoding.UTF8, "application/json");
+                    var responseMessage4 = await client.PutAsync("https://localhost:7215/api/LocationDistricts/", stringContent4);
+                    if (responseMessage4.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("SelectCity", "ManageLocation");
+                    }
+                }
+
+                var jsonData2 = JsonConvert.SerializeObject(updateBranchOfficeDto);
+                StringContent stringContent2 = new StringContent(jsonData2, Encoding.UTF8, "application/json");
+                var responseMessage2 = await client.PutAsync("https://localhost:7215/api/BranchOffices/", stringContent2);
+
+                return RedirectToAction("SelectCity", "ManageLocation");
+            }
             return View();
         }
 
