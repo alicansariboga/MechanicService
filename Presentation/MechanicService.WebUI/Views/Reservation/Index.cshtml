@@ -158,14 +158,21 @@
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Randevu Tarihi</label>
-                                    <input type="text" class="form-control" placeholder="Tarih" asp-for="ReservationService.Date" value="@Model.ReservationService.Date.ToString("dd/MM/yyyy")">
+                                    <input type="date" class="form-control" id="datePicker" placeholder="Tarih" asp-for="ReservationService.Date" value="@Model.ReservationService.Date.ToString("dd/MM/yyyy")">
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-lg-6">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Randevu Saati</label>
-                                    <input type="text" class="form-control" data-error="Belirtilen saat doludur." placeholder="Saat" asp-for="ReservationService.Hour" value="@Model.ReservationService.Hour.ToString("hh\\:mm")">
+                                    <select class="form-select" aria-label="Default select example" asp-for="ReservationService.Hour" >
+                                        <option selected>Saat Seçiniz</option>
+                                        @for (int i = 9; i < 18; i++)
+                                        {
+                                            <option value="i:00">@i:00</option>
+                                        }
+                                        <option value="18" disabled>18</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12">
@@ -186,4 +193,28 @@
         </div>
     </div>
 </section>
+
+<script>
+    var datePicker = document.getElementById('datePicker');
+
+    function disableSundays(date) {
+        var day = date.getDay();
+        return (day != 0);
+    }
+    var today = new Date();
+    for (var i = 0; i < datePicker.length; i++) {
+        var date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+        if (!disableSundays(date)) {
+            date.setDate(date.getDate() + 6);
+            datePicker.value = date.toISOString().split('T')[0];
+            break;
+        }
+    }
+    datePicker.addEventListener('input', function () {
+        var selectedDate = new Date(datePicker.value);
+        if (!disableSundays(selectedDate)) {
+            alert("Pazar günü çalışılmamaktadır. Lütfen başka bir gün seçiniz.");
+        }
+    });
+</script>
 
