@@ -16,5 +16,10 @@ namespace MechanicService.Persistence.Repositories.BranchOfficeRepositories
             var values = _context.BranchOffices.Where(x => x.DistrictId == id).ToList();
             return values;
         }
+        public List<BranchOffice> GetBranchOfficeByDistrictId(int? id)
+        {
+            var values = _context.BranchOffices.Where(x => x.DistrictId == id).ToList();
+            return values;
+        }
     }
 }

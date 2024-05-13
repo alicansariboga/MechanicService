@@ -1,10 +1,10 @@
-﻿
+﻿@model BranchOfficeViewModel
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
-<!-- Page Title -->
 <div class="page-title-area">
     <img src="assets/img/home-one/footer-car.png" alt="Title">
     <div class="container">
@@ -31,10 +31,179 @@
 
                 @await Component.InvokeAsync("_LocationTurkeyMapComponentPartial")
 
-                @await Component.InvokeAsync("_LocationChoiceComponentPartial")
+                <div class="contact-item contact-right">
+                    <h3>Konum Seçiniz</h3>
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <select id="citySelect" class="form-select" aria-label="Default select example" onchange="handleCityChange()">
+                                        <option selected>İl Seçiniz</option>
+                                        @await Component.InvokeAsync("_ReservationChoiceCityComponentPartial")
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
 
+                                    <select id="districtSelect" class="form-select" aria-label="Default select example" asp-for="@Model.Id">
+                                        <option selected>İlçe Seçiniz</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="svgContainer"></div>
+                            <div class="col-lg-9"></div>
+                            <div class="col-lg-3">
+                                <button type="submit" class="btn btn-primary">Şubeleri Getir</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
+
+            @if (Model != null)
+            {
+                @foreach (var item in Model.BranchOffices)
+                {
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-3">
+                                <img src="@item.ImgUrl" class="img-fluid rounded-start" alt="Branch">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 style="color: #d1970f" class="card-title">@item.Name</h5>
+                                    <div></div>
+                                    <div class="row m-2">
+                                        <div class="col-lg-7 p-3">
+                                            <a href="@item.LocationUrl" class="d-flex align-items-center">
+                                                <i class='bx bx-location-plus me-2'></i>
+                                                <p class="card-text fs-6">@item.Address</p>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-6 p-3">
+                                            <a href="tel:@item.Phone" class="d-flex align-items-center">
+                                                <i class='bx bx-phone-call me-2'></i>
+                                                <p class="card-text fs-6">@item.Phone</p>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-2 col-sm-6 p-3">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+                                                Çalışma Saatleri
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
         </div>
     </div>
 </section>
 
+<div class="modal fade" tabindex="-1" id="kt_modal_1">
+    <div class="modal-dialog  modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Yekili Satıcı ve Servis Çalışma Saatleri</h3>
+
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="workingHours-list">
+                    <div class="row">
+                        <div class="col-3">
+                            <p>
+                                <h5>
+                                    Günler
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p>
+                                <h5>
+                                    Saatler
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                <h5>
+                                    Yekili Satıcı ve Servis
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="workingHours-list">
+                    <div class="row">
+                        <div class="col-3">
+                            <p>
+                                Hafta İçi
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p>
+                                08:00 - 18:00
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Yekili Satıcı ve Servis
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="workingHours-list">
+                    <div class="row">
+                        <div class="col-3">
+                            <p>
+                                Cumartesi
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p>
+                                09:00 - 16:00
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Yekili Servis
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="workingHours-list">
+                    <div class="row">
+                        <div class="col-3">
+                            <p>
+                                Pazar
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p>
+                                Kapalı
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Yok
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2 mb-2">
+                    <strong>Not:</strong> Çalışma saatleri bayram ve resmi tatillerde değişiklik gösterebilir.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
