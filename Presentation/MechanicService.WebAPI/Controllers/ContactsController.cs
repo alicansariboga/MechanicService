@@ -28,5 +28,11 @@
             await _mediator.Send(command);
             return Ok("İletişim bílgisi basarili bir sekilde eklendi.");
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateContact(UpdateContactCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("İletişim bilgisi basarili bir sekilde guncellendi.");
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<ResultContactDto>
+﻿@model ContacViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -45,29 +45,91 @@
                         </button>
                     </div>
                     <div class="table-responsive mailbox-messages">
-                        <table class="table table-hover table-striped">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> First name </th>
+                                    <th> Product </th>
+                                    <th> Amount </th>
+                                    <th> Deadline </th>
+                                </tr>
+                            </thead>
                             <tbody>
-                                @foreach(var item in Model)
+                                @foreach (var item in Model.ResultContacts)
                                 {
-                                    // Message Short
                                     var theMessage = string.Join(" ", item.Message.Split(' ').Take(10));
                                     var msgShort = theMessage + (item.Message.Split(' ').Length > 10 ? "..." : "");
 
-                                    <tr>
-                                        <td>
-                                            <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check2">
-                                                <label for="check2"></label>
-                                            </div>
-                                        </td>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-warning"></i></a></td>
-                                        <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/@item.Id"> @item.Name @item.Surname</a></td>
-                                        <td class="mailbox-subject">
-                                            <b>@item.Subject</b> - @msgShort
-                                        </td>
-                                        <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                                        <td class="mailbox-date">@item.SendDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                                    </tr>
+                                    if (item.Isread == false)
+                                    {
+                                        <tr class="table-light">
+                                            <td>
+                                                <div class="icheck-primary">
+                                                    <input type="checkbox" value="" id="check2">
+                                                    <label for="check2"></label>
+                                                </div>
+                                            </td>
+                                            <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/@item.Id"> @item.Name @item.Surname</a></td>
+                                            <td class="mailbox-subject">
+                                                <b>@item.Subject</b> - @msgShort
+                                            </td>
+                                            <td class="mailbox-date">@item.SendDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                            <td class="mailbox-button">
+                                                <form method="post">
+                                                    <input type="hidden" asp-for="UpdateContact.Id" value="@item.Id" />
+                                                    <input type="hidden" asp-for="UpdateContact.Name" value="@item.Name" />
+                                                    <input type="hidden" asp-for="UpdateContact.Surname" value="@item.Surname" />
+                                                    <input type="hidden" asp-for="UpdateContact.Email" value="@item.Email" />
+                                                    <input type="hidden" asp-for="UpdateContact.Subject" value="@item.Subject" />
+                                                    <input type="hidden" asp-for="UpdateContact.Message" value="@item.Message" />
+                                                    <input type="hidden" asp-for="UpdateContact.Isread" value="true" />
+                                                    <input type="hidden" asp-for="UpdateContact.SendDate" value="@item.SendDate" />
+
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="fa-solid fa-square-check fa-2xl">
+                                                        </i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="icheck-primary">
+                                                    <input type="checkbox" value="" id="check2">
+                                                    <label for="check2"></label>
+                                                </div>
+                                            </td>
+                                            <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Admin/Inbox/MailDetail/@item.Id"> @item.Name @item.Surname</a></td>
+                                            <td class="mailbox-subject">
+                                                <b>@item.Subject</b> - @msgShort
+                                            </td>
+                                            <td class="mailbox-date">@item.SendDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                            <td class="mailbox-button">
+                                                <form method="post">
+                                                    <input type="hidden" asp-for="UpdateContact.Id" value="@item.Id" />
+                                                    <input type="hidden" asp-for="UpdateContact.Name" value="@item.Name" />
+                                                    <input type="hidden" asp-for="UpdateContact.Surname" value="@item.Surname" />
+                                                    <input type="hidden" asp-for="UpdateContact.Email" value="@item.Email" />
+                                                    <input type="hidden" asp-for="UpdateContact.Subject" value="@item.Subject" />
+                                                    <input type="hidden" asp-for="UpdateContact.Message" value="@item.Message" />
+                                                    <input type="hidden" asp-for="UpdateContact.Isread" value="true" />
+                                                    <input type="hidden" asp-for="UpdateContact.SendDate" value="@item.SendDate" />
+
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="fa-solid fa-square-check fa-2xl">
+                                                        </i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
                                 }
                             </tbody>
                         </table>

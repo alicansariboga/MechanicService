@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MechanicService.Dto.TeamDtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
 {
@@ -23,7 +24,34 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultContactDto>>(jsonData);
-                return View(values);
+
+                ContacViewModel contacViewModel = new ContacViewModel
+                {
+                    ResultContacts = values,
+                };
+
+                return View(contacViewModel);
+            }
+            return View();
+        }
+        [HttpPost]
+        [Route("Index")]
+        public async Task<IActionResult> Index(ContacViewModel contacViewModel)
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            ContacViewModel contacView = new ContacViewModel
+            {
+                UpdateContact = contacViewModel.UpdateContact,
+            };
+
+
+            var jsonData = JsonConvert.SerializeObject(contacView.UpdateContact);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("https://localhost:7215/api/Contacts/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Inbox");
             }
             return View();
         }
