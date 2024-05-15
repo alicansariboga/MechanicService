@@ -12,20 +12,24 @@
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            var client = _httpClientFactory.CreateClient();
+
+            var values = new List<ResultServiceDto>();
+
+            var responseMessage = await client.GetAsync("https://localhost:7215/api/Services");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                values = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData);
+            }
+
             var viewRezervationModel = new ReservationCreateViewModel
             {
                 ReservationCar = new CreateReservationCarDto(),
                 ReservationPerson = new CreateReservationPersonDto(),
                 ReservationService = new CreateReservationServiceDto(),
+                Services = values,
             };
-
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7215/api/Banners");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                viewRezervationModel.ResultReservationServiceDtos = JsonConvert.DeserializeObject<List<ResultReservationServiceDto>>(jsonData);
-            }
 
             return View(viewRezervationModel);
         }

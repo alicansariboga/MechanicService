@@ -77,6 +77,10 @@
                             <td>@Model.serviceData.Hour</td>
                         </tr>
                         <tr>
+                            <td>Yapılacak Servis İşlemi</td>
+                            <td>@Model.serviceData.ServiceName</td>
+                        </tr>
+                        <tr>
                             <td>Açıklama</td>
                             <td>@Model.serviceData.Description</td>
                         </tr>
@@ -113,6 +117,8 @@ Merhaba @Model.personData.Name,
 Randevu talebiniz alınmıştır. @Model.serviceData.Date.ToShortDateString() tarihli rezervasyonunuz başarılı bir şekilde oluşturulmuştur. Detaylı bilgi aşağıda eklenmiştir.
 
     Randevu Saati: @Model.serviceData.Hour
+
+    İşlem Adı: @Model.serviceData.ServiceName
 
     Randevu Açıklaması: @Model.serviceData.Description
 

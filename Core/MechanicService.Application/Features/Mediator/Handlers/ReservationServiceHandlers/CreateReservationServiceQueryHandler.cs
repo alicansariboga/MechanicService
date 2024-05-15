@@ -17,7 +17,8 @@
                 Distinct = request.Distinct,
                 Date = request.Date,
                 Hour = request.Hour,
-                Description = request.Description
+                Description = request.Description,
+                ServiceName = request.ServiceName
             });
         }
     }

@@ -13,5 +13,6 @@ namespace MechanicService.Domain.Entities
         [Column(TypeName = "Time")]
         public TimeSpan Hour { get; set; }
         public string? Description { get; set; }
+        public string ServiceName { get; set; }
     }
 }

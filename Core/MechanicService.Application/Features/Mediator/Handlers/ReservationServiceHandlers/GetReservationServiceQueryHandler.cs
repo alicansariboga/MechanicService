@@ -19,7 +19,8 @@
                 Distinct = x.Distinct,
                 Date = x.Date,
                 Hour = x.Hour,
-                Description = x.Description
+                Description = x.Description,
+                ServiceName = x.ServiceName
             }).ToList();
         }
     }

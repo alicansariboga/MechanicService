@@ -31,7 +31,22 @@
             <div class="col-sm-8 col-lg-8">
                 <div class="contact-item contact-right">
                     <form class="contactForm" method="post">
-                        @await Component.InvokeAsync("_ReservationServicesComponentPartial")
+                        @* @await Component.InvokeAsync("_ReservationServicesComponentPartial") *@
+
+                        <h3>Hizmet Talebi</h3>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12">
+                                <div class="form-group">
+                                    <select class="form-select" aria-label="Default select example" asp-for="ReservationService.ServiceName">
+                                        <option selected>Hizmeti Seçiniz</option>
+                                        @foreach (var item in Model.Services)
+                                        {
+                                            <option value="@item.Title">@item.Title</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
                         <h3>Müşteri Bilgileri</h3>
                         <div class="row">

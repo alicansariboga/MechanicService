@@ -19,7 +19,8 @@
                 Distinct = values.Distinct,
                 Date = values.Date,
                 Hour = values.Hour,
-                Description = values.Description
+                Description = values.Description,
+                ServiceName = values.ServiceName
             };
         }
     }
