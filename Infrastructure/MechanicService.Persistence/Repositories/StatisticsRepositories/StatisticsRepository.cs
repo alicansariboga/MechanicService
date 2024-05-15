@@ -9,24 +9,38 @@
             _context = context;
         }
 
-        public int GetActiveLocationsCount()
+        public int GetActiveLocationsCityCount()
         {
             // SELECT * FROM LocationCities
             // LEFT JOIN LocationDistricts
             // On LocationCities.Id = LocationDistricts.CityID WHERE LocationDistricts.IsActive = 1
-            
+
             var list = new List<int>();
             var list2 = new List<int>();
             list = _context.LocationDistricts.Where(x => x.IsActive == true).Select(y => y.CityID).ToList();
-            foreach(var cityId in list)
+            foreach (var cityId in list)
             {
                 int value = _context.LocationCities.Where(x => x.Id == cityId).Select(y => y.Id).FirstOrDefault();
                 list2.Add(value);
             }
             var results = list2.Distinct().Count();
             return results;
+        }
 
-            
+        public int GetActiveLocationsDistrictCount()
+        {
+            // SELECT * FROM LocationDistricts WHERE IsActive = 'true'
+            var values = _context.LocationDistricts.Where(x => x.IsActive == true).Count();
+            return values;
+        }
+
+        public int GetActiveLocationsCount()
+        {
+
+            // SELECT * FROM BranchOffices 
+            var values = _context.BranchOffices.Count();
+            return values;
+
         }
 
         public int GetAllCustomersCount()
@@ -55,6 +69,13 @@
             return values;
         }
 
+        public int GetModelCount()
+        {
+            // SELECT * FROM CarModels 
+            var values = _context.CarModels.Count();
+            return values;
+        }
+
         public int GetCompletedReservationsCount()
         {
             var values = _context.Reservations.Where(x => x.IsApproved == true && x.IsCanceled == false).Count();
@@ -74,7 +95,6 @@
             return values;
         }
 
-        // _blank
         public int GetUnreadMessagesCount()
         {
             var values = _context.Contacts.Where(x => x.Isread == false).Count();

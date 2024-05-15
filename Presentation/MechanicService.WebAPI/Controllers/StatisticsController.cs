@@ -66,5 +66,23 @@
             var values = await _mediator.Send(new GetUnreadMessagesCountQuery());
             return Ok(values);
         }
+        [HttpGet("GetActiveLocationsCityCount")]
+        public async Task<IActionResult> GetActiveLocationsCityCount()
+        {
+            var values = await _mediator.Send(new GetActiveLocationsCityCountQuery());
+            return Ok(values);
+        }
+        [HttpGet("GetActiveLocationsDistrictCount")]
+        public async Task<IActionResult> GetActiveLocationsDistrictCount()
+        {
+            var values = await _mediator.Send(new GetActiveLocationsDistrictCountQuery());
+            return Ok(values);
+        }
+        [HttpGet("GetModelCount")]
+        public async Task<IActionResult> GetModelCount()
+        {
+            var values = await _mediator.Send(new GetModelCountQuery());
+            return Ok(values);
+        }
     }
 }

@@ -54,13 +54,13 @@
             }
             #endregion
 
-            #region Statistic-activeLocations
-            var responseMessage5 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsCount");
+            #region Statistic-activeLocationCities
+            var responseMessage5 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsCityCount");
             if (responseMessage5.IsSuccessStatusCode)
             {
                 var jsonData1 = await responseMessage5.Content.ReadAsStringAsync();
                 var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
-                ViewBag.activeLocations = values1.GetActiveLocationsCount;
+                ViewBag.activeLocationCities = values1.GetActiveLocationsCityCount;
             }
             #endregion
 
@@ -101,6 +101,36 @@
                 var jsonData1 = await responseMessage9.Content.ReadAsStringAsync();
                 var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
                 ViewBag.unreadMessages = values1.GetUnreadMessagesCount;
+            }
+            #endregion
+
+            #region Statistic-activeLocationsCount
+            var responseMessage10 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsCount/");
+            if (responseMessage10.IsSuccessStatusCode)
+            {
+                var jsonData1 = await responseMessage10.Content.ReadAsStringAsync();
+                var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
+                ViewBag.activeLocations = values1.GetActiveLocationsCount;
+            }
+            #endregion
+
+            #region Statistic-activeLocationsDistrictCount
+            var responseMessage11 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsDistrictCount/");
+            if (responseMessage11.IsSuccessStatusCode)
+            {
+                var jsonData1 = await responseMessage11.Content.ReadAsStringAsync();
+                var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
+                ViewBag.activeLocationsDistricts = values1.GetActiveLocationsDistrictCount;
+            }
+            #endregion
+
+            #region Statistic-modelCount
+            var responseMessage12 = await client.GetAsync("https://localhost:7215/api/Statistics/GetModelCount/");
+            if (responseMessage12.IsSuccessStatusCode)
+            {
+                var jsonData1 = await responseMessage12.Content.ReadAsStringAsync();
+                var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
+                ViewBag.models = values1.GetModelCount;
             }
             #endregion
 

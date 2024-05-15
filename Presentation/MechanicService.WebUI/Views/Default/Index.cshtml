@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/Index.cshtml";
 }
@@ -7,6 +6,40 @@
 @await Component.InvokeAsync("_DefaultBannerComponentPartial")
 
 @await Component.InvokeAsync("_DefaultProcessComponentPartial")
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<section class="engineer-area ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <span class="sub-title">Markalar</span>
+            <h2>Anlaşmalı Olduğumuz Markalar</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="brand-slider-area">
+                        <div class="brand-wrapper">
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/alfa-romeo.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/audi.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/bmw.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/jeep.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/peugeout.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/mercedes.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/ford.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/volvo.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/skoda.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/toyota.png"></div>
+                            <div class="brand-item"><img alt="" src="~/img/CarLogos/renault.png"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @await Component.InvokeAsync("_ServiceAllServicesComponentPartial")
 

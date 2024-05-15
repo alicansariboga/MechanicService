@@ -90,7 +90,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
         }
         [HttpPost]
         [Route("AllReservations")]
-        public async Task<IActionResult> AllReservations(int Id)
+        public async Task<IActionResult> AllReservations(int Id, string action)
         {
             var client = _httpClientFactory.CreateClient();
 
@@ -102,22 +102,45 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 results = JsonConvert.DeserializeObject<ResultReservationDto>(jsonData2);
             }
 
-            UpdateReservationDto updateReservationDto = new UpdateReservationDto
+            if (action == "approve")
             {
-                Id = Id,
-                RezPersonID = results.RezPersonID,
-                RezCarID = results.RezCarID,
-                RezServiceID = results.RezServiceID,
-                CreateDate = results.CreateDate,
-                IsApproved = true,
-                IsCanceled = results.IsCanceled,
-            };
-            var jsonData = JsonConvert.SerializeObject(updateReservationDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage2 = await client.PutAsync("https://localhost:7215/api/Reservations/", stringContent);
-            if (responseMessage2.IsSuccessStatusCode)
+                UpdateReservationDto updateReservationDto = new UpdateReservationDto
+                {
+                    Id = Id,
+                    RezPersonID = results.RezPersonID,
+                    RezCarID = results.RezCarID,
+                    RezServiceID = results.RezServiceID,
+                    CreateDate = results.CreateDate,
+                    IsApproved = true,
+                    IsCanceled = results.IsCanceled,
+                };
+                var jsonData = JsonConvert.SerializeObject(updateReservationDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage2 = await client.PutAsync("https://localhost:7215/api/Reservations/", stringContent);
+                if (responseMessage2.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("AllReservations", "Reservation");
+                }
+            }
+            else if (action == "cancel")
             {
-                return RedirectToAction("AllReservations", "Reservation");
+                UpdateReservationDto updateReservationDto = new UpdateReservationDto
+                {
+                    Id = Id,
+                    RezPersonID = results.RezPersonID,
+                    RezCarID = results.RezCarID,
+                    RezServiceID = results.RezServiceID,
+                    CreateDate = results.CreateDate,
+                    IsApproved = results.IsApproved,
+                    IsCanceled = true,
+                };
+                var jsonData = JsonConvert.SerializeObject(updateReservationDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage2 = await client.PutAsync("https://localhost:7215/api/Reservations/", stringContent);
+                if (responseMessage2.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("AllReservations", "Reservation");
+                }
             }
             return View();
         }

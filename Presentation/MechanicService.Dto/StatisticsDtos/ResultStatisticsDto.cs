@@ -11,5 +11,8 @@
         public int GetBrandCount { get; set; }
         public int GetBlogCount { get; set; }
         public int GetUnreadMessagesCount { get; set; }
+        public int GetActiveLocationsCityCount { get; set; }
+        public int GetActiveLocationsDistrictCount { get; set; }
+        public int GetModelCount { get; set; }
     }
 }

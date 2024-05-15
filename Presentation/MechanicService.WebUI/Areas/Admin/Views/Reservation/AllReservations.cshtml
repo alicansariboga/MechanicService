@@ -64,7 +64,12 @@
                             }
                             <form method="post">
                                 <input type="hidden" asp-for="UpdateReservationDto.Id" name="Id" value="@item.Id" />
-                            <td><button type="submit" class="btn btn-warning" id="IsApproved">Onayla</button></td>
+                            <td>
+                                <div class="md-grid gap-2 d-md-block">
+                                    <button type="submit" class="btn btn-warning" name="action" value="approve">Onayla</button>
+                                    <button type="submit" class="btn btn-danger" name="action" value="cancel">İptal Et</button>
+                                </div>
+                            </td>
                             </form>
                             <td style="border-left: 1px solid #DEE2E6;"><a href="#" class="btn btn-dark">Müşteri Bilgileri</a></td>
                             <td><a href="#" class="btn btn-dark">Rezervasyon Bilgileri</a></td>
