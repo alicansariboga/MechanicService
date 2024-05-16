@@ -1,4 +1,15 @@
-﻿<nav class="sidebar sidebar-offcanvas" id="sidebar">
+﻿@using System.IdentityModel.Tokens.Jwt
+@using System.Security.Claims
+@using MechanicService.Application.Interfaces.AppUserInterfaces
+@{
+    var token = User.Claims.FirstOrDefault(x => x.Type == "mechanicServiceToken")?.Value;
+
+    IAppUserRepository appUserRepository = (IAppUserRepository)ViewContext.HttpContext.RequestServices.GetService(typeof(IAppUserRepository));
+    var values = appUserRepository.GetUserInfoFromToken(token);
+    var fullName = values.Name + " " + values.Surname;
+}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-category">Admin Paneli</li>
         <li class="nav-item">
@@ -116,7 +127,7 @@
                                 <img src="~/admin/assets/images/faces/profile.png" alt="image">
                             </div>
                             <div class="sidebar-profile-text">
-                                <p class="mb-1">Ali Can SARIBOĞA</p>
+                                <p class="mb-1">@fullName</p>
                             </div>
                         </div>
                     </div>
@@ -126,7 +137,7 @@
         </li>
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
-                <a href="#" class="nav-link">
+                <a href="/Admin/Account/AccountInfo/" class="nav-link">
                     <i class="mdi mdi-settings menu-icon"></i>
                     <span class="menu-title">Ayarlar</span>
                 </a>

@@ -1,4 +1,15 @@
-﻿<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+﻿@using System.IdentityModel.Tokens.Jwt
+@using System.Security.Claims
+@using MechanicService.Application.Interfaces.AppUserInterfaces
+@{
+    var token = User.Claims.FirstOrDefault(x => x.Type == "mechanicServiceToken")?.Value;
+
+    IAppUserRepository appUserRepository = (IAppUserRepository)ViewContext.HttpContext.RequestServices.GetService(typeof(IAppUserRepository));
+    var values = appUserRepository.GetUserInfoFromToken(token);
+    var fullName = values.Name + " " + values.Surname;
+}
+
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo" href="index.html"><img src="~/admin/assets/images/icon-full.png" alt="logo" /></a>
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="~/admin/assets/images/icon-mini.png" alt="logo" /></a>
@@ -81,7 +92,7 @@
                         <img src="~/admin/assets/images/faces/profile.png" alt="image">
                     </div>
                     <div class="nav-profile-text">
-                        <p class="mb-1 text-black">Ali Can SARIBOĞA</p>
+                        <p class="mb-1 text-black">@fullName</p>
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
@@ -90,7 +101,7 @@
                     </div>
                     <div class="p-2">
                         <h5 class="dropdown-header text-uppercase pl-2 text-dark">Kullanıcı Ayarları</h5>
-                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
+                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="/Admin/Account/AccountInfo/">
                             <span>Profil</span>
                             <span class="p-0">
                                 <span class="badge badge-success">1</span>

@@ -1,0 +1,105 @@
+﻿@model UserAccountViewModel
+
+@{
+    ViewData["Title"] = "AccountInfo";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="main-panel">UserAccountViewModel
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">AYARLAR</h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Genel</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ayarlar</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
+                    <ul class="nav nav-tabs tab-transparent" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile-1" role="tab" aria-selected="true">Profil Ayarları</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="app-tab" data-toggle="tab" href="#app-1" role="tab" aria-selected="false">Uygulama Ayarları</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="performance-tab" data-toggle="tab" href="#" role="tab" aria-selected="false">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="conversion-tab" data-toggle="tab" href="#" role="tab" aria-selected="false">Conversion</a>
+                        </li>
+                    </ul>
+                    <div class="d-md-block d-none">
+                        <a href="#" class="text-light p-1"><i class="mdi mdi-view-dashboard"></i></a>
+                        <a href="#" class="text-light p-1"><i class="mdi mdi-dots-vertical"></i></a>
+                    </div>
+                </div>
+                <div class="tab-content tab-transparent-content">
+                    <div class="tab-pane fade show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Profilim</h4>
+                                        <p class="card-description"> Bu ekrandan profil bilgilerinizi güncelleyebilirsiniz. </p>
+                                        <form class="forms-sample" method="post">
+                                            <input type="hidden" asp-for="UpdateAppUser.AppUserID" />
+                                            <input type="hidden" asp-for="UpdateAppUser.AppRoleID" />
+                                            <div class="form-group">
+                                                <label for="Username">Kullanıcı Adı</label>
+                                                <input type="text" class="form-control" id="Username" placeholder="Kullanıcı Adı" asp-for="UpdateAppUser.UserName">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Name">İsim</label>
+                                                <input type="text" class="form-control" id="Name" asp-for="UpdateAppUser.Name" placeholder="Soyisim">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Surname">Soyisim</label>
+                                                <input type="text" class="form-control" id="Surname" asp-for="UpdateAppUser.Surname" placeholder="Soyisim">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Email">Email Adresi</label>
+                                                <input type="email" class="form-control" id="Email" placeholder="Email Adresi" asp-for="UpdateAppUser.Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Password">Şifre</label>
+                                                <input type="password" class="form-control" id="Password" placeholder="Şifre" asp-for="UpdateAppUser.Password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="PasswordConfirm">Şifre Tekrar</label>
+                                                <input type="password" class="form-control" id="PasswordConfirm" placeholder="Şifre Tekrar" asp-for="UpdateAppUser.PasswordConfirm">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                                            <button class="btn btn-light">İptal Et</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="app-1" role="tabpanel" aria-labelledby="app-tab">
+                        <div class="row">
+                            <div class="col-md-6 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Ayarlar</h4>
+                                        <p class="card-description"> Bu ekrandan uygulama ayarlarını güncelleyebilirsiniz. </p>
+                                        <h2>
+                                            TEST
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
