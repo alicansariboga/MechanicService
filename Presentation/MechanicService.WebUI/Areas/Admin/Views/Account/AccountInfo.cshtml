@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
-<div class="main-panel">UserAccountViewModel
+<div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">AYARLAR</h3>
@@ -27,10 +27,10 @@
                             <a class="nav-link" id="app-tab" data-toggle="tab" href="#app-1" role="tab" aria-selected="false">Uygulama Ayarları</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="performance-tab" data-toggle="tab" href="#" role="tab" aria-selected="false">Hakkımızda</a>
+                            <a class="nav-link" id="notification-tab" data-toggle="tab" href="#notification-1" role="tab" aria-selected="false">Bildirim Ayarları</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="conversion-tab" data-toggle="tab" href="#" role="tab" aria-selected="false">Conversion</a>
+                            <a class="nav-link" id="about-tab" data-toggle="tab" href="#about-1" role="tab" aria-selected="false">Hakkımızda</a>
                         </li>
                     </ul>
                     <div class="d-md-block d-none">
@@ -41,7 +41,7 @@
                 <div class="tab-content tab-transparent-content">
                     <div class="tab-pane fade show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
-                            <div class="col-md-6 grid-margin stretch-card">
+                            <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Profilim</h4>
@@ -83,14 +83,245 @@
                     </div>
                     <div class="tab-pane fade" id="app-1" role="tabpanel" aria-labelledby="app-tab">
                         <div class="row">
-                            <div class="col-md-6 grid-margin stretch-card">
+                            <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Ayarlar</h4>
                                         <p class="card-description"> Bu ekrandan uygulama ayarlarını güncelleyebilirsiniz. </p>
-                                        <h2>
-                                            TEST
-                                        </h2>
+                                        <h6>Güvenlik Ayarları</h6>
+                                        <hr>
+                                        <form>
+                                            <div class="form-group">
+                                                <label class="d-block">2 Aşamalı Doğrulama</label>
+                                                <div class="row m-2">
+                                                    <div class="col-6">
+                                                        <div class="form-check form-switch m-4">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                   id="defaultCheckbox1" autocomplete="off" checked>
+                                                            <label class="form-check-label"
+                                                                   for="defaultCheckbox1">
+                                                                SMS
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-check form-switch m-4">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                   id="checkedCheckbox1" autocomplete="off" checked>
+                                                            <label class="form-check-label" for="checkedCheckbox1">
+                                                                E-Posta
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-light mb-2" type="button">Aktif Et</button>
+                                                <p class="small text-muted mt-2">2 faktörlü doğrulama ile hesabınızı güvenceye alınız. Bunun yanı sıra sisteme giriş işleminizi kolaylaştırır.</p>
+                                            </div>
+                                        </form>
+                                        <hr>
+                                        <form>
+                                            <div class="form-group mb-0">
+                                                <label class="d-block">Oturum Yönetimi</label>
+                                                <p class="font-size-sm text-secondary"> Bu, hesabınıza giriş yapan cihazların listesidir. Tanımadığınız tüm oturumları iptal edin. </p>
+                                                <ul class="list-group list-group-sm">
+                                                    <li class="list-group-item has-icon">
+                                                        <div>
+                                                            <h6 class="mb-0">Adana, Türkiye 190.24.335.55</h6>
+                                                            <small class="text-muted">Son oturumunuz Türkiye'de görüldü.</small>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6"><button class="btn btn-light btn-sm ml-auto" type="button">Daha Fazlası</button></div>
+                                                            <div class="col-6"><button class="btn btn-danger btn-sm ml-auto" type="button">Tüm Oturumları Kapat</button></div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="notification-1" role="tabpanel" aria-labelledby="notification-tab">
+                        <div class="row">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Ayarlar</h4>
+                                        <p class="card-description"> Bu ekrandan uygulama ayarlarını güncelleyebilirsiniz. </p>
+                                        <h6>NOTIFICATION SETTINGS</h6>
+                                        <hr>
+                                        <form>
+                                            <label class="d-block mb-0">Email Bildirimleri</label>
+                                            <div class="row m-2">
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Bildirimleri Al
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            Bildirimleri Alma
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <label class="d-block mb-0">Yeniliklerden Haberdar Ol</label>
+                                            <div class="row m-2">
+                                                <div class="col-6">
+                                                    <div class="form-check form-switch m-4">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               id="defaultCheckbox1" autocomplete="off" checked>
+                                                        <label class="form-check-label"
+                                                               for="defaultCheckbox1">
+                                                            Yeni Şube
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-check form-switch m-4">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               id="checkedCheckbox1" autocomplete="off" checked>
+                                                        <label class="form-check-label" for="checkedCheckbox1">
+                                                            Yeni Araç/Model
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-6">
+                                                    <div class="form-check form-switch m-4">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               id="defaultCheckbox2" autocomplete="off" checked>
+                                                        <label class="form-check-label" for="defaultCheckbox2">
+                                                            Çalışan Değişikliği
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-check form-switch m-4">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               id="checkedCheckbox2" autocomplete="off">
+                                                        <label class="form-check-label" for="checkedCheckbox2">
+                                                            Çalışma Saatleri
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row m-2">
+                                                <div class="col-6">
+                                                    <div class="form-check form-switch m-4">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               id="disabledCheckbox1" autocomplete="off"
+                                                               disabled checked>
+                                                        <label class="form-check-label"
+                                                               for="disabledCheckbox1">
+                                                            Sistem Güncellemesi
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-check form-switch m-4">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               id="disabledCheckbox2" autocomplete="off" disabled>
+                                                        <label class="form-check-label" for="disabledCheckbox2">
+                                                            Yetki Değişikliği
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="form-group m-2">
+                                                <label class="d-block">SMS Bildirimleri</label>
+                                            </div>
+                                            <ul class="list-group list-group-sm">
+                                                <li class="list-group-item has-icon">
+                                                    Son Bloglar
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+                                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Blog Yorumları
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                                        <label class="custom-control-label" for="customSwitch2"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Hatırlatıcılar
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch3" checked="">
+                                                        <label class="custom-control-label" for="customSwitch3"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Olaylar
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch4" checked="">
+                                                        <label class="custom-control-label" for="customSwitch4"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Yeni Şube Girişi
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                                                        <label class="custom-control-label" for="customSwitch5"></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="about-1" role="tabpanel" aria-labelledby="about-tab">
+                        <div class="row">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Biz Kimiz</h4>
+                                        <p class="card-description"> Bu ekrandan bizimle iletişime geçebilirsiniz. </p>
+                                        <h6>Hakkımızda</h6>
+                                        <hr>
+                                        <form>
+                                            <div class="form-group mb-0">
+                                                <p class="font-size-sm text-secondary"> Quisque maximus consequat feugiat. Mauris vitae felis congue, porta lacus a, rutrum justo. Nam eu urna sit amet sem pharetra lobortis. Cras quis sodales massa. Vivamus et lectus est. Integer sit amet porta mi. Donec at mauris mi. Nulla facilisi. Etiam condimentum lacus ante. Mauris fringilla pretium dui sed porta. Nullam egestas eleifend tellus quis sollicitudin. Integer lacinia enim id tellus elementum, a rutrum nunc facilisis. Vivamus euismod convallis blandit. Praesent et sapien sed leo pharetra dictum. Proin vestibulum nibh ligula, non scelerisque nulla tempor ac. Maecenas congue odio enim. </p>
+                                                <ul class="list-group list-group-sm">
+                                                    <li class="list-group-item has-icon">
+                                                        <div>
+                                                            <h6 class="mb-0">Vivamus suscipit non orci vitae congue</h6>
+                                                            <small class="text-muted">
+                                                                Ut cursus vitae est vitae auctor. Suspendisse potenti. Donec sit amet condimentum nisi. Mauris lobortis, erat eu interdum cursus, neque purus sodales erat, vel tristique enim leo eu nisi. Nam finibus tortor quis libero bibendum congue. Fusce vel porta enim. Vivamus ullamcorper nisl tempus tortor tempus vulputate. Proin et leo nisl. Vestibulum quis enim eu risus dignissim ullamcorper sed ac sapien.
+                                                            </small>
+                                                            <small class="text-muted">
+                                                                In tempus placerat turpis in viverra. Pellentesque auctor pellentesque ultrices. Pellentesque non mi quis mi bibendum dictum. In eleifend ornare libero, at ullamcorper diam accumsan ultrices. Suspendisse fermentum varius venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur suscipit eu ex in tristique. Suspendisse ut arcu et neque molestie finibus. Proin scelerisque venenatis neque et rhoncus. In vulputate maximus leo, at gravida sapien condimentum vitae. Proin luctus, diam vitae gravida suscipit, metus odio tempus quam, eu aliquam dui ligula eget urna.
+                                                            </small>
+                                                            <small class="text-muted">
+                                                                Nulla eleifend at dui vitae congue. Nulla eleifend, massa a rhoncus venenatis, ligula lectus tristique enim.
+                                                            </small>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="row mt-4">
+                                                    <div class="col-6">
+                                                        <button class="btn btn-light btn-lg ml-auto" type="button"><a href="https://www.linkedin.com/in/alicansariboga/" target="_blank">Bizi Takip Et</a></button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button class="btn btn-light btn-lg ml-auto" type="button"><a href="mailto:alicnn38@gmail.com" target="_blank">Bize Ulaşın</a></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -101,5 +332,3 @@
         </div>
     </div>
 </div>
-
-

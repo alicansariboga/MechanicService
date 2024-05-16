@@ -49,16 +49,6 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
         [Route("AccountInfo")]
         public async Task<IActionResult> AccountInfo(UserAccountViewModel userAccountViewModel)
         {
-            //UpdateAppUserDto updateAppUserConfirmDto = new UpdateAppUserDto
-            //{
-            //    AppRoleID = userAccountViewModel.UpdateAppUser.AppRoleID,
-            //    AppUserID = userAccountViewModel.UpdateAppUser.AppUserID,
-            //    Email = userAccountViewModel.UpdateAppUser.Email,
-            //    Name = userAccountViewModel.UpdateAppUser.Name,
-            //    Surname = userAccountViewModel.UpdateAppUser.Surname,
-            //    UserName = userAccountViewModel.UpdateAppUser.UserName,
-            //    Password = userAccountViewModel.UpdateAppUser.Password,
-            //};
             if(userAccountViewModel.UpdateAppUser.Password == userAccountViewModel.UpdateAppUser.PasswordConfirm)
             {
                 AppUser updateAppUser = new AppUser
