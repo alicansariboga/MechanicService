@@ -33,6 +33,7 @@
         public DbSet<LocationDistrict> LocationDistricts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<BranchOffice> BranchOffices { get; set; }
+        public DbSet<ServiceDescription> ServiceDescriptions { get; set; }
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppRole> AppRoles { get; set; }

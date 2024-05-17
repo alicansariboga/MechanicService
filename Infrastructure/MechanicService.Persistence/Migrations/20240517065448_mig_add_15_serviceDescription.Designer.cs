@@ -4,6 +4,7 @@ using MechanicService.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MechanicService.Persistence.Migrations
 {
     [DbContext(typeof(MechanicServiceContext))]
-    partial class MechanicServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20240517065448_mig_add_15_serviceDescription")]
+    partial class mig_add_15_serviceDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -771,12 +774,7 @@ namespace MechanicService.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ServiceID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ServiceID");
 
                     b.ToTable("ServiceDescriptions");
                 });
@@ -1003,17 +1001,6 @@ namespace MechanicService.Persistence.Migrations
                     b.Navigation("CarModel");
                 });
 
-            modelBuilder.Entity("MechanicService.Domain.Entities.ServiceDescription", b =>
-                {
-                    b.HasOne("MechanicService.Domain.Entities.Service", "Service")
-                        .WithMany("ServiceDescriptions")
-                        .HasForeignKey("ServiceID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Service");
-                });
-
             modelBuilder.Entity("MechanicService.Domain.Entities.Tag", b =>
                 {
                     b.HasOne("MechanicService.Domain.Entities.Blog", "Blog")
@@ -1055,11 +1042,6 @@ namespace MechanicService.Persistence.Migrations
             modelBuilder.Entity("MechanicService.Domain.Entities.LocationDistrict", b =>
                 {
                     b.Navigation("BranchOffices");
-                });
-
-            modelBuilder.Entity("MechanicService.Domain.Entities.Service", b =>
-                {
-                    b.Navigation("ServiceDescriptions");
                 });
 #pragma warning restore 612, 618
         }

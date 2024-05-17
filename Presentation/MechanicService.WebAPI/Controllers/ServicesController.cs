@@ -40,5 +40,11 @@
             await _mediator.Send(command);
             return Ok("Hizmet bilgisi basarili bir sekilde guncellendi.");
         }
+        [HttpGet("GetServiceDescriptionByServiceId")]
+        public async Task<IActionResult> GetServiceDescriptionByServiceId(int id)
+        {
+            var values = await _mediator.Send(new GetServiceDescriptionByServiceIdQuery(id));
+            return Ok(values);
+        }
     }
 }

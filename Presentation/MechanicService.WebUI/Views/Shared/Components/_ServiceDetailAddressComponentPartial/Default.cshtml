@@ -1,0 +1,26 @@
+﻿@model List<ResultAddressDto>
+
+<div class="service-details-left service-details-contact">
+    <h3>İletişime Geçin</h3>
+    @foreach (var item in Model)
+    {
+        <ul>
+            <li>
+                <i class='bx bx-location-plus'></i>
+                @item.LongAddress <br />@item.District / @item.City
+            </li>
+            <li>
+                <i class='bx bx-phone-call'></i>
+                <a href="tel:@item.Phone">+90 @item.Phone</a>
+            </li>
+            <li>
+                <i class='bx bx-phone-call'></i>
+                <a href="tel:@item.PhoneOpt">+90 @item.PhoneOpt</a>
+            </li>
+            <li>
+                <i class='bx bx-mail-send'></i>
+                <a href="mailto:@item.Email">@item.Email</a>
+            </li>
+        </ul>
+    }
+</div>

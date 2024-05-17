@@ -16,4 +16,5 @@ global using MechanicService.Application.Interfaces.CarModelnterfaces;
 global using MechanicService.Application.Interfaces.StatisticsInterfaces;
 global using MechanicService.Application.Interfaces.CustomerInterfaces;
 global using MechanicService.Application.Interfaces.BlogInterfaces;
+global using MechanicService.Application.Interfaces.ServiceInterfaces;
 global using MechanicService.Application.ViewModel;

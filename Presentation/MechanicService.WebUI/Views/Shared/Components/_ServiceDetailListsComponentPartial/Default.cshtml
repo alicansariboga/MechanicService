@@ -1,0 +1,14 @@
+﻿@model List<ResultServiceDto>
+
+<div class="service-details-left">
+    <h3>Servis Listesi</h3>
+    <ul>
+        @foreach(var item in Model)
+        {
+            <li>
+                <i class='bx bx-chevron-right'></i>
+                <a href="/Service/Detail/@item.Id">@item.Title</a>
+            </li>
+        }
+    </ul>
+</div>

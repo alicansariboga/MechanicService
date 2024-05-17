@@ -1,0 +1,67 @@
+﻿@model ServiceViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="page-title-area">
+    <img src="assets/img/home-one/footer-car.png" alt="Title">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Service Detayı</h2>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <i class='bx bx-chevron-right'></i>
+                </li>
+                <li>Servis</li>
+                <li>
+                    <i class='bx bx-chevron-right'></i>
+                </li>
+                <li>Detay</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="service-details-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="service-details-item">
+                    <div class="service-details-img">
+                        <div class="service-details-slider owl-theme owl-carousel">
+                            <div class="service-details-slider-item">
+                                <img src="https://media.istockphoto.com/id/1309990902/tr/foto%C4%9Fraf/otomatik-mekanisc-ekibi.jpg?s=2048x2048&w=is&k=20&c=r6aUWOwbHm1fbySxywwwAI-PciUBD-P-XbAiYDfLP_Y=" alt="Service">
+                            </div>
+                            <div class="service-details-slider-item">
+                                <img src="https://media.istockphoto.com/id/1309990902/tr/foto%C4%9Fraf/otomatik-mekanisc-ekibi.jpg?s=2048x2048&w=is&k=20&c=r6aUWOwbHm1fbySxywwwAI-PciUBD-P-XbAiYDfLP_Y=" alt="Service">
+                            </div>
+                            <div class="service-details-slider-item">
+                                <img src="https://media.istockphoto.com/id/1309990902/tr/foto%C4%9Fraf/otomatik-mekanisc-ekibi.jpg?s=2048x2048&w=is&k=20&c=r6aUWOwbHm1fbySxywwwAI-PciUBD-P-XbAiYDfLP_Y=" alt="Service">
+                            </div>
+                        </div>
+                        <h3>@Model.ResultService.Title</h3>
+                        <h5>@Model.ResultService.Description</h5>
+                        @foreach(var item in Model.ResultServiceDescription)
+                        {
+                            <p>@item.Description</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="service-details-item">
+
+                    @await Component.InvokeAsync("_ServiceDetailListsComponentPartial")
+
+                    @await Component.InvokeAsync("_ServiceDetailAddressComponentPartial")
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
