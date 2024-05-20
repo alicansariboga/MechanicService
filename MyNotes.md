@@ -22,9 +22,9 @@
 	- Admin Rezervasyon sayfasý detay iþlemleri yapýlacak.
 	- Admin Þube sayfasý için aktif þube sayýsý güncellenecek.
 	- Admin Sisteme kullanýcý ekleme sayfasý yapýlacak.
-	- Admin Dashboard sayfasýnda Arabalar güncellenecek.
+	+ Admin Dashboard sayfasýnda Arabalar güncellenecek.
+	+ UI tarafýnda araç hizmeteleri ve detaylarý eklenecek.
 	- Admin Toplu Mail gönderme ve SMS gönderme sayfalarý yapýlacak. (Optional)
-	- UI tarafýnda araç hizmeteleri ve detaylarý eklenecek.
 
 
 
