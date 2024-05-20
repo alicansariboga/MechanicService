@@ -5,5 +5,6 @@
         public string Description { get; set; }
         public int ServiceID { get; set; }
         public Service Service { get; set; }
+        public string ImgUrl { get; set; }
     }
 }

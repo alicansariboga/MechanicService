@@ -18,6 +18,7 @@ namespace MechanicService.Application.Features.Mediator.Handlers.ServiceHandlers
             {
                 Id = x.Id,
                 Description = x.Description,
+                ImgUrl = x.ImgUrl,
             }).ToList();
         }
     }

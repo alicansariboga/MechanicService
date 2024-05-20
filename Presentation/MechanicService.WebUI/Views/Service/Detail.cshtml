@@ -34,15 +34,12 @@
                 <div class="service-details-item">
                     <div class="service-details-img">
                         <div class="service-details-slider owl-theme owl-carousel">
-                            <div class="service-details-slider-item">
-                                <img src="https://media.istockphoto.com/id/1309990902/tr/foto%C4%9Fraf/otomatik-mekanisc-ekibi.jpg?s=2048x2048&w=is&k=20&c=r6aUWOwbHm1fbySxywwwAI-PciUBD-P-XbAiYDfLP_Y=" alt="Service">
-                            </div>
-                            <div class="service-details-slider-item">
-                                <img src="https://media.istockphoto.com/id/1309990902/tr/foto%C4%9Fraf/otomatik-mekanisc-ekibi.jpg?s=2048x2048&w=is&k=20&c=r6aUWOwbHm1fbySxywwwAI-PciUBD-P-XbAiYDfLP_Y=" alt="Service">
-                            </div>
-                            <div class="service-details-slider-item">
-                                <img src="https://media.istockphoto.com/id/1309990902/tr/foto%C4%9Fraf/otomatik-mekanisc-ekibi.jpg?s=2048x2048&w=is&k=20&c=r6aUWOwbHm1fbySxywwwAI-PciUBD-P-XbAiYDfLP_Y=" alt="Service">
-                            </div>
+                            @foreach(var item in Model.ResultServiceDescription)
+                            {
+                                <div class="service-details-slider-item">
+                                    <img src="@item.ImgUrl" alt="Service">
+                                </div>
+                            }
                         </div>
                         <h3>@Model.ResultService.Title</h3>
                         <h5>@Model.ResultService.Description</h5>
