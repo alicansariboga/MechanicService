@@ -20,7 +20,7 @@
 ## NEW SIDE NOTES -- 17.05.2024
 
 	- Admin Rezervasyon sayfasý detay iþlemleri yapýlacak.
-	- Admin Þube sayfasý için aktif þube sayýsý güncellenecek.
+	+ Admin Þube sayfasý için aktif þube sayýsý güncellenecek.
 	- Admin Sisteme kullanýcý ekleme sayfasý yapýlacak.
 	+ Admin Dashboard sayfasýnda Arabalar güncellenecek.
 	+ UI tarafýnda araç hizmeteleri ve detaylarý eklenecek.

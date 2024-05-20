@@ -1,4 +1,6 @@
 ﻿using MechanicService.Dto.AppUserDtos;
+using MechanicService.Dto.TeamDtos;
+using MechanicService.Dto.UserAuthDtos;
 using Microsoft.AspNetCore.Authorization;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
@@ -69,10 +71,24 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+        [HttpGet]
+        [Route("CreateUser")]
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
         [HttpPost]
         [Route("CreateUser")]
-        public async Task<IActionResult> CreateUser()
+        public async Task<IActionResult> CreateUser(CreateRegisterDto createRegisterDto)
         {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createRegisterDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7215/api/Registers/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("AllUsers", "User");
+            }
             return View();
         }
     }
