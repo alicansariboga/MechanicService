@@ -1,7 +1,7 @@
 ﻿@model ReservationInformationViewModel
 
 @{
-    ViewData["Title"] = "CreateUser";
+    ViewData["Title"] = "CustomerInformation";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
@@ -22,34 +22,32 @@
                     <div class="card-body">
                         <h4 class="card-title">Kullanıcı Bilgileri</h4>
                         <div class="row g-0">
-                            <div class="col-xl-4 gradient-custom text-center text-white"
+                            <div class="col-xl-3 gradient-custom text-center text-white"
                                  style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                                 @* <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" *@
                                 <img src="~/admin/assets/images/faces-clipart/pic-1.png"
-                                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                                <h5>Marie Horwitz</h5>
-                                <p>Web Designer</p>
+                                     alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
                                 <i class="far fa-edit mb-5"></i>
                             </div>
-                            <div class="col-xl-8">
+                            <div class="col-xl-9">
                                 <div class="card-body p-4">
-                                    <h6>Kullanıcı Bilgileri</h6>
+                                    <h5>Kullanıcı Bilgileri</h5>
                                     <hr class="mt-0 mb-4">
                                     <div class="row pt-1">
-                                        <div class="col-6 mb-3">
-                                            <h6>Name</h6>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Name</u></h6>
                                             <p class="text-muted">@Model.ReservationPerson.Name</p>
                                         </div>
-                                        <div class="col-6 mb-3">
-                                            <h6>Surname</h6>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Surname</u></h6>
                                             <p class="text-muted">@Model.ReservationPerson.Surname</p>
                                         </div>
-                                        <div class="col-6 mb-3">
-                                            <h6>TCKN</h6>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>TCKN</u></h6>
                                             <p class="text-muted">@Model.ReservationPerson.IdentityNumber</p>
                                         </div>
-                                        <div class="col-6 mb-3">
-                                            <h6>Cinsiyet</h6>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Cinsiyet</u></h6>
                                             <p class="text-muted"><strong>Belirtilmemiş</strong></p>
                                         </div>
                                     </div>
@@ -57,19 +55,19 @@
                             </div>
                             <div class="col-12">
                                 <div class="card-body p-4">
-                                    <h6>İletişim</h6>
+                                    <h5>İletişim</h5>
                                     <hr class="mt-0 mb-4">
                                     <div class="row pt-1">
-                                        <div class="col-6 mb-3">
-                                            <h6>Telefon Numarası</h6>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Telefon Numarası</u></h6>
                                             <p class="text-muted">@Model.ReservationPerson.Phone</p>
                                         </div>
-                                        <div class="col-6 mb-3">
-                                            <h6>İkincil Telefon Numarası</h6>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>İkincil Telefon Numarası</u></h6>
                                             <p class="text-muted">@Model.ReservationPerson.PhoneOpt</p>
                                         </div>
-                                        <div class="col-12 mb-3">
-                                            <h6>E-Mail</h6>
+                                        <div class="col-xl-12 mb-3">
+                                            <h6><u>E-Mail</u></h6>
                                             <p class="text-muted">@Model.ReservationPerson.Email</p>
                                         </div>
                                     </div>
@@ -82,6 +80,4 @@
         </div>
     </div>
 </div>
-
-
 

@@ -116,13 +116,34 @@ Merhaba @Model.personData.Name,
 
 Randevu talebiniz alınmıştır. @Model.serviceData.Date.ToShortDateString() tarihli rezervasyonunuz başarılı bir şekilde oluşturulmuştur. Detaylı bilgi aşağıda eklenmiştir.
 
-    Randevu Saati: @Model.serviceData.Hour
+    Müşteri Bilgileri:
 
-    İşlem Adı: @Model.serviceData.ServiceName
+        Müşteri Adı: @Model.personData.Name @Model.personData.Surname
 
-    Randevu Açıklaması: @Model.serviceData.Description
+        Telefon Numarası: @Model.personData.Phone
 
-    Randevu Durumu: Beklemede
+        İkincil Telefon Numarası: @Model.personData.PhoneOpt
+
+        E-mail Adresi: @Model.personData.Email
+
+    Araç Bilgileri:
+
+        Üretim Yılı: @Model.carData.Year
+
+        Km Bilgisi: @Model.carData.Km
+
+        Plaka Bilgisi: @Model.carData.LicensePlate
+
+    Rezervasyon Bilgileri:
+
+        İşlem Adı: @Model.serviceData.ServiceName
+
+        Randevu Saati: @Model.serviceData.Hour
+
+        Randevu Açıklaması: @Model.serviceData.Description
+
+        Randevu Durumu: BEKLEMEDE
+
 
 Bizi tercih ettiğiniz için teşekkür ederiz. İyi günler dileriz.
 Saygılarımızla,

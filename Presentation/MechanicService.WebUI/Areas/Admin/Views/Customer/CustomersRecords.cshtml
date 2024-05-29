@@ -23,6 +23,7 @@
                         <th>İkincl Numara</th>
                         <th>Email</th>
                         <th>İşlem Tarihi</th>
+                        <th>Git</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@
                             <td>@item.PhoneOpt</td>
                             <td>@item.Email</td>
                             <td>@item.CreateDate.ToShortDateString()</td>
+                            <td><a class="btn btn-primary" href="/Admin/Customer/CustomerInformation/@item.Id">Müşteri Bilgileri</a></td>
                         </tr>
                     }
                 </tbody>

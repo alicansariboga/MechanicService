@@ -1,0 +1,109 @@
+﻿@model ReservationDetailViewModel
+
+@{
+    ViewData["Title"] = "ReservationInformation";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Kullanıcı Bilgilerini Görüntüle </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Admin/Customer/AllCustomers/">Tüm Kullanıcılar</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kullanıcı Bilgileri</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Rezervasyon Bilgileri</h4>
+                        <div class="row g-0">
+                            <div class="col-xl-3 gradient-custom text-center text-white"
+                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                @* <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" *@
+                                <img src="~/admin/assets/images/faces-clipart/pic-1.png"
+                                     alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
+                                <i class="far fa-edit mb-5"></i>
+                            </div>
+                            <div class="col-xl-9">
+                                <div class="card-body p-4">
+                                    <h5>Kullanıcı Bilgileri</h5>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Name</u></h6>
+                                            <p class="text-muted">@Model.ReservationCombined.PersonName</p>
+                                        </div>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Surname</u></h6>
+                                            <p class="text-muted">@Model.ReservationCombined.PersonSurname</p>
+                                        </div>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>TCKN</u></h6>
+                                            <p class="text-muted">@Model.ReservationCombined.IdentityNumber</p>
+                                        </div>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Cinsiyet</u></h6>
+                                            <p class="text-muted"><strong>Belirtilmemiş</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card-body p-4">
+                                    <h5>Araç Bilgileri</h5>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Araç Plakası</u></h6>
+                                            <p class="text-muted">@Model.ReservationCombined.LicensePlate</p>
+                                        </div>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>XXXXX</u></h6>
+                                            <p class="text-muted">XXXXX</p>
+                                        </div>
+                                        <div class="col-xl-12 mb-3">
+                                            <h6><u>XXXXX></u></h6>
+                                            <p class="text-muted">XXXXX</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card-body p-4">
+                                    <h5>Rezervasyon Bilgileri</h5>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Oluşturulma Tarihi</u></h6>
+                                            <p class="text-muted">@Model.ReservationCombined.CreateDate</p>
+                                        </div>
+                                        <div class="col-xl-6 mb-3">
+                                            <h6><u>Rezervasyon Tarihi</u></h6>
+                                            <p class="text-muted">@Model.ReservationCombined.ReservationDate</p>
+                                        </div>
+                                        <div class="col-xl-12 mb-3">
+                                            <h6><u>Reservasyon Durumu</u></h6>
+                                            @if (Model.ReservationCombined.IsApproved == true)
+                                            {
+                                                <p class="text-muted">Onaylandı</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="text-muted">Onay Bekliyor</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
