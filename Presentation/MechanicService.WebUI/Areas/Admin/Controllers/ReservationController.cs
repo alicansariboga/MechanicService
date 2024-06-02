@@ -84,6 +84,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                         ReservationHour = reservationAllViewModel.ReservationService.Hour,
                     };
                     reservationAllViewModel.ReservationCombined.Add(combinedReservation);
+                    reservationAllViewModel.ReservationCombined = reservationAllViewModel.ReservationCombined.OrderByDescending(x => x.CreateDate).ToList();
                 }
             }
             return View(reservationAllViewModel);
@@ -215,6 +216,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                             ReservationHour = reservationAllViewModel.ReservationService.Hour,
                         };
                         reservationAllViewModel.ReservationCombined.Add(combinedReservation);
+                        reservationAllViewModel.ReservationCombined = reservationAllViewModel.ReservationCombined.OrderByDescending(x => x.CreateDate).ToList();
                     }
                 }
             }
@@ -245,53 +247,51 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 var singleRezCarId = reservation.RezCarID;
                 var singleRezServiceId = reservation.RezServiceID;
 
-                if (reservation.IsApproved == true)
+                var responsePerson = await client.GetAsync($"https://localhost:7215/api/ReservationPersons/{singleRezPersonId}");
+                if (responsePerson.IsSuccessStatusCode)
                 {
-                    var responsePerson = await client.GetAsync($"https://localhost:7215/api/ReservationPersons/{singleRezPersonId}");
-                    if (responsePerson.IsSuccessStatusCode)
-                    {
-                        var personData = await responsePerson.Content.ReadAsStringAsync();
-                        var person = JsonConvert.DeserializeObject<ResultReservationPersonDto>(personData);
-                        reservationAllViewModel.ReservationPerson.Name = person.Name;
-                        reservationAllViewModel.ReservationPerson.Surname = person.Surname;
-                        reservationAllViewModel.ReservationPerson.IdentityNumber = person.IdentityNumber;
-                    }
-
-                    var responseCar = await client.GetAsync($"https://localhost:7215/api/ReservationCars/{singleRezCarId}");
-                    if (responseCar.IsSuccessStatusCode)
-                    {
-                        var carData = await responseCar.Content.ReadAsStringAsync();
-                        var car = JsonConvert.DeserializeObject<ResultReservationCarDto>(carData);
-                        reservationAllViewModel.ReservationCar.LicensePlate = car.LicensePlate;
-                    }
-
-                    var responseService = await client.GetAsync($"https://localhost:7215/api/ReservationServices/{singleRezServiceId}");
-                    if (responseService.IsSuccessStatusCode)
-                    {
-                        var serviceData = await responseService.Content.ReadAsStringAsync();
-                        var service = JsonConvert.DeserializeObject<ResultReservationServiceDto>(serviceData);
-                        reservationAllViewModel.ReservationService.Date = service.Date;
-                        reservationAllViewModel.ReservationService.Hour = service.Hour;
-                    }
-
-                    var combinedReservation = new ResultReservationDetailDto
-                    {
-                        RezServiceID = reservation.RezServiceID,
-                        RezCarID = reservation.RezCarID,
-                        RezPersonID = reservation.RezPersonID,
-                        IsApproved = reservation.IsApproved,
-                        CreateDate = reservation.CreateDate,
-                        Id = reservation.Id,
-                        IsCanceled = reservation.IsCanceled,
-                        PersonName = reservationAllViewModel.ReservationPerson.Name,
-                        PersonSurname = reservationAllViewModel.ReservationPerson.Surname,
-                        IdentityNumber = reservationAllViewModel.ReservationPerson.IdentityNumber,
-                        LicensePlate = reservationAllViewModel.ReservationCar.LicensePlate,
-                        ReservationDate = reservationAllViewModel.ReservationService.Date,
-                        ReservationHour = reservationAllViewModel.ReservationService.Hour,
-                    };
-                    reservationAllViewModel.ReservationCombined = combinedReservation;
+                    var personData = await responsePerson.Content.ReadAsStringAsync();
+                    var person = JsonConvert.DeserializeObject<ResultReservationPersonDto>(personData);
+                    reservationAllViewModel.ReservationPerson.Name = person.Name;
+                    reservationAllViewModel.ReservationPerson.Surname = person.Surname;
+                    reservationAllViewModel.ReservationPerson.IdentityNumber = person.IdentityNumber;
                 }
+
+                var responseCar = await client.GetAsync($"https://localhost:7215/api/ReservationCars/{singleRezCarId}");
+                if (responseCar.IsSuccessStatusCode)
+                {
+                    var carData = await responseCar.Content.ReadAsStringAsync();
+                    var car = JsonConvert.DeserializeObject<ResultReservationCarDto>(carData);
+                    reservationAllViewModel.ReservationCar.LicensePlate = car.LicensePlate;
+                }
+
+                var responseService = await client.GetAsync($"https://localhost:7215/api/ReservationServices/{singleRezServiceId}");
+                if (responseService.IsSuccessStatusCode)
+                {
+                    var serviceData = await responseService.Content.ReadAsStringAsync();
+                    var service = JsonConvert.DeserializeObject<ResultReservationServiceDto>(serviceData);
+                    reservationAllViewModel.ReservationService.Date = service.Date;
+                    reservationAllViewModel.ReservationService.Hour = service.Hour;
+                }
+
+                var combinedReservation = new ResultReservationDetailDto
+                {
+                    RezServiceID = reservation.RezServiceID,
+                    RezCarID = reservation.RezCarID,
+                    RezPersonID = reservation.RezPersonID,
+                    IsApproved = reservation.IsApproved,
+                    CreateDate = reservation.CreateDate,
+                    Id = reservation.Id,
+                    IsCanceled = reservation.IsCanceled,
+                    PersonName = reservationAllViewModel.ReservationPerson.Name,
+                    PersonSurname = reservationAllViewModel.ReservationPerson.Surname,
+                    IdentityNumber = reservationAllViewModel.ReservationPerson.IdentityNumber,
+                    LicensePlate = reservationAllViewModel.ReservationCar.LicensePlate,
+                    ReservationDate = reservationAllViewModel.ReservationService.Date,
+                    ReservationHour = reservationAllViewModel.ReservationService.Hour,
+                };
+                reservationAllViewModel.ReservationCombined = combinedReservation;
+
             }
             return View(reservationAllViewModel);
         }

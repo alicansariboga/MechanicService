@@ -25,10 +25,14 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultContactDto>>(jsonData);
 
+                values = values.OrderByDescending(x => x.Id).ToList();
+
                 ContacViewModel contacViewModel = new ContacViewModel
                 {
                     ResultContacts = values,
                 };
+
+                ViewBag.Count = values.Count;
 
                 return View(contacViewModel);
             }

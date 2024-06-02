@@ -67,6 +67,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                         }
                     }
                 }
+                customerList = customerList.OrderByDescending(x => x.CreateDate).ToList();
                 return View(customerList);
             }
             return View();
@@ -83,6 +84,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var customers = JsonConvert.DeserializeObject<List<ResultAllCustomerDto>>(jsonData);
+                customers = customers.OrderByDescending(x => x.CreateDate).ToList();
                 return View(customers);
             }
             return View();
