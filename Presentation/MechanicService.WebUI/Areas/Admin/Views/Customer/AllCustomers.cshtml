@@ -1,4 +1,4 @@
-﻿@model List<ResultCustomersDto>
+﻿@model List<ResultCustomerWithCountDto>
 
 @{
     ViewData["Title"] = "AllCustomers";
@@ -22,7 +22,7 @@
                         <th>Telefon Numarası</th>
                         <th>İkincl Numara</th>
                         <th>Email</th>
-                        <th>İlk Kayıt Tarihi</th>
+                        <th>İlk İşlem Tarihi</th>
                         <th>Son İşlem Tarihi</th>
                         <th>Toplam İşlem</th>
                         <th>Git</th>
@@ -43,8 +43,8 @@
                             <td>@item.PhoneOpt</td>
                             <td>@item.Email</td>
                             <td>@item.CreateDate.ToShortDateString()</td>
-                            <td>04 Mart, 2024</td>
-                            <td>#####</td>
+                            <td>@item.LastDate.ToShortDateString()</td>
+                            <td>@item.RezCount</td>
                             <td><a class="btn btn-primary" href="/Admin/Customer/CustomerInformation/@item.Id">Müşteri Bilgileri</a></td>
                         </tr>
                     }

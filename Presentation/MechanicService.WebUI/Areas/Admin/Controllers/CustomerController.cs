@@ -26,24 +26,34 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var customers = JsonConvert.DeserializeObject<List<ResultAllCustomerDto>>(jsonData);
 
-                var customerList = new List<ResultCustomersDto>();
+                var customerList = new List<ResultCustomerWithCountDto>();
 
                 foreach (var item in customers)
                 {
-                    var customerDistinct = new ResultCustomersDto
+                    // Customer's reservation count
+                    var responseMessage2 = await client.GetAsync("https://localhost:7215/api/Customers/CustomerList");
+                    var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+                    var customersAll = JsonConvert.DeserializeObject<List<ResultAllCustomerDto>>(jsonData2);
+
+                    var rezCount = customersAll.Where(x => x.IdentityNumber == item.IdentityNumber).ToList().Count;
+                    var lastDate = customersAll.Where(x => x.IdentityNumber == item.IdentityNumber).OrderByDescending(x => x.CreateDate).FirstOrDefault().CreateDate;
+
+                    var customerDistinct = new ResultCustomerWithCountDto
                     {
-                         Id = item.Id,
-                         RezPersonID = item.RezPersonID,
-                         CreateDate = item.CreateDate,
-                         IsApproved = item.IsApproved,
-                         IsCanceled = item.IsCanceled,
-                         PersonId = item.PersonId,
-                         Name = item.Name,
-                         Surname = item.Surname,
-                         IdentityNumber = item.IdentityNumber,
-                         Phone = item.Phone,
-                         PhoneOpt = item.PhoneOpt,
-                         Email = item.Email
+                        Id = item.Id,
+                        RezPersonID = item.RezPersonID,
+                        CreateDate = item.CreateDate,
+                        IsApproved = item.IsApproved,
+                        IsCanceled = item.IsCanceled,
+                        PersonId = item.PersonId,
+                        Name = item.Name,
+                        Surname = item.Surname,
+                        IdentityNumber = item.IdentityNumber,
+                        Phone = item.Phone,
+                        PhoneOpt = item.PhoneOpt,
+                        Email = item.Email,
+                        RezCount = rezCount,
+                        LastDate = lastDate
                     };
                     if (customerList.Count == 0)
                     {
@@ -72,7 +82,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
-        
+
         [HttpGet]
         [Route("CustomersRecords")]
         public async Task<IActionResult> CustomersRecords()

@@ -263,6 +263,9 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                     var carData = await responseCar.Content.ReadAsStringAsync();
                     var car = JsonConvert.DeserializeObject<ResultReservationCarDto>(carData);
                     reservationAllViewModel.ReservationCar.LicensePlate = car.LicensePlate;
+                    reservationAllViewModel.ReservationCar.Year = car.Year;
+                    reservationAllViewModel.ReservationCar.Km = car.Km;
+                    reservationAllViewModel.ReservationCar.ModelID = car.ModelID;
                 }
 
                 var responseService = await client.GetAsync($"https://localhost:7215/api/ReservationServices/{singleRezServiceId}");
@@ -272,7 +275,20 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                     var service = JsonConvert.DeserializeObject<ResultReservationServiceDto>(serviceData);
                     reservationAllViewModel.ReservationService.Date = service.Date;
                     reservationAllViewModel.ReservationService.Hour = service.Hour;
+                    reservationAllViewModel.ReservationService.ServiceName = service.ServiceName;
                 }
+
+                int modelId = reservationAllViewModel.ReservationCar.ModelID;
+                var responseCarModel = await client.GetAsync($"https://localhost:7215/api/CarModels/{modelId}");
+                var modelData = await responseCarModel.Content.ReadAsStringAsync();
+                var carModel = JsonConvert.DeserializeObject<ResultCarModelDto>(modelData);
+                string model = carModel.Name;
+
+                int brandId = carModel.BrandID;
+                var responseCarBrand = await client.GetAsync($"https://localhost:7215/api/CarBrands/{brandId}");
+                var brandData = await responseCarBrand.Content.ReadAsStringAsync();
+                var carBrand = JsonConvert.DeserializeObject<ResultCarBrandDto>(brandData);
+                string brand = carBrand.Name;
 
                 var combinedReservation = new ResultReservationDetailDto
                 {
@@ -289,6 +305,11 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                     LicensePlate = reservationAllViewModel.ReservationCar.LicensePlate,
                     ReservationDate = reservationAllViewModel.ReservationService.Date,
                     ReservationHour = reservationAllViewModel.ReservationService.Hour,
+                    Year = reservationAllViewModel.ReservationCar.Year,
+                    Km = reservationAllViewModel.ReservationCar.Km,
+                    ModelName = model,
+                    BrandName = brand,
+                    ServiceName = reservationAllViewModel.ReservationService.ServiceName,
                 };
                 reservationAllViewModel.ReservationCombined = combinedReservation;
 
