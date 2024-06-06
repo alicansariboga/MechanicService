@@ -3,6 +3,7 @@ using MechanicService.Application.Interfaces.LocationsInterfaces;
 using MechanicService.Dto.BranchOfficeDtos;
 using MechanicService.Dto.TeamDtos;
 using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
 
 namespace MechanicService.WebUI.Areas.Admin.Controllers
 {
@@ -46,21 +47,21 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                     CityDatas = values,
                 };
 
-				var responseMessage2 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsCityCount");
-				if (responseMessage2.IsSuccessStatusCode)
-				{
-					var jsonData1 = await responseMessage2.Content.ReadAsStringAsync();
-					var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
-					ViewBag.activeLocationCities = values1.GetActiveLocationsCityCount;
-				}
+                var responseMessage2 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsCityCount");
+                if (responseMessage2.IsSuccessStatusCode)
+                {
+                    var jsonData1 = await responseMessage2.Content.ReadAsStringAsync();
+                    var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
+                    ViewBag.activeLocationCities = values1.GetActiveLocationsCityCount;
+                }
 
-				var responseMessage3 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsCount/");
-				if (responseMessage3.IsSuccessStatusCode)
-				{
-					var jsonData1 = await responseMessage3.Content.ReadAsStringAsync();
-					var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
-					ViewBag.activeLocations = values1.GetActiveLocationsCount;
-				}
+                var responseMessage3 = await client.GetAsync("https://localhost:7215/api/Statistics/GetActiveLocationsCount/");
+                if (responseMessage3.IsSuccessStatusCode)
+                {
+                    var jsonData1 = await responseMessage3.Content.ReadAsStringAsync();
+                    var values1 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData1);
+                    ViewBag.activeLocations = values1.GetActiveLocationsCount;
+                }
 
                 return View(viewModel);
             }
@@ -93,9 +94,8 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
         [Route("GetBranchs/{id}")]
         public async Task<IActionResult> GetBranchs(int id)
         {
-            var branchOffice = new List<ResultBranchOfficeDto>();
             var results = _branchOfficeRepository.GetBranchOfficeByDistrictId(id);
-            ViewBag.DistrictId = id;
+            var branchOffices = new List<ResultBranchOfficeDto>();
             foreach (var item in results)
             {
                 var branch = new ResultBranchOfficeDto
@@ -109,11 +109,14 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
                     ImgUrl = item.ImgUrl,
                     LocationUrl = item.LocationUrl,
                 };
-                branchOffice.Add(branch);
-                return View(branchOffice);
+                branchOffices.Add(branch);
             }
-
-            return View();
+            var branchOffice = new BranchOfficeViewModel
+            {
+                BranchOffices = branchOffices,
+                Id = id,
+            };
+            return View(branchOffice);
         }
 
         [HttpGet]

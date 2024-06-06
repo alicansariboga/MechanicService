@@ -1,4 +1,4 @@
-﻿@model List<ResultBranchOfficeDto>
+﻿@model BranchOfficeViewModel
 
 @{
     ViewData["Title"] = "GetBranchs";
@@ -28,7 +28,7 @@
                 <tbody>
                     @if (Model != null)
                     {
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.BranchOffices)
                         {
                             var address = string.Join(" ", item.Address.Split(' ').Take(15));
                             var addressShort = address + (item.Address.Split(' ').Length > 15 ? "..." : "");
@@ -64,7 +64,7 @@
                 </tbody>
             </table>
             <div class="card-body">
-                <a href="/Admin/ManageLocation/Create/@ViewBag.DistrictId" class="btn btn-primary">Yeni Şube Ekle</a>
+                <a href="/Admin/ManageLocation/Create/@Model.Id" class="btn btn-primary">Yeni Şube Ekle</a>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
                 <symbol id="check-circle-fill" viewBox="0 0 16 16">
