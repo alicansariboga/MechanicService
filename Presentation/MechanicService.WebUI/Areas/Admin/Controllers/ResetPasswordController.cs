@@ -71,7 +71,7 @@ namespace MechanicService.WebUI.Areas.Admin.Controllers
 
             SmtpClient client1 = new SmtpClient();
             client1.Connect("smtp.gmail.com", 587, false);
-            client1.Authenticate("mechanicserviceproject@gmail.com", "sokamgqvrtuetsbo");
+            client1.Authenticate("mechanicserviceproject@gmail.com", "vqmvxlyifhmvjhas");
             client1.Send(mimeMessage);
             client1.Disconnect(true);
 
