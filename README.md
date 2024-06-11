@@ -34,3 +34,16 @@ You can contact and connect with me [here](https://www.linkedin.com/in/alicansar
 
 - Attention!
   The personal information (customer) you will see in this overview does not reflect reality. Randomly collected information has no connection to real life.
+</br>
+
+#### WebUI
+
+https://github.com/alicansariboga/MechanicService/assets/23722313/8f4b5bdb-cad5-47dd-b9da-73f741bfe7cb
+
+
+</br>
+
+#### Admin Panel
+
+https://github.com/alicansariboga/MechanicService/assets/23722313/032f3eaf-2acc-419d-ab23-b876e36feb5a
+
